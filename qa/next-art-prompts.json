@@ -1,0 +1,29 @@
+{
+  "mode": "built-in imagegen",
+  "assets": [
+    {
+      "id": "limestone",
+      "prompt": "Use case: stylized-concept. Production game material tile for Gouden Horizon Next. A full square seamless repeating GROUND TEXTURE, completely opaque, edge-to-edge, no border, no vignette. Top-down orthographic flat surface, no perspective distortion, uniform diffuse lighting, no shadows from outside objects. High-definition refined painterly detail with smooth brushwork and crisp material edges, NOT pixel art or low-poly. Natural restrained palette, sophisticated illustrated fantasy world. The left/right and top/bottom edge patterns should join seamlessly; no dominant unique motif. Warm pale limestone paving with irregular rectangular blocks, subtle chips and fine warm grout, restrained moss only in a few joints. Elegant reclaimed Dutch waterfront stone. No buildings, furniture, people, plants taller than tiny ground cover, scenery, text, symbols, watermark or collage."
+    },
+    {
+      "id": "cobble",
+      "prompt": "Use case: stylized-concept. Production game material tile for Gouden Horizon Next. A full square seamless repeating GROUND TEXTURE, completely opaque, edge-to-edge, no border, no vignette. Top-down orthographic flat surface, no perspective distortion, uniform diffuse lighting, no shadows from outside objects. High-definition refined painterly detail with smooth brushwork and crisp material edges, NOT pixel art or low-poly. Natural restrained palette, sophisticated illustrated fantasy world. The left/right and top/bottom edge patterns should join seamlessly; no dominant unique motif. Muted blue grey Dutch cobblestones, small rounded rectangular blocks, subtle wet mineral detail and pale mortar, no standing water or reflections. No buildings, furniture, people, plants taller than tiny ground cover, scenery, text, symbols, watermark or collage."
+    },
+    {
+      "id": "earth",
+      "prompt": "Use case: stylized-concept. Production game material tile for Gouden Horizon Next. A full square seamless repeating GROUND TEXTURE, completely opaque, edge-to-edge, no border, no vignette. Top-down orthographic flat surface, no perspective distortion, uniform diffuse lighting, no shadows from outside objects. High-definition refined painterly detail with smooth brushwork and crisp material edges, NOT pixel art or low-poly. Natural restrained palette, sophisticated illustrated fantasy world. The left/right and top/bottom edge patterns should join seamlessly; no dominant unique motif. Rich mossy earth with small soft grass tufts, dry leaf flecks and tiny pebbles. Muted forest green and warm soil. No large plants or roots. No buildings, furniture, people, plants taller than tiny ground cover, scenery, text, symbols, watermark or collage."
+    },
+    {
+      "id": "basalt",
+      "prompt": "Use case: stylized-concept. Production game material tile for Gouden Horizon Next. A full square seamless repeating GROUND TEXTURE, completely opaque, edge-to-edge, no border, no vignette. Top-down orthographic flat surface, no perspective distortion, uniform diffuse lighting, no shadows from outside objects. High-definition refined painterly detail with smooth brushwork and crisp material edges, NOT pixel art or low-poly. Natural restrained palette, sophisticated illustrated fantasy world. The left/right and top/bottom edge patterns should join seamlessly; no dominant unique motif. Large dark blue grey basalt floor slabs with fine warm brass inlay joints and restrained oxidation. Industrial recovered architecture, no objects or machinery. No buildings, furniture, people, plants taller than tiny ground cover, scenery, text, symbols, watermark or collage."
+    },
+    {
+      "id": "sand",
+      "prompt": "Use case: stylized-concept. Production game material tile for Gouden Horizon Next. A full square seamless repeating GROUND TEXTURE, completely opaque, edge-to-edge, no border, no vignette. Top-down orthographic flat surface, no perspective distortion, uniform diffuse lighting, no shadows from outside objects. High-definition refined painterly detail with smooth brushwork and crisp material edges, NOT pixel art or low-poly. Natural restrained palette, sophisticated illustrated fantasy world. The left/right and top/bottom edge patterns should join seamlessly; no dominant unique motif. Fine warm pale sand and compacted ochre earth, tiny mineral grains, subtle ripples and scattered very small pebble flecks, no footprints. No buildings, furniture, people, plants taller than tiny ground cover, scenery, text, symbols, watermark or collage."
+    },
+    {
+      "id": "timber",
+      "prompt": "Use case: stylized-concept. Production game material tile for Gouden Horizon Next. A full square seamless repeating GROUND TEXTURE, completely opaque, edge-to-edge, no border, no vignette. Top-down orthographic flat surface, no perspective distortion, uniform diffuse lighting, no shadows from outside objects. High-definition refined painterly detail with smooth brushwork and crisp material edges, NOT pixel art or low-poly. Natural restrained palette, sophisticated illustrated fantasy world. The left/right and top/bottom edge patterns should join seamlessly; no dominant unique motif. Warm reclaimed timber parquet planks in a restrained herringbone pattern, visible grain, tiny worn edges and muted honey tones, no furniture. No buildings, furniture, people, plants taller than tiny ground cover, scenery, text, symbols, watermark or collage."
+    }
+  ]
+}

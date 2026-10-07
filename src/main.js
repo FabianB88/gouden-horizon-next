@@ -1,50 +1,50 @@
-import {MAIN_DISTRICT_EXPLANATION,EXTRA_DISTRICT_EXPLANATION} from './district-content.js?v=46';
-import {initializeLocalization,setLanguage,translate,setTranslatedText,setTranslatedAttribute,setNamedText} from './localization.js?v=46';
-import {TouchInput,bindTouchControl,touchCombatTarget,detectTouchDevice} from './touch-input.js?v=46';
-import {sectionBounds,SECTION_ENTRIES,sectionIndex} from './area-sections.js?v=46';
-import {PROLOGUE} from './lore.js?v=46';
-import {journeyEntry,campaignAim} from './journey-content.js?v=46';
-import {JourneyLog} from './journey-log.js?v=46';
-import {PORTAL_ART} from './portal-art.js?v=46';
-import {ControllerInput,menuControls,focusMenu,confirmMenu,controllerTarget} from './gamepad.js?v=46';
-import {LanClient} from './lan-client.js?v=46';
-import {heroIdentity} from './coop-session.js?v=46';
-import {FrameTelemetry,needsSceneFrame} from './frame-performance.js?v=46';
-import {buildComparison} from './build-insights.js?v=46';
-import {quarterQuestBody,atelierBody,runeLabel} from './safe-exploration-ui.js?v=46';
-import {QUARTER_POINTS,LINDE} from './safe-exploration-content.js?v=46';
-import {companionUpgradeMenu} from './companion-upgrades.js?v=46';
-import {summonUnlockLevel} from './summon-progression.js?v=46';
-import {EQUIPMENT_SLOT_NAMES,itemFitsSlot,comparisonSlot} from './equipment-slots.js?v=46';
-import {adventureBoard,ADVENTURES} from './adventures.js?v=46';
-import {equipmentBody} from './equipment-ui.js?v=46';
-import {specializationMenu,SPECIALIZATIONS,START_BUILDS} from './specializations.js?v=46';
-import {CITY_NPCS,CITY_DIALOGUES} from './city.js?v=46';
-import {UNIQUE_ITEMS} from './unique-items.js?v=46';
-import {companionMenu} from './summons.js?v=46';
-import {normalizeSettings,SETTINGS_KEY,CAMERA_ZOOMS} from './settings.js?v=46';
-import {RESISTANCES,resistance} from './resistances.js?v=46';
-import {BOUNTIES} from './bounties.js?v=46';
-import {itemMark,protectedItem,markActions} from './item-marks.js?v=46';
-import {spellProfile,SPELL_VARIANTS} from './spell-variants.js?v=46';
-import {Engine,clamp,distance,normal} from './engine.js?v=46';
-import {TRIALS,TRIAL_TIERS,trialTime,recordText} from './endgame.js?v=46';
-import {SAFE_HUBS} from './hubs.js?v=46';
-import {STORY_ORDER,STORY_BEATS} from './story.js?v=46';
-import {assistedSkill,hotbarTarget} from './aim.js?v=46';
-import {Renderer} from './render.js?v=46';
-import {SPELLS,ZONES,AREAS,AREA_BY_ID,UPGRADES,DISCIPLINES,RARITIES,SLOT_NAMES} from './data.js?v=46';
-import {Soundscape} from './sound.js?v=46';
+import {MAIN_DISTRICT_EXPLANATION,EXTRA_DISTRICT_EXPLANATION} from './district-content.js?v=900';
+import {initializeLocalization,setLanguage,translate,setTranslatedText,setTranslatedAttribute,setNamedText} from './localization.js?v=900';
+import {TouchInput,bindTouchControl,touchCombatTarget,detectTouchDevice} from './touch-input.js?v=900';
+import {sectionBounds,SECTION_ENTRIES,sectionIndex} from './area-sections.js?v=900';
+import {PROLOGUE} from './lore.js?v=900';
+import {journeyEntry,campaignAim} from './journey-content.js?v=900';
+import {JourneyLog} from './journey-log.js?v=900';
+import {PORTAL_ART} from './portal-art.js?v=900';
+import {ControllerInput,menuControls,focusMenu,confirmMenu,controllerTarget} from './gamepad.js?v=900';
+import {LanClient} from './lan-client.js?v=900';
+import {heroIdentity} from './coop-session.js?v=900';
+import {FrameTelemetry,needsSceneFrame} from './frame-performance.js?v=900';
+import {buildComparison} from './build-insights.js?v=900';
+import {quarterQuestBody,atelierBody,runeLabel} from './safe-exploration-ui.js?v=900';
+import {QUARTER_POINTS,LINDE} from './safe-exploration-content.js?v=900';
+import {companionUpgradeMenu} from './companion-upgrades.js?v=900';
+import {summonUnlockLevel} from './summon-progression.js?v=900';
+import {EQUIPMENT_SLOT_NAMES,itemFitsSlot,comparisonSlot} from './equipment-slots.js?v=900';
+import {adventureBoard,ADVENTURES} from './adventures.js?v=900';
+import {equipmentBody} from './equipment-ui.js?v=900';
+import {specializationMenu,SPECIALIZATIONS,START_BUILDS} from './specializations.js?v=900';
+import {CITY_NPCS,CITY_DIALOGUES} from './city.js?v=900';
+import {UNIQUE_ITEMS} from './unique-items.js?v=900';
+import {companionMenu} from './summons.js?v=900';
+import {normalizeSettings,SETTINGS_KEY,CAMERA_ZOOMS} from './settings.js?v=900';
+import {RESISTANCES,resistance} from './resistances.js?v=900';
+import {BOUNTIES} from './bounties.js?v=900';
+import {itemMark,protectedItem,markActions} from './item-marks.js?v=900';
+import {spellProfile,SPELL_VARIANTS} from './spell-variants.js?v=900';
+import {Engine,clamp,distance,normal} from './engine.js?v=900';
+import {TRIALS,TRIAL_TIERS,trialTime,recordText} from './endgame.js?v=900';
+import {SAFE_HUBS} from './hubs.js?v=900';
+import {STORY_ORDER,STORY_BEATS} from './story.js?v=900';
+import {assistedSkill,hotbarTarget} from './aim.js?v=900';
+import {Renderer} from './render.js?v=900';
+import {SPELLS,ZONES,AREAS,AREA_BY_ID,UPGRADES,DISCIPLINES,RARITIES,SLOT_NAMES} from './data.js?v=900';
+import {Soundscape} from './sound.js?v=900';
 
-import {statsText,sellValue,salvageValue} from './loot.js?v=46';
-import {loadoutBody,bindingLabel} from './loadout-ui.js?v=46';
-import {shopBody,visibleSellItems,sellableItems,updateSellSelection} from './shop-ui.js?v=46';
-import {effectText} from './legendary.js?v=46';
-import {ANTIDOTE_PRICE} from './survival.js?v=46';
-import {gearFeedback} from './gear-feedback.js?v=46';
+import {statsText,sellValue,salvageValue} from './loot.js?v=900';
+import {loadoutBody,bindingLabel} from './loadout-ui.js?v=900';
+import {shopBody,visibleSellItems,sellableItems,updateSellSelection} from './shop-ui.js?v=900';
+import {effectText} from './legendary.js?v=900';
+import {ANTIDOTE_PRICE} from './survival.js?v=900';
+import {gearFeedback} from './gear-feedback.js?v=900';
 
-const $=id=>document.getElementById(id),SAVE_KEY='gouden-horizon-action-v3';
-const RECORD_KEY='gouden-horizon-trial-records-v56';
+const $=id=>document.getElementById(id),SAVE_KEY='gouden-horizon-next-action-v1';
+const RECORD_KEY='gouden-horizon-next-trial-records-v1';
 function localRecords(){try{return JSON.parse(localStorage.getItem(RECORD_KEY)||'{}');}catch{return {};}}
 const renderer=new Renderer($('world'),$('minimap')),audio=new Soundscape(),frameTelemetry=new FrameTelemetry();
 let settings=normalizeSettings();try{settings=normalizeSettings(JSON.parse(localStorage.getItem(SETTINGS_KEY)||'{}'));}catch{}
@@ -428,7 +428,7 @@ let lanSetup=null,lastCoopMessage='';
 function updateCoopHUD(){const box=$('coop-hud');if(!box)return;box.hidden=!started||!engine.isLan;if(box.hidden)return;const party=engine.state.coop;if(!party)return;const travel=party.travel,fallen=party.players.find(p=>p.hp<=0),reviving=party.players.find(p=>p.revive>0),message=!engine.connected?'Verbinding weg · expeditie wacht':party.paused?'Wachten op je partner · expeditie gepauzeerd':party.defeated?'Beiden gevallen · herstart bij de gebiedsingang':travel?'Samen reizen naar '+travel.name:reviving?'Reanimatie · '+Math.ceil((2-reviving.revive)*10)/10+'s':fallen?fallen.name+' gevallen · F dichtbij · 1 verband · 2s stil staan':'Samen op expeditie';
  if(fallen&&engine.connected&&!party.paused&&!party.defeated&&!travel&&!reviving)setNamedText($('coop-status'),[{name:fallen.name},' gevallen · F dichtbij · 1 verband · 2s stil staan']);else setText($('coop-status'),message);setNamedText($('coop-roster'),party.players.flatMap((p,i)=>[i?'   |   ':'',{name:p.name},' · '+Math.ceil(p.hp)+'/'+Math.round(p.maxHp)]));$('coop-travel').hidden=!travel||travel.accepted.includes(party.self);setText($('coop-travel'),'Reis mee');$('coop-reconnect').hidden=engine.connected;}
 function refreshLanMenu(result,request,method){if(result!==false){if(['buyItem','buySupply','buyAntidote','buySpell','buyUniqueRecipe','gambleLoot','reinforce','upgradeCompanion'].includes(method)&&modalKind==='shop')showShop($('modal-layer').dataset.shopTab||'buy',Number($('modal-layer').dataset.shopUid)||null);if(['weaveRune','craftAtelierItem'].includes(method)&&modalKind==='atelier')showAtelier($('modal-layer').dataset.atelierSlot||'suit');return;}if(!started||!engine.isLan)return;const kind=modalKind;if(kind==='test'&&$('test-error'))setText($('test-error'),'Onjuiste code of actie niet beschikbaar.');if(kind==='shop')showShop($('modal-layer').dataset.shopTab||'buy');if(kind==='equipment')showEquipment();if(kind==='skills')showSkills();if(kind==='adventures')showAdventures();if(kind==='atelier')showAtelier();}
-function connectLan(){const name=$('lan-name')?.value||$('lan-callsign')?.value||lanSetup?.name||'Reiziger',build=$('lan-build')?.value||lanSetup?.build||'elementalist',gender=$('lan-gender')?.value||lanSetup?.gender||selectedGender;lanSetup={name,build,gender};let token;try{token=sessionStorage.getItem('gouden-lan-token');}catch{}
+function connectLan(){const name=$('lan-name')?.value||$('lan-callsign')?.value||lanSetup?.name||'Reiziger',build=$('lan-build')?.value||lanSetup?.build||'elementalist',gender=$('lan-gender')?.value||lanSetup?.gender||selectedGender;lanSetup={name,build,gender};let token;try{token=sessionStorage.getItem('gouden-next-lan-token');}catch{}
  if(engine.isLan)engine.disconnect();engine=new LanClient({onLobby:players=>{if(modalKind!=='lan')return;const list=$('lan-lobby');if(list){if(players.length)setNamedText(list,players.flatMap((p,i)=>[i?' / ':'',{name:p.name},' · '+SPECIALIZATIONS[p.build].name+(p.ready?' · klaar':' · kiest')]));else setText(list,'Wacht op de tweede speler');}},onStart:()=>{journey.begin(engine.state.seed,engine.id||'lan');$('journey-peek').hidden=true;started=true;paused=false;hideModal();$('cover').hidden=true;renderer.renderArea=engine.state.area;renderer.reset(engine.state.player,engine.state.area);audio.start();audio.setZone(engine.state.zone,engine.state.area);noticeKey='';updateHUD();updateCoopHUD();},onResult:refreshLanMenu,onStatus:message=>{const status=$('lan-lobby');if(status)setText(status,message);engine.notice(message);updateCoopHUD();}});engine.connect({...lanSetup,token});}
 async function showLan(){if(!loaded)return;let available=false;try{const r=await fetch('lan/info',{cache:'no-store'});available=r.ok&&(await r.json()).lan;}catch{}
  if(!available){showModal('lan-help','TWEE SPELERS · ZELFDE WIFI','Gratis LAN-co-op','<p>Pak de volledige ZIP uit op één computer met Node.js 22 of nieuwer. Start <strong>start-lan.bat</strong> (Windows) of <strong>start-lan.sh</strong> (Mac/Linux). De server toont een link voor de tweede speler.</p><p>Beide spelers openen die lokale link in hun browser. Deze online versie blijft ook solo speelbaar.</p>',[{label:'Begrepen',run:hideModal}]);return;}
@@ -458,7 +458,7 @@ function frame(now){ensureWorld();updateJourney();const elapsed=(now-last)/1000,
  if(playable()||started&&engine.isLan){const move=playable()?moveInput():{x:0,y:0};let aim=controllerState.active?controllerTarget(engine.state.player,controllerState.aim):touchMode?(touchInput.aiming||touchInput.shooting?target():null):pointer.active?renderer.screenToWorld(pointer.x,pointer.y):null;frameTelemetry.measure('update',()=>engine.update(delta,{...move,aim,paused:!playable(),shoot:playable()&&(controllerState.active?controllerState.shoot:pointer.shoot||touchMode&&touchInput.shooting&&!touchInput.preview),slots:controllerState.active?controllerState.slots:['1','2','3','4','5','6'].filter(k=>keys.has(k)).map(k=>Number(k)-1),right:controllerState.active?controllerState.right:pointer.right||keys.has('q')}));
   if(!controllerState.active&&!pointer.active&&!touchInput.shooting&&!touchInput.preview&&!['1','2','3','4','5','6'].some(k=>keys.has(k))&&engine.state.player.moving)engine.state.player.aim=normal(move.x,move.y);if(!touchMode&&engine.state.runTime>12&&engine.state.runTime<13){setText($('tutorial-text'),'Richt in het veld en schiet met links of 1–6. Getij maakt nat; storm geleidt. K: skills instellen.');}
  }
- for(const event of engine.takeEvents()){audio.event(event);if(event.type==='purchase')announcePurchase(event);if(event.type==='hit'&&!event.secondary&&(event.crit||event.heavy))renderer.kick(event.crit?1.1:.55);if(event.type==='trialrecord'){try{localStorage.setItem(engine.isLan?'gouden-horizon-lan-records-v87':RECORD_KEY,JSON.stringify(event.records));}catch{}}if(event.type==='discovery'&&event.item)announceLoot(event);if(event.type==='contractunlocked'){setText($('tutorial-text'),'EXTRA MISSIE · Sera wacht in '+(event.id==='bounty-spore'?'De Wilde Serre':'Stormwacht')+'.');$('tutorial').hidden=false;}if(event.type==='natureregion'){setText($('tutorial-text'),'EXTRA ROUTE · Ga naar de Sintelhoven voor de poort naar het Lantaarnwoud. M: kaart.');$('tutorial').hidden=false;}if(event.type==='levelready'){announceLevel(event.level);renderer.kick(3);}if(['zone','section'].includes(event.type)){$('journey-peek').hidden=true;if(engine.isLan){hideModal();paused=false;renderer.renderArea=engine.state.area;}renderer.reset(engine.state.player,engine.state.area);audio.setZone(engine.state.zone,engine.state.area);setText($('tutorial-text'),touchMode?'Tik bij een doorgang of vondst · kaart, spreuken en rugzak staan bovenaan':'F: doorgang of vondst · M: wereldkaart · K: vaardigheden · I: rugzak');}if(['special','combo'].includes(event.type))renderer.kick(2);if(event.type==='hurt'){renderer.kick(6);$('damage-flash').classList.add('hit');setTimeout(()=>$('damage-flash').classList.remove('hit'),180);}if(event.type==='ultimate')renderer.kick(5);if(event.type==='ultimpact')renderer.kick(13);}
+ for(const event of engine.takeEvents()){audio.event(event);if(event.type==='purchase')announcePurchase(event);if(event.type==='hit'&&!event.secondary&&(event.crit||event.heavy))renderer.kick(event.crit?1.1:.55);if(event.type==='trialrecord'){try{localStorage.setItem(engine.isLan?'gouden-horizon-next-lan-records-v1':RECORD_KEY,JSON.stringify(event.records));}catch{}}if(event.type==='discovery'&&event.item)announceLoot(event);if(event.type==='contractunlocked'){setText($('tutorial-text'),'EXTRA MISSIE · Sera wacht in '+(event.id==='bounty-spore'?'De Wilde Serre':'Stormwacht')+'.');$('tutorial').hidden=false;}if(event.type==='natureregion'){setText($('tutorial-text'),'EXTRA ROUTE · Ga naar de Sintelhoven voor de poort naar het Lantaarnwoud. M: kaart.');$('tutorial').hidden=false;}if(event.type==='levelready'){announceLevel(event.level);renderer.kick(3);}if(['zone','section'].includes(event.type)){$('journey-peek').hidden=true;if(engine.isLan){hideModal();paused=false;renderer.renderArea=engine.state.area;}renderer.reset(engine.state.player,engine.state.area);audio.setZone(engine.state.zone,engine.state.area);setText($('tutorial-text'),touchMode?'Tik bij een doorgang of vondst · kaart, spreuken en rugzak staan bovenaan':'F: doorgang of vondst · M: wereldkaart · K: vaardigheden · I: rugzak');}if(['special','combo'].includes(event.type))renderer.kick(2);if(event.type==='hurt'){renderer.kick(6);$('damage-flash').classList.add('hit');setTimeout(()=>$('damage-flash').classList.remove('hit'),180);}if(event.type==='ultimate')renderer.kick(5);if(event.type==='ultimpact')renderer.kick(13);}
  audio.setTension(started&&playable()&&!engine.inCamp()?engine.state.world.enemies.filter(e=>!e.dead&&e.awake).length>0?1:0:0);const draw=started&&engine.isLan||needsSceneFrame(started,playable(),renderer,engine.state.mode);if(draw){frameTelemetry.measure('render',()=>renderer.render(engine,now/1000,delta));renderer.lastSceneMode=engine.state.mode;renderer.sceneDirty=false;}if(started){if(modalKind==='test'&&engine.testModeEnabled()&&$('test-code'))showTestMode();updateCoopHUD();pendingModal();if(playable()||draw)hudTick+=delta;if(hudTick>.08){frameTelemetry.measure('hud',updateHUD);hudTick=0;}if(now-lastSave>8000){save();lastSave=now;}}
  }updateSectionTravel();positionControllerAim();requestAnimationFrame(frame);}
 applySettings();refreshContinue();renderer.resize();requestAnimationFrame(frame);

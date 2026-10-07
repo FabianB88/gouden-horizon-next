@@ -1,4 +1,4 @@
-export const JOURNEY_KEY='gouden-horizon-journey-v882';
+export const JOURNEY_KEY='gouden-horizon-next-journey-v1';
 // UI-only read history: never mutates a LAN snapshot or pauses another player.
 export class JourneyLog{
  constructor(storage){try{storage??=globalThis.localStorage;}catch{}this.storage=storage;this.runs={};try{const saved=JSON.parse(storage?.getItem(JOURNEY_KEY)||'{}');if(saved&&typeof saved==='object'&&!Array.isArray(saved))this.runs=saved;}catch{}this.pending=null;this.area=null;this.run=null;this.seen=new Set();}

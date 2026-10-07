@@ -1,19 +1,21 @@
-import {installModuleFloors} from './scenery-modules.js?v=46';
-import {installPaintedArenaFloors} from './painted-arena-floors.js?v=46';
-import {addWorldWalkways} from './world-walkways.js?v=46';
-import {installForestNavigation} from './forest-navigation.js?v=46';
-import {OUTDOOR_REGIONS} from './outdoor-content.js?v=46';
-import {WANDERING_FLOORS,WANDERING_EXTENSIONS} from './hub-wandering-content.js?v=46';
-import {CITY_EXTENSION_FLOORS} from './city-extension.js?v=46';
-import {TOWN_FLOORS,TOWN_EXTRA_FLOORS} from './town-floors.js?v=46';
-import {HUB_SCALES} from './hub-space.js?v=46';
-import {QUARTER_AREAS,QUARTER_GATES} from './safe-exploration-content.js?v=46';
-import {NATURE_AREAS,NATURE_ENEMIES} from './nature-content.js?v=46';
-import {CREATURE_ENEMIES} from './creature-content.js?v=46';
-import {BIOME_AREAS,BIOME_ENEMIES,BIOME_HUB_LAYOUTS} from './biome-content.js?v=46';
-import {V8_HUB_LAYOUTS} from './v8-layouts.js?v=46';
-import {V8_AREAS,V8_ZONES,V8_ENEMIES} from './v8-content.js?v=46';
-import {HUB_LAYOUTS} from './hub-layouts.js?v=46';
+import {interiorAreas} from './world-interiors.js?v=900';
+import {installNextWorld} from './world-design.js?v=900';
+import {installModuleFloors} from './scenery-modules.js?v=900';
+import {installPaintedArenaFloors} from './painted-arena-floors.js?v=900';
+import {addWorldWalkways} from './world-walkways.js?v=900';
+import {installForestNavigation} from './forest-navigation.js?v=900';
+import {OUTDOOR_REGIONS} from './outdoor-content.js?v=900';
+import {WANDERING_FLOORS,WANDERING_EXTENSIONS} from './hub-wandering-content.js?v=900';
+import {CITY_EXTENSION_FLOORS} from './city-extension.js?v=900';
+import {TOWN_FLOORS,TOWN_EXTRA_FLOORS} from './town-floors.js?v=900';
+import {HUB_SCALES} from './hub-space.js?v=900';
+import {QUARTER_AREAS,QUARTER_GATES} from './safe-exploration-content.js?v=900';
+import {NATURE_AREAS,NATURE_ENEMIES} from './nature-content.js?v=900';
+import {CREATURE_ENEMIES} from './creature-content.js?v=900';
+import {BIOME_AREAS,BIOME_ENEMIES,BIOME_HUB_LAYOUTS} from './biome-content.js?v=900';
+import {V8_HUB_LAYOUTS} from './v8-layouts.js?v=900';
+import {V8_AREAS,V8_ZONES,V8_ENEMIES} from './v8-content.js?v=900';
+import {HUB_LAYOUTS} from './hub-layouts.js?v=900';
 export const WORLD = { width: 1920, height: 1280 };
 export const SPELLS = {
   tide: { name: 'Getijdenwaaier', short: 'GETIJ', color: '#73e2e5', dark: '#126c8b', key: '1', damage: 13, cost: 4, interval: .22, speed: 780, radius: 11, status: 'wet', description: 'Drie waterbogen waaieren uit en maken doelen NAT. Wissel naar storm voor kettingbliksem.' },
@@ -1056,3 +1058,7 @@ installForestNavigation(AREA_BY_ID.forest,WORLD);
 installPaintedArenaFloors(AREAS);
 
 installModuleFloors(AREA_BY_ID,WORLD);
+
+// The modular edition replaces every inherited painted-floor outline.
+const nextRooms=interiorAreas(AREAS);AREAS.push(...nextRooms);for(const room of nextRooms)AREA_BY_ID[room.id]=room;
+installNextWorld(AREAS,WORLD,OUTDOOR_REGIONS);

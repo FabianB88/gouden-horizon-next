@@ -1,17 +1,17 @@
-import {RESISTANCES,resistance} from './resistances.js?v=46';
-import {protectedItem} from './item-marks.js?v=46';
-import {spellProfile} from './spell-variants.js?v=46';
-import {WORLD,SPELLS,AREAS,AREA_BY_ID,ENEMIES,START_EQUIPMENT,RARITIES} from './data.js?v=46';
-import {marketStock} from './markets.js?v=46';
-import {HUB_LAYOUTS} from './hub-layouts.js?v=46';
-import {scaleEnemy,tuneChapterEnemy} from './balance.js?v=46';
-import {makeItem,normalizePlayer,normalizeItem,DROP_TABLES,dropProfile,sellValue,salvageValue} from './loot.js?v=46';
+import {RESISTANCES,resistance} from './resistances.js?v=900';
+import {protectedItem} from './item-marks.js?v=900';
+import {spellProfile} from './spell-variants.js?v=900';
+import {WORLD,SPELLS,AREAS,AREA_BY_ID,ENEMIES,START_EQUIPMENT,RARITIES} from './data.js?v=900';
+import {marketStock} from './markets.js?v=900';
+import {HUB_LAYOUTS} from './hub-layouts.js?v=900';
+import {scaleEnemy,tuneChapterEnemy} from './balance.js?v=900';
+import {makeItem,normalizePlayer,normalizeItem,DROP_TABLES,dropProfile,sellValue,salvageValue} from './loot.js?v=900';
 const dist=(a,b)=>Math.hypot(a.x-b.x,(a.y-b.y)*1.15);
 const clone=value=>JSON.parse(JSON.stringify(value));
 const unit=(x,y)=>{const n=Math.hypot(x,y)||1;return {x:x/n,y:y/n};};
 export const REGION_CAMPS=['canal','highway','forest','skybridge','metro-refuge','cooling-refuge'];
 export const ExpeditionRules={
- isUnlocked(id){if(this.testModeEnabled()&&AREA_BY_ID[id])return true;const area=AREA_BY_ID[id];if(area?.safeExplore)return this.chapterComplete('highway')&&(id!=='hidden-atelier'||Boolean(this.state.player.runeWorkshopUnlocked));if(area?.biomeRegion)return Boolean(this.state.visited.includes(id)||this.chapterComplete(area.unlockChapter)&&(!area.unlockArena||(this.state.natureVictories?.[area.unlockArena]||0)>0));if(area?.extension){const i=['metro-refuge','sluice','railworks','deepwater','cooling-refuge','heatworks','condensers','tower'].indexOf(id);return Boolean(this.state.visited.includes(id)||(i===0?this.chapterComplete('aurelia'):this.chapterComplete(['metro-refuge','sluice','railworks','deepwater','cooling-refuge','heatworks','condensers','tower'][i-1])));}if(area?.adventure)return Boolean(this.state.completed||this.state.cores.includes(3)||this.chapterComplete(area.unlockChapter));if(area?.bounty)return Boolean(this.state.completed||this.state.cores.includes(3)||this.chapterComplete(area.unlockChapter));if(area?.endgame)return this.endgameUnlocked();return Boolean(area&&(this.state.completed||this.state.visited.includes(id)||this.state.cores.filter(c=>c<3).length>=(area.unlockCore||0)));},
+ isUnlocked(id){if(this.testModeEnabled()&&AREA_BY_ID[id])return true;const area=AREA_BY_ID[id];if(area?.interior)return this.isUnlocked(area.returnHub);if(area?.safeExplore)return this.chapterComplete('highway')&&(id!=='hidden-atelier'||Boolean(this.state.player.runeWorkshopUnlocked));if(area?.biomeRegion)return Boolean(this.state.visited.includes(id)||this.chapterComplete(area.unlockChapter)&&(!area.unlockArena||(this.state.natureVictories?.[area.unlockArena]||0)>0));if(area?.extension){const i=['metro-refuge','sluice','railworks','deepwater','cooling-refuge','heatworks','condensers','tower'].indexOf(id);return Boolean(this.state.visited.includes(id)||(i===0?this.chapterComplete('aurelia'):this.chapterComplete(['metro-refuge','sluice','railworks','deepwater','cooling-refuge','heatworks','condensers','tower'][i-1])));}if(area?.adventure)return Boolean(this.state.completed||this.state.cores.includes(3)||this.chapterComplete(area.unlockChapter));if(area?.bounty)return Boolean(this.state.completed||this.state.cores.includes(3)||this.chapterComplete(area.unlockChapter));if(area?.endgame)return this.endgameUnlocked();return Boolean(area&&(this.state.completed||this.state.visited.includes(id)||this.state.cores.filter(c=>c<3).length>=(area.unlockCore||0)));},
  arenaCleared(){const w=this.state.world;if(w.trial)return w.trial.done;if(AREA_BY_ID[this.state.area]?.side)return Boolean(w.sideDone&&!w.enemies.some(e=>!e.dead));return !w.enemies.some(e=>!e.dead)&&w.relays.every(r=>r.status==='online')&&(this.state.zone===3?w.bossDefeated:w.gate?.eliteSpawned);},
  inCamp(point=this.state.player){const camp=this.state.world?.camp;return Boolean(camp&&dist(camp,point)<camp.radius);},
  canTrade(){return Boolean(this.state.world?.camp)&&this.inCamp()&&['playing','modal'].includes(this.state.mode)&&(!this.state.pending||this.state.pending.type==='shop');},

@@ -1,4 +1,4 @@
-import {ENGLISH} from './english.js?v=46';
+import {ENGLISH} from './english.js?v=900';
 
 // Translate presentation only. World data, item identifiers and saves stay stable.
 let language='nl';

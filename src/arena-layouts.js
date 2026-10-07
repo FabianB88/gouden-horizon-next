@@ -1,5 +1,6 @@
-import {sceneryModules} from './scenery-modules.js?v=46';
-import {OUTDOOR_REGIONS,outdoorPoint} from './outdoor-content.js?v=46';
+import {NEXT_SCENES} from './world-design.js?v=900';
+import {sceneryModules} from './scenery-modules.js?v=900';
+import {OUTDOOR_REGIONS,outdoorPoint} from './outdoor-content.js?v=900';
 // Each footprint is the solid ground base of its painted prop, in world pixels.
 // Open courts stay open elsewhere; these three chapters have distinct lanes.
 export const ARENA_LAYOUTS={
@@ -26,13 +27,19 @@ for(const id of ['heatworks','condensers','tower'])ARENA_LAYOUTS[id]=[
 ];
 // The second visit to the rail complex uses two salvage barriers and lanes.
 ARENA_LAYOUTS.railworks=[{id:'rail-pump',art:'pump',frame:1,x:955,y:640,rx:73,ry:45,height:155},{id:'rail-valve',art:'pump',frame:0,x:1175,y:820,rx:85,ry:50,height:190}];
-export const arenaObstacles=area=>ARENA_LAYOUTS[area]||[];
+export const arenaObstacles=area=>NEXT_SCENES[area]?.solids||ARENA_LAYOUTS[area]||[];
 ARENA_LAYOUTS['glass-dunes']=[
  {id:'glass-outcrop',paintedOnly:true,x:750,y:581,rx:119,ry:63,height:170},
  {id:'buried-pump',paintedOnly:true,x:1275,y:450,rx:131,ry:69,height:150},
  {id:'salt-mass',paintedOnly:true,x:1156,y:819,rx:106,ry:63,height:160}
 ];
-export function blockedByObstacle(x,y,radius=0,area){return arenaObstacles(area).some(o=>((x-o.x)/(o.rx+radius))**2+((y-o.y)/(o.ry+radius))**2<=1);}
+const obstacleCells=new Map(),OBSTACLE_CELL=128;
+export function blockedByObstacle(x,y,radius=0,area){
+ const objects=arenaObstacles(area);let record=obstacleCells.get(area);
+ if(!record||record.objects!==objects){const cells=new Map();for(const o of objects)for(let cy=Math.floor((o.y-o.ry)/OBSTACLE_CELL);cy<=Math.floor((o.y+o.ry)/OBSTACLE_CELL);cy++)for(let cx=Math.floor((o.x-o.rx)/OBSTACLE_CELL);cx<=Math.floor((o.x+o.rx)/OBSTACLE_CELL);cx++){const key=cx+','+cy;if(!cells.has(key))cells.set(key,[]);cells.get(key).push(o);}record={objects,cells};obstacleCells.set(area,record);}
+ for(let cy=Math.floor((y-radius)/OBSTACLE_CELL);cy<=Math.floor((y+radius)/OBSTACLE_CELL);cy++)for(let cx=Math.floor((x-radius)/OBSTACLE_CELL);cx<=Math.floor((x+radius)/OBSTACLE_CELL);cx++)for(const o of record.cells.get(cx+','+cy)||[])if(((x-o.x)/(o.rx+radius))**2+((y-o.y)/(o.ry+radius))**2<=1)return true;
+ return false;
+}
 // Swept ellipse collision stops fast bolts at the front face, never after
 // hitting an enemy behind the cover. Lobs and overhead spells fly over it.
 export function coverHit(a,b,area,radius=0){

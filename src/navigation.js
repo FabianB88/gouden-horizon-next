@@ -10,7 +10,9 @@ export function createNavigator(canStand,clearLine,bounds,fingerprint=()=>0){
  const prepare=(area,radius=18)=>{
   const cacheKey=area+':'+radius;let grid=caches.get(cacheKey);
   if(!grid){grid=new Map();const size=bounds(area),record=baked.get(cacheKey);for(let y=1;y<size.height/cell;y++)for(let x=1;x<size.width/cell;x++)if(record?record.cells[x+y*record.cols]&256:canStand(x*cell,y*cell,radius+2,area))grid.set(x+','+y,{x:x*cell,y:y*cell,gx:x,gy:y,edges:null});
-   if(record)for(const node of grid.values()){node.edges=[];const flags=record.cells[node.gx+node.gy*record.cols];for(const [i,[dx,dy]]of steps.entries())if(flags&(1<<i)){const key=(node.gx+dx)+','+(node.gy+dy),v=grid.get(key);if(v)node.edges.push({key,node:v,cost:Math.hypot(dx,dy)*cell});}}
+   // Keep baked connectivity as compact flags. Expand only nodes actually
+   // visited by a route, rather than allocating every edge during startup.
+   if(record)for(const node of grid.values())node.flags=record.cells[node.gx+node.gy*record.cols]&255;
    caches.set(cacheKey,grid);}
   return grid;
  };
@@ -31,7 +33,7 @@ export function createNavigator(canStand,clearLine,bounds,fingerprint=()=>0){
   while(heap.length){const current=pop(),key=current.key;if(done.has(key)||current.score!==g.get(key))continue;
    if(key===goal){const path=[{x:b.x,y:b.y}];let k=goal;while(k!==start){const v=grid.get(k);path.unshift({x:v.x,y:v.y});k=prev.get(k);}const v=grid.get(start);path.unshift({x:v.x,y:v.y});const compact=[];let anchor=a,index=0;while(index<path.length){let best=index,span=1,failed=path.length;while(index+span<path.length){const probe=index+span;if(!line(anchor,path[probe],radius+2)){failed=probe;break;}best=probe;span*=2;}if(failed===path.length&&best!==path.length-1&&line(anchor,path[path.length-1],radius+2))best=path.length-1;else{let low=best+1,high=Math.min(failed-1,path.length-1);while(low<=high){const mid=(low+high)>>1;if(line(anchor,path[mid],radius+2)){best=mid;low=mid+1;}else high=mid-1;}}compact.push(path[best]);anchor=path[best];index=best+1;}return compact;}
    done.add(key);const node=grid.get(key);
-   if(!node.edges){node.edges=[];for(const [dx,dy]of steps){const next=(node.gx+dx)+','+(node.gy+dy),v=grid.get(next);if(v&&clearLine(node,v,area,radius+2))node.edges.push({key:next,node:v,cost:Math.hypot(dx,dy)*cell});}}
+   if(!node.edges){node.edges=[];for(const [i,[dx,dy]]of steps.entries()){const next=(node.gx+dx)+','+(node.gy+dy),v=grid.get(next);if(v&&(node.flags===undefined?clearLine(node,v,area,radius+2):node.flags&(1<<i)))node.edges.push({key:next,node:v,cost:Math.hypot(dx,dy)*cell});}}
    for(const edge of node.edges){if(done.has(edge.key)||allowed&&!line(node,edge.node,radius+2))continue;const score=current.score+edge.cost;if(score<(g.get(edge.key)??Infinity)){g.set(edge.key,score);prev.set(edge.key,key);push({key:edge.key,score,f:score+h(edge.node)});}}
   }return [];
  };

@@ -1,0 +1,42 @@
+{
+  "errors": [],
+  "failed": [],
+  "requestsAfterStart": [],
+  "snapshots": [
+    {
+      "id": "metro-refuge",
+      "ready": true,
+      "x": 425,
+      "y": 943.75
+    },
+    {
+      "id": "forest",
+      "ready": true,
+      "x": 3046.75,
+      "y": 883.75
+    },
+    {
+      "id": "ring",
+      "ready": true,
+      "x": 490,
+      "y": 815
+    },
+    {
+      "id": "quay-home",
+      "ready": true,
+      "x": 700,
+      "y": 800
+    }
+  ],
+  "report": {
+    "navigation": 58,
+    "worldImages": 56,
+    "legacyMaps": false,
+    "pixelRatio": 1.5,
+    "loadedAssets": 332,
+    "storageKeys": [
+      "gouden-horizon-next-action-v1",
+      "gouden-horizon-next-settings-v1"
+    ]
+  }
+}

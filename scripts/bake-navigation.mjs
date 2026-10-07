@@ -1,10 +1,10 @@
 import {writeFileSync,mkdirSync} from 'node:fs';
 import {findPath} from '../src/engine.js';
-import {ENEMIES} from '../src/data.js?v=46';
-import {WORLD_WALKWAYS} from '../src/world-walkways.js?v=46';
-import {OUTDOOR_REGIONS} from '../src/outdoor-content.js?v=46';
+import {ENEMIES,AREAS} from '../src/data.js?v=900';
+import {WORLD_WALKWAYS} from '../src/world-walkways.js?v=900';
+import {OUTDOOR_REGIONS} from '../src/outdoor-content.js?v=900';
 const records=[];
-for(const area of Object.keys(WORLD_WALKWAYS)){
+for(const area of AREAS.map(a=>a.id)){
  const radii=new Set([18]);
  for(const [type]of OUTDOOR_REGIONS[area]?.encounters||[])radii.add(ENEMIES[type].radius);
  for(const radius of radii){records.push(findPath.bake(area,radius));console.log('Prepared '+area+' · '+radius);}

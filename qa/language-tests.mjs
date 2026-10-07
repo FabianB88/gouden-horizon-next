@@ -11,7 +11,7 @@ assert.equal(normalizeSettings().language,'nl');
 assert.equal(normalizeSettings({language:'fr'}).language,'nl');
 assert.equal(normalizeSettings({language:'en',music:.4}).language,'en');
 assert.equal(normalizeSettings({language:'en',music:.4}).music,.4);
-assert.equal(SETTINGS_KEY,'gouden-horizon-settings-v6');
+assert.equal(SETTINGS_KEY,'gouden-horizon-next-settings-v1');
 console.log('PASS existing preferences and Dutch default; English persists independently');
 
 const g=new Engine(),save=g.serialize();
