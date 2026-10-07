@@ -1,4 +1,4 @@
-import {NEXT_ROOMS} from './world-interiors.js?v=900';
+import {NEXT_ROOMS} from './world-interiors.js?v=901';
 // English presentation catalogue. Canonical world/save text remains Dutch.
 export const ENGLISH={
   "Spelbeelden voorbereiden ·": "Preparing game images ·",

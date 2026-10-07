@@ -1,9 +1,9 @@
-import {AREA_BY_ID,worldBounds} from './data.js?v=900';
+import {AREA_BY_ID,worldBounds} from './data.js?v=901';
 
 // Pieces share their saved quests/world state, but each painting is a separate
 // screen. Coordinates remain stable so existing saves and NPCs keep their place.
-export {SECTION_ENTRIES} from './section-content.js?v=900';
-import {SECTION_ENTRIES} from './section-content.js?v=900';
+export {SECTION_ENTRIES} from './section-content.js?v=901';
+import {SECTION_ENTRIES} from './section-content.js?v=901';
 export function sectionIndex(id,point){const a=AREA_BY_ID[id];if(!SECTION_ENTRIES[id]||!a?.tiles)return 0;return point?.x>=a.tiles[1].x?1:0;}
 export function sectionBounds(id,point){const a=AREA_BY_ID[id],index=sectionIndex(id,point);if(SECTION_ENTRIES[id]&&a?.tiles)return {...a.tiles[index],index,name:SECTION_ENTRIES[id].names[index]};return {x:0,y:0,...worldBounds(id),index:0,name:a?.name};}
 export function sameSection(id,a,b){return sectionIndex(id,a)===sectionIndex(id,b);}

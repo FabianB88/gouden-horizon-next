@@ -1,0 +1,149 @@
+{
+  "variants": 24,
+  "alphaDifferences": 12,
+  "maxColorDelta": 42,
+  "totalPixels": 6291456,
+  "meanColorError": 0.0011671127478831108,
+  "differences": [
+    {
+      "id": "elementalist",
+      "gender": "male",
+      "armor": "light",
+      "delta": 15,
+      "alpha": 0
+    },
+    {
+      "id": "elementalist",
+      "gender": "male",
+      "armor": "heavy",
+      "delta": 23,
+      "alpha": 0
+    },
+    {
+      "id": "elementalist",
+      "gender": "male",
+      "armor": "filter",
+      "delta": 20,
+      "alpha": 0
+    },
+    {
+      "id": "elementalist",
+      "gender": "female",
+      "armor": "light",
+      "delta": 2,
+      "alpha": 0
+    },
+    {
+      "id": "elementalist",
+      "gender": "female",
+      "armor": "heavy",
+      "delta": 3,
+      "alpha": 0
+    },
+    {
+      "id": "elementalist",
+      "gender": "female",
+      "armor": "filter",
+      "delta": 2,
+      "alpha": 0
+    },
+    {
+      "id": "builder",
+      "gender": "male",
+      "armor": "light",
+      "delta": 27,
+      "alpha": 0
+    },
+    {
+      "id": "builder",
+      "gender": "male",
+      "armor": "heavy",
+      "delta": 28,
+      "alpha": 0
+    },
+    {
+      "id": "builder",
+      "gender": "male",
+      "armor": "storm",
+      "delta": 42,
+      "alpha": 0
+    },
+    {
+      "id": "builder",
+      "gender": "female",
+      "armor": "light",
+      "delta": 24,
+      "alpha": 2
+    },
+    {
+      "id": "builder",
+      "gender": "female",
+      "armor": "heavy",
+      "delta": 34,
+      "alpha": 2
+    },
+    {
+      "id": "builder",
+      "gender": "female",
+      "armor": "filter",
+      "delta": 0,
+      "alpha": 2
+    },
+    {
+      "id": "builder",
+      "gender": "female",
+      "armor": "storm",
+      "delta": 35,
+      "alpha": 2
+    },
+    {
+      "id": "hunter",
+      "gender": "male",
+      "armor": "heavy",
+      "delta": 3,
+      "alpha": 0
+    },
+    {
+      "id": "hunter",
+      "gender": "male",
+      "armor": "filter",
+      "delta": 2,
+      "alpha": 0
+    },
+    {
+      "id": "hunter",
+      "gender": "male",
+      "armor": "storm",
+      "delta": 3,
+      "alpha": 0
+    },
+    {
+      "id": "hunter",
+      "gender": "female",
+      "armor": "light",
+      "delta": 0,
+      "alpha": 1
+    },
+    {
+      "id": "hunter",
+      "gender": "female",
+      "armor": "heavy",
+      "delta": 42,
+      "alpha": 1
+    },
+    {
+      "id": "hunter",
+      "gender": "female",
+      "armor": "filter",
+      "delta": 29,
+      "alpha": 1
+    },
+    {
+      "id": "hunter",
+      "gender": "female",
+      "armor": "storm",
+      "delta": 33,
+      "alpha": 1
+    }
+  ]
+}

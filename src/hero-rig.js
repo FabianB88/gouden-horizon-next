@@ -1,5 +1,5 @@
-import {equipmentAppearance} from './appearance.js?v=900';
-import {freezeSurface} from './render-cache.js?v=900';
+import {equipmentAppearance} from './appearance.js?v=901';
+import {freezeSurface} from './render-cache.js?v=901';
 // Painted bind poses retain the eight camera directions. Both legs are driven
 // by opposite foot contacts. Traced cloth masks remove the bind-pose legs,
 // while preserving the coat. Short, forward knee paths avoid lateral IK bends.
@@ -15,7 +15,15 @@ const rasterCache=new WeakMap();
 function inside(x,y,poly){let yes=false;for(let i=0,j=poly.length-1;i<poly.length;j=i++){const a=poly[i],b=poly[j];if((a[1]>y)!==(b[1]>y)&&x<(b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0])yes=!yes;}return yes;}
 function rasterParts(r,name,frame,leg,other,image=r.assets.heroDirectional,rig=spec[name]){
  let cache=rasterCache.get(image);if(!cache){cache=new Map();rasterCache.set(image,cache);}const cacheKey=name+':'+(frame.clothStyle||'base');if(cache.has(cacheKey))return cache.get(cacheKey);
- const [sx,sy,w,h]=frame.bounds,make=()=>{const c=typeof OffscreenCanvas!=='undefined'?new OffscreenCanvas(w,h):document.createElement('canvas');c.width=w;c.height=h;return c.backing||c;},body=make(),lower=make(),c=body.getContext('2d');
+ // Suit colours share anatomy and leg cutouts. Build those expensive masks
+ // once for the native material, then shade only a copied body for a variant.
+ const tint=({light:[83,133,135],heavy:[157,123,66],filter:[105,132,73],storm:[77,112,157]})[frame.clothStyle];
+ if(frame.classBaseStyle&&frame.clothStyle!==frame.classBaseStyle&&tint){
+  const base=rasterParts(r,name,{...frame,clothStyle:frame.classBaseStyle},leg,other,image,rig),[,,w,h]=frame.bounds,body=typeof OffscreenCanvas!=='undefined'?new OffscreenCanvas(w,h):document.createElement('canvas');body.width=w;body.height=h;const ctx=body.getContext('2d',{willReadFrequently:true}),pixels=ctx.createImageData(w,h);pixels.data.set(base.tintSource);
+  for(let i=0;i<w*h;i++){const at=i*4;if(!base.tintMask[i]||!pixels.data[at+3])continue;const light=(pixels.data[at]+pixels.data[at+1]+pixels.data[at+2])/3/110;for(let k=0;k<3;k++)pixels.data[at+k]=Math.min(255,tint[k]*light);}
+  ctx.putImageData(pixels,0,0);const finalPixels=ctx.getImageData(0,0,w,h);for(let i=0;i<w*h;i++)finalPixels.data[i*4+3]=base.bodyAlpha[i];ctx.putImageData(finalPixels,0,0);const result={...base,body:freezeSurface(body),sharedGeometry:true};cache.set(cacheKey,result);return result;
+ }
+ const [sx,sy,w,h]=frame.bounds,make=()=>{const c=typeof OffscreenCanvas!=='undefined'?new OffscreenCanvas(w,h):document.createElement('canvas');c.width=w;c.height=h;return c.backing||c;},body=make(),lower=make(),c=body.getContext('2d',{willReadFrequently:true});
  if(frame.clip?.length){c.beginPath();polygon(c,frame.clip);c.clip();}c.drawImage(image,sx,sy,w,h,0,0,w,h);
  const pixels=c.getImageData(0,0,w,h),coat=new Uint8Array(w*h),horizontal=new Uint8Array(w*h),coatMask=new Uint8Array(w*h),boots=lower.getContext('2d').createImageData(w,h);
  for(let i=0;i<w*h;i++){const at=i*4;coat[i]=pixels.data[at+3]>0&&(frame.classBaseStyle?(pixels.data[at+2]>pixels.data[at]*1.12&&pixels.data[at+1]>pixels.data[at]*.8||pixels.data[at+1]>pixels.data[at]*1.05&&pixels.data[at+2]>pixels.data[at]*.8):pixels.data[at+1]>pixels.data[at]*1.15&&pixels.data[at+2]>pixels.data[at]*1.08)?1:0;}
@@ -29,15 +37,16 @@ function rasterParts(r,name,frame,leg,other,image=r.assets.heroDirectional,rig=s
   if(cloth&&inside(x,y,leg)){boots.data.set(pixels.data.subarray(i,i+4),i);if(y>=(frame.bodyCut||0))pixels.data[i+3]=0;}else if(cloth&&(inside(x,y,other)||y>h*.83)&&y>=(frame.bodyCut||0))pixels.data[i+3]=0;
  }
  // Material shading is cached with the body; it never runs per frame.
+ const tintSource=frame.classBaseStyle?new Uint8ClampedArray(pixels.data):null;
  if(frame.classBaseStyle?frame.clothStyle!==frame.classBaseStyle:['heavy','filter'].includes(frame.clothStyle)){const rgb=({light:[83,133,135],heavy:[157,123,66],filter:[105,132,73],storm:[77,112,157]})[frame.clothStyle];for(let i=0;i<w*h;i++){const at=i*4;if(!coat[i]||!pixels.data[at+3])continue;const light=(pixels.data[at]+pixels.data[at+1]+pixels.data[at+2])/3/110;for(let k=0;k<3;k++)pixels.data[at+k]=Math.min(255,rgb[k]*light);}}
  c.putImageData(pixels,0,0);lower.getContext('2d').putImageData(boots,0,0);
- const result={body};
+ const result={body,tintMask:coat,tintSource};
  if(!frame.classBaseStyle){const split=rig.k[1]*h,thigh=make(),calf=make();for(const [canvas,rect]of [[thigh,[0,0,w,split+5]],[calf,[0,split-5,w,h]]]){const ctx=canvas.getContext('2d');ctx.beginPath();ctx.rect(...rect);ctx.clip();ctx.drawImage(lower,0,0);}result.thigh=freezeSurface(thigh);result.calf=freezeSurface(calf);}
  if(frame.classBaseStyle){
   // Each painted leg keeps its own anatomy. The boot sole is a rigid piece,
   // so a bent shin can never stretch or turn a foot into a sideways paddle.
-  const original=make(),oc=original.getContext('2d');oc.drawImage(image,sx,sy,w,h,0,0,w,h);const source=oc.getImageData(0,0,w,h),cut=frame.limbRig.h[1]+10;
-  const bodyPixels=c.getImageData(0,0,w,h);for(let y=cut;y<h;y++)for(let x=0;x<w;x++)if(!coatMask[y*w+x]&&(inside(x,y,leg)||inside(x,y,other)||y>h*.83))bodyPixels.data[(y*w+x)*4+3]=0;c.putImageData(bodyPixels,0,0);result.body=freezeSurface(body);
+  const original=make(),oc=original.getContext('2d',{willReadFrequently:true});oc.drawImage(image,sx,sy,w,h,0,0,w,h);const source=oc.getImageData(0,0,w,h),cut=frame.limbRig.h[1]+10;
+  const bodyPixels=c.getImageData(0,0,w,h);for(let y=cut;y<h;y++)for(let x=0;x<w;x++)if(!coatMask[y*w+x]&&(inside(x,y,leg)||inside(x,y,other)||y>h*.83))bodyPixels.data[(y*w+x)*4+3]=0;result.bodyAlpha=new Uint8Array(w*h);for(let i=0;i<w*h;i++)result.bodyAlpha[i]=bodyPixels.data[i*4+3];c.putImageData(bodyPixels,0,0);result.body=freezeSurface(body);
   result.legs=frame.legs.map((limb,i)=>{const lc=make(),ctx=lc.getContext('2d'),data=ctx.createImageData(w,h),poly=limb.copy?leg:i?other:leg;for(let y=0;y<h;y++)for(let x=0;x<w;x++)if(!coatMask[y*w+x]&&inside(x,y,poly)){const at=(y*w+x)*4;data.data.set(source.data.subarray(at,at+4),at);}ctx.putImageData(data,0,0);
    const ankle=limb.f[1]-42,x=Math.floor(Math.min(...poly.map(p=>p[0])))-2,width=Math.ceil(Math.max(...poly.map(p=>p[0])))-x+2,minY=Math.floor(Math.min(...poly.map(p=>p[1]))),maxY=Math.ceil(Math.max(...poly.map(p=>p[1]))),ranges=[[minY,ankle+6],[ankle-3,maxY+2]],layers=ranges.map(([y,end])=>{const part=make();part.width=width;part.height=Math.max(1,Math.ceil(end-y));part.getContext('2d').drawImage(lc,x,y,width,part.height,0,0,width,part.height);return {image:freezeSurface(part),x,y};});return {rig:limb,ankle:[limb.k[0],ankle],upper:layers[0],foot:layers[1]};
   });

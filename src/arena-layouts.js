@@ -1,6 +1,6 @@
-import {NEXT_SCENES} from './world-design.js?v=900';
-import {sceneryModules} from './scenery-modules.js?v=900';
-import {OUTDOOR_REGIONS,outdoorPoint} from './outdoor-content.js?v=900';
+import {NEXT_SCENES} from './world-design.js?v=901';
+import {sceneryModules} from './scenery-modules.js?v=901';
+import {OUTDOOR_REGIONS,outdoorPoint} from './outdoor-content.js?v=901';
 // Each footprint is the solid ground base of its painted prop, in world pixels.
 // Open courts stay open elsewhere; these three chapters have distinct lanes.
 export const ARENA_LAYOUTS={

@@ -1,6 +1,6 @@
-import {AREA_BY_ID} from './data.js?v=900';
-import {STORY_ORDER} from './story.js?v=900';
-import {NEXT_ROOMS} from './world-interiors.js?v=900';
+import {AREA_BY_ID} from './data.js?v=901';
+import {STORY_ORDER} from './story.js?v=901';
+import {NEXT_ROOMS} from './world-interiors.js?v=901';
 
 // Each scene connects an existing encounter to the journey; it never invents a new quest.
 export const JOURNEY_SCENES={

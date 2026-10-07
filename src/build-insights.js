@@ -1,5 +1,5 @@
-import {spellProfile} from './spell-variants.js?v=900';
-import {resistance,RESISTANCES} from './resistances.js?v=900';
+import {spellProfile} from './spell-variants.js?v=901';
+import {resistance,RESISTANCES} from './resistances.js?v=901';
 
 // Replace one slot, rather than treating a relic as the sum of both slots.
 export function projectedStats(stats,item,current){
