@@ -20,7 +20,8 @@ for(const a of AREAS){const scene=NEXT_SCENES[a.id];assert(scene,a.id+' modular 
 assert.deepEqual(failures,[]);
 for(const [id,room]of Object.entries(NEXT_ROOMS)){
  const g=new Engine();g.unlockTestMode('fabian1');assert(g.testTravel(room.parent));const door=NEXT_SCENES[room.parent].door;assert.equal(door.to,id);assert(canStand(door.x,door.y,18,room.parent));Object.assign(g.state.player,door);assert.equal(g.interaction().type,'nextDoor');assert(g.interact());assert.equal(g.state.area,id);assert.equal(g.state.lastSafeArea,room.parent);
- Object.assign(g.state.player,NEXT_SCENES[id].resident);setLanguage('en');assert(g.interact());assert.equal(g.state.pending.body,room.en);g.state.mode='playing';g.state.pending=null;Object.assign(g.state.player,{x:700,y:860});assert(g.interact());assert.equal(g.state.area,room.parent);assert.equal(g.state.player.x,door.x);assert.equal(g.state.player.y,door.y);
+ const parentCamp=JSON.stringify(g.state.areas[room.parent].camp);
+ Object.assign(g.state.player,NEXT_SCENES[id].resident);setLanguage('en');assert(g.interact());assert.equal(g.state.pending.body,room.en);g.state.mode='playing';g.state.pending=null;Object.assign(g.state.player,{x:700,y:860});assert(g.interact());assert.equal(g.state.area,room.parent);assert.equal(g.state.player.x,door.x);assert.equal(g.state.player.y,door.y);assert.equal(JSON.stringify(g.state.world.camp),parentCamp,'returning from a house does not relocate the parent trading post');
 }
 setLanguage('nl');
 for(const id of ['forest','skybridge','cooling-refuge']){

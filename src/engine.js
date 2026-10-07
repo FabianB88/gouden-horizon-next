@@ -144,8 +144,8 @@ export class Engine {
     s.world=s.areas[id]||this.createWorld(area);s.world.portals=this.portalDefinitions(id);s.world.camp=this.campFor(area);if(s.world.camp&&!s.world.shop)s.world.shop={stock:this.makeStock(area.zone,area.id),marketVersion:2};s.areas[id]=s.world;if(!s.visited.includes(id))s.visited.push(id);
     this.prepareHub(s.world,area);s.world.threats||=[];this.syncStoryPortals();
     const spawn=area.safeExplore||area.natureArena||area.biomeArena||area.adventure||area.extension&&!area.safe?{x:area.spawn[0]*WORLD.width,y:area.spawn[1]*WORLD.height}:area.id==='canal'?{x:POSITIONS.start.x*1.4,y:POSITIONS.start.y*1.4}:area.kind==='route'?s.world.camp:POSITIONS.start;
-    if(from&&NEXT_ROOMS[from]?.parent===id&&NEXT_SCENES[id].door)Object.assign(spawn,NEXT_SCENES[id].door);
-    p.x=spawn.x;p.y=spawn.y;p.velocity={x:0,y:0};p.walkBlend=0;p.visualMotionBlend=0;p.moving=false;p.poseTurn=0;p.dashTimer=0;p.invincible=1.2;p.trail=[];p.lastHurt=s.time;
+    const actualSpawn=from&&NEXT_ROOMS[from]?.parent===id&&NEXT_SCENES[id].door?NEXT_SCENES[id].door:spawn;
+    p.x=actualSpawn.x;p.y=actualSpawn.y;p.velocity={x:0,y:0};p.walkBlend=0;p.visualMotionBlend=0;p.moving=false;p.poseTurn=0;p.dashTimer=0;p.invincible=1.2;p.trail=[];p.lastHurt=s.time;
     this.reconcileArena();
     if(s.destination===id)s.destination=null;
     const announceNature=id==='cooling-refuge'&&this.isUnlocked('lanternwood')&&!s.natureAnnounced;if(announceNature)s.natureAnnounced=true;
