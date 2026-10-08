@@ -1,7 +1,8 @@
 // Native painting coordinates: extra quests live on the separate second screen.
 // These positions use existing paths; quest IDs and saved progress do not change.
 export function sideDistrictPoint(id,[x,y]){const scale=['skybridge','cooling-refuge'].includes(id)?1.25:1.75;return [1536*scale+x*scale,y*scale];}
-export const DISTRICT_GUIDES=Object.fromEntries(Object.entries({canal:[780,1130],highway:[1390,1070],forest:[750,1030],skybridge:[610,690],'cooling-refuge':[485,1030]}).map(([id,[x,y]])=>[id,{id:'district-guide',name:'Ravi · Wegwijzer',title:'Hoofdroute & extra missies',art:1,x,y,specialist:true}]));
+// Ravi stands on the clear bridge paving at painting-native [550,550], away from the arrival tree.
+export const DISTRICT_GUIDES=Object.fromEntries(Object.entries({canal:[962.5,962.5],highway:[1390,1070],forest:[750,1030],skybridge:[610,690],'cooling-refuge':[485,1030]}).map(([id,[x,y]])=>[id,{id:'district-guide',name:'Ravi · Wegwijzer',title:'Hoofdroute & extra missies',art:1,x,y,specialist:true}]));
 export const EXTRA_DISTRICT_PLACEMENTS={
  canal:{board:[600,480],salvage:[1010,470]},
  highway:{milo:[320,665],nora:[490,555],ilya:[1220,490],garden:[390,220],harbor:[920,780],workshop:[1320,455],depot:[650,460],'workshop-v6':[1330,440],'rain-garden':[430,220],'hidden-atelier':[950,480]},

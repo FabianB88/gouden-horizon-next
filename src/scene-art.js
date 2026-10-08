@@ -1,5 +1,5 @@
-import {AREA_BY_ID,worldBounds} from './data.js?v=909';
-import {SCENE_ART,SCENE_DETAIL_ASSETS} from './scene-art-data.js?v=909';
+import {AREA_BY_ID,worldBounds} from './data.js?v=910';
+import {SCENE_ART,SCENE_DETAIL_ASSETS} from './scene-art-data.js?v=910';
 
 export {SCENE_ART,SCENE_DETAIL_ASSETS};
 export const ART_PALETTES={

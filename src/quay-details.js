@@ -1,6 +1,6 @@
 // Small additions anchored to the original painting, in its native pixels.
 // Water/planting details never supply walkable floor or invisible obstacles.
-import {QUAY_DOCK_PROPS} from './quay-stairs.js?v=909';
+import {QUAY_DOCK_PROPS} from './quay-stairs.js?v=910';
 export const QUAY_DETAIL_ASSETS={
  lilies:{file:'assets/quay-details/water-lilies.webp',size:[512,368],anchor:[.5,.5]},
  reeds:{file:'assets/quay-details/reed-clump.webp',size:[512,495],anchor:[.5,.92]},

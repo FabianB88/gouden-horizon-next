@@ -1,6 +1,6 @@
-import {sceneryModules} from './scenery-modules.js?v=909';
-import {QUAY_DOCK_PROPS,QUAY_STAIR_OBSTACLES} from './quay-stairs.js?v=909';
-import {OUTDOOR_REGIONS,outdoorPoint} from './outdoor-content.js?v=909';
+import {sceneryModules} from './scenery-modules.js?v=910';
+import {QUAY_DOCK_PROPS,QUAY_STAIR_OBSTACLES} from './quay-stairs.js?v=910';
+import {OUTDOOR_REGIONS,outdoorPoint} from './outdoor-content.js?v=910';
 // Each footprint is the solid ground base of its painted prop, in world pixels.
 // Open courts stay open elsewhere; these three chapters have distinct lanes.
 export const ARENA_LAYOUTS={

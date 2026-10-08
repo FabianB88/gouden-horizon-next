@@ -1,11 +1,11 @@
 import assert from 'node:assert/strict';
-import {Engine,canStand,findPath,clearLine} from '../src/engine.js?v=909';
-import {AREAS,AREA_BY_ID} from '../src/data.js?v=909';
-import {NEXT_SCENES} from '../src/world-design.js?v=909';
-import {WORLD_ANCHORS} from '../src/world-anchors.js?v=909';
-import {NEXT_ROOMS} from '../src/world-interiors.js?v=909';
-import {sectionArrival} from '../src/area-sections.js?v=909';
-import {setLanguage} from '../src/localization.js?v=909';
+import {Engine,canStand,findPath,clearLine} from '../src/engine.js?v=910';
+import {AREAS,AREA_BY_ID} from '../src/data.js?v=910';
+import {NEXT_SCENES} from '../src/world-design.js?v=910';
+import {WORLD_ANCHORS} from '../src/world-anchors.js?v=910';
+import {NEXT_ROOMS} from '../src/world-interiors.js?v=910';
+import {sectionArrival} from '../src/area-sections.js?v=910';
+import {setLanguage} from '../src/localization.js?v=910';
 import {readFileSync} from 'node:fs';
 let samples=0,anchors=0;
 const failures=[];

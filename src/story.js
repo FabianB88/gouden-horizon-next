@@ -1,7 +1,7 @@
-import {OUTDOOR_REGIONS,inOutdoorWild} from './outdoor-content.js?v=909';
-import {AREAS,AREA_BY_ID,WORLD,POSITIONS} from './data.js?v=909';
-import {SAFE_HUBS,hubPortals} from './hubs.js?v=909';
-import {sectionIndex} from './area-sections.js?v=909';
+import {OUTDOOR_REGIONS,inOutdoorWild} from './outdoor-content.js?v=910';
+import {AREAS,AREA_BY_ID,WORLD,POSITIONS} from './data.js?v=910';
+import {SAFE_HUBS,hubPortals} from './hubs.js?v=910';
+import {sectionIndex} from './area-sections.js?v=910';
 
 // Chronological journey with fixed arena/generator gates in regional hubs.
 export const STORY_ORDER=['canal','delta','ring','rooftops','highway','mirrors','brine','kilometer','forest','glass','saltwood','vault','skybridge','harbor','clouds','aurelia','metro-refuge','sluice','railworks','deepwater','cooling-refuge','heatworks','condensers','tower'];

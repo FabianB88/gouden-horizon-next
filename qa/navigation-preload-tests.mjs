@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {findPath} from '../src/engine.js?v=909';
-import {navigationFingerprint} from '../src/navigation.js?v=909';
+import {findPath} from '../src/engine.js?v=910';
+import {navigationFingerprint} from '../src/navigation.js?v=910';
 const a=[[[1.123456789,2.25],[99,4]],{width:1920,height:1280}];
 const b=structuredClone(a);b[0][0][0]+=1e-10;
 assert.equal(navigationFingerprint(a),navigationFingerprint(b),'harmless cross-runtime floating precision cannot reject prepared paths');

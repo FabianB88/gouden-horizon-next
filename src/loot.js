@@ -1,11 +1,11 @@
-import {EQUIPMENT,START_EQUIPMENT,RARITIES,SPELLS} from './data.js?v=909';
-import {LEGENDARY_EFFECTS,effectText,effectForSlot} from './legendary.js?v=909';
+import {EQUIPMENT,START_EQUIPMENT,RARITIES,SPELLS} from './data.js?v=910';
+import {LEGENDARY_EFFECTS,effectText,effectForSlot} from './legendary.js?v=910';
 
-import {UNIQUE_ITEMS,uniqueForSlot} from './unique-items.js?v=909';
-import {upgradeMasterwork} from './masterworks.js?v=909';
-import {normalizeVariants} from './spell-variants.js?v=909';
-import {V8_ITEMS} from './v8-content.js?v=909';
-import {emptyHead,emptyRelic} from './equipment-slots.js?v=909';
+import {UNIQUE_ITEMS,uniqueForSlot} from './unique-items.js?v=910';
+import {upgradeMasterwork} from './masterworks.js?v=910';
+import {normalizeVariants} from './spell-variants.js?v=910';
+import {V8_ITEMS} from './v8-content.js?v=910';
+import {emptyHead,emptyRelic} from './equipment-slots.js?v=910';
 export const EXTRA_EQUIPMENT=[
  {id:'tidal-fork',slot:'weapon',name:'Getijdenstemvork',stats:{power:.07,tide:.10}},
  {id:'amber-prism',slot:'weapon',name:'Amberprisma',stats:{power:.08,ember:.11}},

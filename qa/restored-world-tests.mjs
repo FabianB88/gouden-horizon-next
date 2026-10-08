@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
-import {Engine,canStand,findPath} from '../src/engine.js?v=909';
-import {AREAS,AREA_BY_ID} from '../src/data.js?v=909';
+import {Engine,canStand,findPath} from '../src/engine.js?v=910';
+import {AREAS,AREA_BY_ID} from '../src/data.js?v=910';
 const baseline='e72fe66863057c6d77b5cabf63df291052cebb78';
 const normalize=s=>s.replace(/\?v=\d+/g,'?v=CACHE').replace(/\r\n/g,'\n');
 const originalBase=s=>normalize(s).replace(/^\s*prism:\{name:'Prismaboog'.*$/gm,'').replace(/^SPELLS\.(?:volt|cryo)=.*$/gm,'').replace(/^import \{installQuayStairs\}.*\n/m,'').replace(/^installQuayStairs\(AREA_BY_ID.canal,WORLD\);\n/m,'').replace(/^import \{QUAY_DOCK_PROPS,QUAY_STAIR_OBSTACLES\}.*\n/m,'').replace(/^ARENA_LAYOUTS.canal=\[\.\.\.QUAY_DOCK_PROPS.filter\(p=>p.rx>0\),\.\.\.QUAY_STAIR_OBSTACLES\];\n/m,'');

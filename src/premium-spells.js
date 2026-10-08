@@ -1,4 +1,4 @@
-import {ENEMIES} from './data.js?v=909';
+import {ENEMIES} from './data.js?v=910';
 export const PremiumSpellRules={
  castPremium(id,spell){const s=this.state,p=s.player,stats=this.stats(),damage=spell.damage*(1+stats.power+(stats[spell.element]||0));
   if(id==='volt'){const d=p.aim;s.projectiles.push({id:++this.idCounter,team:'player',type:'volt',element:'storm',x:p.x+d.x*32,y:p.y-18+d.y*24,vx:d.x*spell.speed,vy:d.y*spell.speed/1.15,damage,radius:spell.radius,pierce:4,life:1.1,age:0,trail:[],hitIds:[]});this.emit('cast',{spell:id});return true;}

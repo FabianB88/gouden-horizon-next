@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {statSync,readFileSync} from 'node:fs';
-import {Engine,canStand,clearLine,distance,findPath} from '../src/engine.js?v=909';
-import {MODULE_ASSETS,sceneryModules,moduleFloor} from '../src/scenery-modules.js?v=909';
+import {Engine,canStand,clearLine,distance,findPath} from '../src/engine.js?v=910';
+import {MODULE_ASSETS,sceneryModules,moduleFloor} from '../src/scenery-modules.js?v=910';
 const pieces=sceneryModules('forest'),floors=pieces.filter(p=>p.type==='paving');let samples=0,bytes=0;
 for(const type of new Set(pieces.map(p=>p.type)))bytes+=statSync(new URL('../'+MODULE_ASSETS[type].file,import.meta.url)).size;assert(bytes<100000,'the placed forest kit stays below 100KB compressed');
 for(const piece of pieces){assert(Math.abs(piece.width/piece.height-piece.asset.size[0]/piece.asset.size[1])<1e-9,'uniform scale never stretches artwork');if(piece.type!=='paving')assert(!canStand(piece.x,piece.y,18,'forest'),'prop base stays solid');}

@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
-import {AREAS,AREA_BY_ID} from '../src/data.js?v=909';
-import {canStand,findPath} from '../src/engine.js?v=909';
-import {arenaObstacles} from '../src/arena-layouts.js?v=909';
-import {SCENE_ART,SCENE_DETAIL_ASSETS,ART_PALETTES,sceneDetails} from '../src/scene-art.js?v=909';
+import {AREAS,AREA_BY_ID} from '../src/data.js?v=910';
+import {canStand,findPath} from '../src/engine.js?v=910';
+import {arenaObstacles} from '../src/arena-layouts.js?v=910';
+import {SCENE_ART,SCENE_DETAIL_ASSETS,ART_PALETTES,sceneDetails} from '../src/scene-art.js?v=910';
 let contacts=0,placements=0;
 assert.equal(Object.keys(SCENE_ART).length,44);
 for(const area of AREAS){
