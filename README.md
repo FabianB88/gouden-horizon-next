@@ -1,28 +1,23 @@
-# Gouden Horizon Next · 9.0
+# Gouden Horizon Next
 
-Een aparte, speelbare editie van Gouden Horizon, met een wereld opgebouwd uit herbruikbare afbeeldingen en materiaalvloeren. De bestaande `FabianB88/gouden-horizon`-site blijft een zelfstandig spel.
+Een aparte ontwikkelversie van Gouden Horizon. De bestaande `FabianB88/gouden-horizon`-game blijft onaangetast.
 
-- Alle 47 gebieden gebruiken de nieuwe opbouw, inclusief drie rustige huisinterieurs met een bewoner.
-- Zes nieuwe vloermaterialen en scherpe afzonderlijke gebouwen, bomen en objecten vervangen de vergrote gebiedsschilderingen. Grondmaterialen herhalen op vaste schaal; objecten worden in verhouding getekend.
-- De scene beschrijft zowel de zichtbare objecten als hun grondcontact. Oude geschilderde obstakels worden niet meer gebruikt. Getekende routes houden een brede vrije doorgang; de zijwijkhekken hebben een echte opening.
-- De 24 hoofdhoofdstukken, optionele wijken, RPG-systemen, moeilijkheid en respawnkeuze blijven beschikbaar. De drie nieuwe huizen zijn optioneel en verplaatsen geen hoofdmissie.
-- Nederlands en Engels. Nieuwe voortgang, instellingen en records gebruiken uitsluitend `gouden-horizon-next-*`-opslag. Er wordt geen voortgang uit de bestaande game overschreven of automatisch overgenomen.
-- Alle gebruikte spelbeelden worden vóór Start geladen en gedecodeerd. Telefoons krijgen kleinere gedecodeerde wereldbeelden met dezelfde schaal. Alle 58 navigatiegrids worden vooraf voorbereid; verbindingen worden pas uitgewerkt wanneer een route ze nodig heeft.
+De oorspronkelijke geschilderde wereld en beginillustratie zijn hersteld. De vervangen wereld met generieke materiaalvloeren en losse objecten is op verzoek teruggetrokken: toekomstige verbeteringen moeten de bestaande sfeer, compositie, gebouwen en routes behouden en gericht verrijken.
+
+De 24 hoofdhoofdstukken, optionele wijken, Nederlands/Engels, RPG-systemen en terugkeer na sterven blijven beschikbaar. Next gebruikt eigen opslag onder `gouden-horizon-next-*`, zodat voortgang van de bestaande game gescheiden blijft. Voortgang uit de tijdelijke modulaire versie blijft bruikbaar; opgeslagen posities in de drie prototypehuizen keren terug naar het bijbehorende tussengebied.
+
+Alle kaarten worden voor de start gedownload. Op desktop worden alle kaarten vooraf gedecodeerd; mobiel bewaart de downloads en bereidt kaarten per gebied voor om geheugen te sparen. De snellere voorbereiding van karaktervarianten blijft behouden.
 
 ## Lokaal en publiceren
 
-`npm start` serveert deze map. `npm run site:build` maakt de statische game in `dist/`. Deze bronmap kan ook rechtstreeks via GitHub Pages worden gepubliceerd vanaf `main` en `/`.
+`npm start` serveert deze map. `npm run site:build` maakt `dist/`. GitHub Pages publiceert `main` vanaf `/`.
 
-Publiceer deze editie uitsluitend in **FabianB88/gouden-horizon-next**. Gebruik de bestaande Gouden Horizon-repository niet als remote.
+Publiceer uitsluitend in **FabianB88/gouden-horizon-next**. Gebruik nooit de bestaande Gouden Horizon-repository als remote.
 
-## Wereld en assets
+## Bewaarde assets en prototype
 
-`src/world-design.js` is de centrale sceneopbouw: materialen, paden, vrije benaderingen, objecten, voetafdrukken en hekken. `src/world-assets.js` beschrijft de afzonderlijke afbeeldingen; `src/world-render.js` tekent ze met diezelfde afmetingen. Bomen en gebouwen sorteren op diepte; een object voor de speler wordt transparant. `src/world-interiors.js` bevat de huizen en hun bewoners.
+De volledige assetbank staat lokaal buiten deze repository. De geselecteerde exports en zes met ingebouwde ImageGen gemaakte vloermaterialen blijven in `assets/world-next/`; prompts staan in `qa/next-art-prompts.json`.
 
-De complete, nog niet gebruikte assetbank blijft lokaal buiten deze repository. De game laadt alleen de gekozen wereldafbeeldingen. De zes nieuwe materialen zijn gemaakt met de ingebouwde ImageGen; de prompts staan in `qa/next-art-prompts.json`. De kleine gebiedsvoorbeelden zijn gerenderd uit de echte scenes en worden uitsluitend in menu's gebruikt.
+De modulaire prototypebestanden `src/world-*.js` blijven bewaard voor hergebruik en worden niet door de actieve game geladen. De drie nieuwe prototypehuizen zijn niet actief. De oude `qa/next-*.json`-rapporten en `qa/next-world-tests.mjs` horen bij dat teruggetrokken prototype en beschrijven niet de huidige wereld.
 
-## Controle
-
-`npm test` controleert de nieuwe routes en alle interactieplekken, huizen en poorten, hoofdverhaal, balans, taal, wijkwissels, respawn en renderbudget. `qa/next-browser-result*.json` bevat gerichte desktop- en mobiele browsercontroles. Dit is geen volledige handmatige campagne-playthrough of meting op een echte Android-telefoon.
-
-De oude releasegeschiedenis staat in `qa/legacy-release-notes.md`. `test:legacy` bewaart de oorspronkelijke uitgebreide suite, inclusief geometrie- en beeldfixtures van de oude schilderingen; die fixtures zijn geen contract voor deze nieuwe wereldopbouw.
+`npm test` controleert het herstel van artwork en geometrie, wijkwissels, respawn, verhaal, taal en renderbudget. `test:legacy` bevat de volledige oorspronkelijke controles. Aanvullende assets mogen pas worden ingepast na controle van het daadwerkelijke beeld en de route erlangs.

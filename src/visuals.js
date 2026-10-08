@@ -1,8 +1,7 @@
-import {portalStyle} from './portal-art.js?v=901';
-import {translate} from './localization.js?v=901';
-import {PORTAL_PURPOSE} from './lore.js?v=901';
-import {SPELLS,AREA_BY_ID,RARITIES} from './data.js?v=901';
-import {EncounterVisuals} from './encounter-visuals.js?v=901';
+import {portalStyle} from './portal-art.js?v=903';
+import {PORTAL_PURPOSE} from './lore.js?v=903';
+import {SPELLS,AREA_BY_ID,RARITIES} from './data.js?v=903';
+import {EncounterVisuals} from './encounter-visuals.js?v=903';
 const centered=source=>({...source,anchor:[.5,.5]});
 const distance=(a,b)=>Math.hypot(a.x-b.x,(a.y-b.y)*1.15);
 export const ExpeditionVisuals={
@@ -27,7 +26,6 @@ export const ExpeditionVisuals={
   }
  },
  drawTravel(portal,s){
-  if(AREA_BY_ID[s.area].interior){this.ellipse(portal.x,portal.y,38,18,'#433d2b80','#d6b77b',2);this.text('↓',portal.x,portal.y+2,'#ffe7ad',25,false);this.text(AREA_BY_ID[portal.to].name,portal.x,portal.y-34,'#f7e4ae',14);if(distance(s.player,portal)<150)this.text('F · '+translate('Terug'),portal.x,portal.y+36,'#e1d5af',12);return;}
   const locked=Boolean(portal.locked),style=portalStyle(portal),height=style.height;
   const fallback=style.kind==='explore'||AREA_BY_ID[portal.to]?.zone===2?'grove':'brass';
   this.ellipse(portal.x,portal.y+3,44,16,'#16353155');

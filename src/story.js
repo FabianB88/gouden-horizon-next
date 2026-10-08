@@ -1,6 +1,6 @@
-import {OUTDOOR_REGIONS,inOutdoorWild} from './outdoor-content.js?v=901';
-import {AREAS,AREA_BY_ID,WORLD,POSITIONS} from './data.js?v=901';
-import {SAFE_HUBS,hubPortals} from './hubs.js?v=901';
+import {OUTDOOR_REGIONS,inOutdoorWild} from './outdoor-content.js?v=903';
+import {AREAS,AREA_BY_ID,WORLD,POSITIONS} from './data.js?v=903';
+import {SAFE_HUBS,hubPortals} from './hubs.js?v=903';
 
 // Chronological journey with fixed arena/generator gates in regional hubs.
 export const STORY_ORDER=['canal','delta','ring','rooftops','highway','mirrors','brine','kilometer','forest','glass','saltwood','vault','skybridge','harbor','clouds','aurelia','metro-refuge','sluice','railworks','deepwater','cooling-refuge','heatworks','condensers','tower'];
@@ -47,7 +47,6 @@ export const StoryRules={
  selectDestination(id){if(!this.canSelectDestination(id))return false;if(AREA_BY_ID[id]?.safeExplore&&this.inCamp())return this.enterArea(id);if(AREA_BY_ID[id].natureRegion&&this.inCamp()){if(id==='lanternwood')return this.enterArea(id);if(this.state.area!=='lanternwood'&&!this.enterArea('lanternwood'))return false;this.state.destination=id;this.syncStoryPortals();return true;}if(AREA_BY_ID[id].biomeRegion&&this.inCamp()){if(id==='groenkloof')return this.enterArea(id);if(this.state.area!=='groenkloof'&&!this.enterArea('groenkloof'))return false;this.state.destination=id;this.syncStoryPortals();return true;}if(SAFE_HUBS.includes(this.state.area)&&this.chapterComplete(id)&&id!==this.state.area)return this.enterArea(id);this.state.destination=id===this.state.area?null:id;this.syncStoryPortals();return true;},
  portalDefinitions(id){
   const a=AREA_BY_ID[id];if(!a)return [];
-  if(a.interior)return [{id:'interior-return',to:a.returnHub,x:700,y:860,category:'explore',story:true}];
   if(a.safeExplore)return this.quarterPortals(id);
   if(SAFE_HUBS.includes(id))return hubPortals(this,id);
   if(a.natureArena||a.biomeArena)return [{id:'biome-return',to:a.returnHub,x:a.exit[0]*WORLD.width,y:a.exit[1]*WORLD.height,story:true}];

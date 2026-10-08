@@ -1,51 +1,48 @@
-import {NEXT_SCENES} from './world-design.js?v=901';
-import {NEXT_ROOMS} from './world-interiors.js?v=901';
-import {getLanguage} from './localization.js?v=901';
-import {createNavigator,navigationFingerprint} from './navigation.js?v=901';
-import {SECTION_ENTRIES,sectionIndex,sectionArrival,insideSection,sameSection} from './area-sections.js?v=901';
-import {OutdoorRules} from './outdoors.js?v=901';
-import {TestModeRules} from './test-mode.js?v=901';
-import {registerHit} from './combat-feedback.js?v=901';
-import {QuarterRules} from './safe-exploration.js?v=901';
-import {NatureRules,tuneNatureEnemy} from './nature-region.js?v=901';
-import {CompanionUpgradeRules} from './companion-upgrades.js?v=901';
-import {summonAvailable,summonUnlockLevel} from './summon-progression.js?v=901';
-import {CreatureRules} from './creatures.js?v=901';
-import {V8ExpeditionRules,tuneV8Enemy} from './v8-expedition.js?v=901';
-import {tacticalMovement,smoothEnemyVelocity,engagementGoal,EnemyCrowd,separationVector} from './enemy-ai.js?v=901';
-import {BiomeRules,tuneBiomeEnemy} from './biomes.js?v=901';
-import {rollChaseItem,chaseRandom} from './chase-loot.js?v=901';
-import {AdventureRules} from './adventures.js?v=901';
-import {itemFitsSlot} from './equipment-slots.js?v=901';
-import {BossTerrainRules} from './boss-terrain.js?v=901';
-import {SpecializationRules,specializationStats} from './specializations.js?v=901';
-import {PremiumSpellRules} from './premium-spells.js?v=901';
-import {damageResistance} from './resistances.js?v=901';
-import {ItemMarkRules,protectedItem} from './item-marks.js?v=901';
-import {VariantRules,spellProfile,variantChoices} from './spell-variants.js?v=901';
-import {SummonRules} from './summons.js?v=901';
-import {UniqueRules} from './unique-items.js?v=901';
-import {V6EnemyRules} from './v6-enemies.js?v=901';
-import {CityRules} from './city.js?v=901';
-import {BountyRules} from './bounties.js?v=901';
-import { worldBounds, QUAY_GATE, WORLD, SPELLS, ZONES, ENEMIES, EQUIPMENT, START_EQUIPMENT, UPGRADES, DISCIPLINES, POSITIONS, AREAS, AREA_BY_ID, HUB_IDS } from './data.js?v=901';
-import {StoryRules} from './story.js?v=901';
-import {planNewAttack,executeNewAttack,updateNewThreats} from './enemy-variety.js?v=901';
-import {scaleEnemy,tuneChapterEnemy} from './balance.js?v=901';
-import {ExpeditionRules,REGION_CAMPS} from './expedition.js?v=901';
-import {makeItem,normalizePlayer,DROP_TABLES,dropProfile,salvageValue} from './loot.js?v=901';
-import {HubRules,SAFE_HUBS} from './hubs.js?v=901';
-import {REGIONAL_BOSSES,updateBossPhase,updateEncounterState} from './encounters.js?v=901';
-import {legendaryCast,legendaryDash,legendaryHit,legendaryKill,triggerLegendary,updateLegendary} from './legendary.js?v=901';
-import {updateHeroMotion,heroDirection,heroFrame} from './hero-motion.js?v=901';
-import {SurvivalRules,HEAL_COOLDOWN} from './survival.js?v=901';
-import {updateEnemyMotion} from './enemy-motion.js?v=901';
-import {GambleRules} from './gamble.js?v=901';
-import {presentEnemyAttack,launchEnemyLob,updateEnemyLob} from './enemy-combat.js?v=901';
-import {EndgameRules} from './endgame.js?v=901';
-import {MarketRules} from './markets.js?v=901';
-import {QuestRules} from './quests.js?v=901';
-import {arenaObstacles,blockedByObstacle,coverHit} from './arena-layouts.js?v=901';
+import {createNavigator,navigationFingerprint} from './navigation.js?v=903';
+import {SECTION_ENTRIES,sectionIndex,sectionArrival,insideSection,sameSection} from './area-sections.js?v=903';
+import {OutdoorRules} from './outdoors.js?v=903';
+import {TestModeRules} from './test-mode.js?v=903';
+import {registerHit} from './combat-feedback.js?v=903';
+import {QuarterRules} from './safe-exploration.js?v=903';
+import {NatureRules,tuneNatureEnemy} from './nature-region.js?v=903';
+import {CompanionUpgradeRules} from './companion-upgrades.js?v=903';
+import {summonAvailable,summonUnlockLevel} from './summon-progression.js?v=903';
+import {CreatureRules} from './creatures.js?v=903';
+import {V8ExpeditionRules,tuneV8Enemy} from './v8-expedition.js?v=903';
+import {tacticalMovement,smoothEnemyVelocity,engagementGoal,EnemyCrowd,separationVector} from './enemy-ai.js?v=903';
+import {BiomeRules,tuneBiomeEnemy} from './biomes.js?v=903';
+import {rollChaseItem,chaseRandom} from './chase-loot.js?v=903';
+import {AdventureRules} from './adventures.js?v=903';
+import {itemFitsSlot} from './equipment-slots.js?v=903';
+import {BossTerrainRules} from './boss-terrain.js?v=903';
+import {SpecializationRules,specializationStats} from './specializations.js?v=903';
+import {PremiumSpellRules} from './premium-spells.js?v=903';
+import {damageResistance} from './resistances.js?v=903';
+import {ItemMarkRules,protectedItem} from './item-marks.js?v=903';
+import {VariantRules,spellProfile,variantChoices} from './spell-variants.js?v=903';
+import {SummonRules} from './summons.js?v=903';
+import {UniqueRules} from './unique-items.js?v=903';
+import {V6EnemyRules} from './v6-enemies.js?v=903';
+import {CityRules} from './city.js?v=903';
+import {BountyRules} from './bounties.js?v=903';
+import { worldBounds, QUAY_GATE, WORLD, SPELLS, ZONES, ENEMIES, EQUIPMENT, START_EQUIPMENT, UPGRADES, DISCIPLINES, POSITIONS, AREAS, AREA_BY_ID, HUB_IDS } from './data.js?v=903';
+import {StoryRules} from './story.js?v=903';
+import {planNewAttack,executeNewAttack,updateNewThreats} from './enemy-variety.js?v=903';
+import {scaleEnemy,tuneChapterEnemy} from './balance.js?v=903';
+import {ExpeditionRules,REGION_CAMPS} from './expedition.js?v=903';
+import {makeItem,normalizePlayer,DROP_TABLES,dropProfile,salvageValue} from './loot.js?v=903';
+import {HubRules,SAFE_HUBS} from './hubs.js?v=903';
+import {REGIONAL_BOSSES,updateBossPhase,updateEncounterState} from './encounters.js?v=903';
+import {legendaryCast,legendaryDash,legendaryHit,legendaryKill,triggerLegendary,updateLegendary} from './legendary.js?v=903';
+import {updateHeroMotion,heroDirection,heroFrame} from './hero-motion.js?v=903';
+import {SurvivalRules,HEAL_COOLDOWN} from './survival.js?v=903';
+import {updateEnemyMotion} from './enemy-motion.js?v=903';
+import {GambleRules} from './gamble.js?v=903';
+import {presentEnemyAttack,launchEnemyLob,updateEnemyLob} from './enemy-combat.js?v=903';
+import {EndgameRules} from './endgame.js?v=903';
+import {MarketRules} from './markets.js?v=903';
+import {QuestRules} from './quests.js?v=903';
+import {arenaObstacles,blockedByObstacle,coverHit} from './arena-layouts.js?v=903';
 export const clamp = (n,a,b) => Math.max(a,Math.min(b,n));
 export const distance = (a,b) => Math.hypot(a.x-b.x,(a.y-b.y)*1.15);
 export const normal = (x,y) => { const d=Math.hypot(x,y)||1;return {x:x/d,y:y/d}; };
@@ -140,12 +137,11 @@ export class Engine {
   enterArea(id,from=null) {
     const area=AREA_BY_ID[id],firstVisit=!this.state.visited.includes(id);if(!area)return false;if(!this.isUnlocked(id)){this.notice('Deze route komt vrij na de volgende kalibratiekern');return false;}
     const s=this.state,p=s.player;if(s.world)s.areas[s.area]=s.world;if(area.endgame||area.optional&&s.areas[id]?.sideDone)delete s.areas[id];s.area=id;s.zone=area.zone;s.mode='playing';s.pending=null;s.projectiles=[];s.fields=[];s.ultimateWave=null;s.effects=[];s.numbers=[];s.summons=[];
-    if(SAFE_HUBS.includes(id)||area.safeExplore&&!area.interior)s.lastSafeArea=id;
+    if(SAFE_HUBS.includes(id)||area.safeExplore)s.lastSafeArea=id;
     s.world=s.areas[id]||this.createWorld(area);s.world.portals=this.portalDefinitions(id);s.world.camp=this.campFor(area);if(s.world.camp&&!s.world.shop)s.world.shop={stock:this.makeStock(area.zone,area.id),marketVersion:2};s.areas[id]=s.world;if(!s.visited.includes(id))s.visited.push(id);
     this.prepareHub(s.world,area);s.world.threats||=[];this.syncStoryPortals();
     const spawn=area.safeExplore||area.natureArena||area.biomeArena||area.adventure||area.extension&&!area.safe?{x:area.spawn[0]*WORLD.width,y:area.spawn[1]*WORLD.height}:area.id==='canal'?{x:POSITIONS.start.x*1.4,y:POSITIONS.start.y*1.4}:area.kind==='route'?s.world.camp:POSITIONS.start;
-    const actualSpawn=from&&NEXT_ROOMS[from]?.parent===id&&NEXT_SCENES[id].door?NEXT_SCENES[id].door:spawn;
-    p.x=actualSpawn.x;p.y=actualSpawn.y;p.velocity={x:0,y:0};p.walkBlend=0;p.visualMotionBlend=0;p.moving=false;p.poseTurn=0;p.dashTimer=0;p.invincible=1.2;p.trail=[];p.lastHurt=s.time;
+    p.x=spawn.x;p.y=spawn.y;p.velocity={x:0,y:0};p.walkBlend=0;p.visualMotionBlend=0;p.moving=false;p.poseTurn=0;p.dashTimer=0;p.invincible=1.2;p.trail=[];p.lastHurt=s.time;
     this.reconcileArena();
     if(s.destination===id)s.destination=null;
     const announceNature=id==='cooling-refuge'&&this.isUnlocked('lanternwood')&&!s.natureAnnounced;if(announceNature)s.natureAnnounced=true;
@@ -247,11 +243,7 @@ export class Engine {
   }
   interaction() {
     const s=this.state,p=s.player,w=s.world;
-    if(s.mode!=='playing')return null;this.syncStoryPortals();
-    const nextScene=NEXT_SCENES[s.area],door=nextScene?.door,resident=nextScene?.resident;
-    if(door&&distance(p,door)<85)return {type:'nextDoor',entity:door,label:door.name,key:'F'};
-    if(resident&&distance(p,resident)<100)return {type:'nextResident',entity:resident,label:resident.name,key:'F'};
-    const outdoorAction=this.outdoorInteraction();if(outdoorAction)return outdoorAction;const explorationAction=this.quarterInteraction();if(explorationAction)return explorationAction;const expeditionAction=this.adventureInteraction();if(expeditionAction)return expeditionAction;
+    if(s.mode!=='playing')return null;this.syncStoryPortals();const outdoorAction=this.outdoorInteraction();if(outdoorAction)return outdoorAction;const explorationAction=this.quarterInteraction();if(explorationAction)return explorationAction;const expeditionAction=this.adventureInteraction();if(expeditionAction)return expeditionAction;
     const npc=this.nearbyQuestNPC(),otherTargets=[...(this.portalReady()?w.portals.filter(t=>distance(p,t)<85):[]),...(w.camp?.services||[]).filter(t=>distance(p,t)<115),...w.loot.filter(t=>distance(p,t)<100&&(!t.guarded||!w.enemies.some(e=>!e.dead&&e.cacheGuard)))];if(npc&&!otherTargets.some(t=>distance(p,t)<distance(p,npc)))return {type:'quest',entity:npc,label:npc.name+' · '+(npc.title||'Noodstroom'),key:'F'};
     const service=this.nearbyService(),nearLoot=w.loot.find(item=>distance(p,item)<100&&(!item.guarded||!w.enemies.some(e=>!e.dead&&e.cacheGuard)));if(service&&(!nearLoot||distance(p,service)<distance(p,nearLoot)))return {type:'shop',entity:service,label:service.name+' · '+service.title,key:'F'};
     if(w.camp&&!w.camp.services&&distance(p,w.camp.merchant)<115)return {type:'shop',entity:w.camp,label:'Handelen & versterken',key:'F'};
@@ -267,8 +259,6 @@ export class Engine {
   }
   interact() {
     const s=this.state,action=this.interaction();if(!action)return false;
-    if(action.type==='nextDoor')return this.enterArea(action.entity.to,s.area);
-    if(action.type==='nextResident'){const room=NEXT_ROOMS[s.area];s.mode='modal';s.pending={type:'archive',title:room.resident,body:getLanguage()==='en'?room.en:room.body};return true;}
     if(action.type==='outdoorDoor')return this.openOutdoorDoor();
     if(action.type==='outdoorNPC')return this.talkOutdoorNPC();
     if(action.type==='outdoorPoint')return this.inspectOutdoorPoint(action.entity.id);
@@ -573,6 +563,10 @@ export class Engine {
   serialize() {if(this.testModeEnabled())return null;const s=copy(this.state);s.areas[s.area]=s.world;delete s.world;s.projectiles=[];s.fields=[];s.ultimateWave=null;s.effects=[];s.numbers=[];s.notices=[];s.summons=[];if(s.mode==='dead'||s.mode==='won')return null;return JSON.stringify({state:s,idCounter:this.idCounter,rngState:this.rng.getState()});}
   static restore(json) {
     const payload=JSON.parse(json),s=payload.state;if(![3,4,5].includes(s?.version)||!s.player)throw new Error('save-version');const engine=new Engine(s.player.discipline,s.seed);engine.state=s;engine.idCounter=payload.idCounter||1000;engine.rng=seeded(payload.rngState??s.seed);engine.events=[];
+    // Keep progress from the withdrawn modular prototype, including room saves.
+    const formerRooms={'quay-home':'canal','city-workshop':'highway','forest-herbalist':'forest'};
+    for(const saved of [s,s.checkpoint]){const parent=formerRooms[saved?.area];if(!parent)continue;const a=AREA_BY_ID[parent];saved.area=parent;saved.zone=a.zone;saved.mode='playing';saved.pending=null;saved.areas||={};saved.areas[parent]||=engine.createWorld(a);if(saved.player)Object.assign(saved.player,{x:a.spawn[0]*WORLD.width,y:a.spawn[1]*WORLD.height});}
+    if(formerRooms[s.lastSafeArea])s.lastSafeArea=formerRooms[s.lastSafeArea];
     if(s.version===3){s.version=4;s.area=HUB_IDS[s.zone];s.areas={};s.visited=[s.area];s.destination=null;const p=s.player;p.inventory=[];p.skills=['tide','storm','ember'];p.hotbar=['tide','storm','ember',null,null,null];p.spellCd={};p.skillPoints=Math.max(0,p.level-1);p.perks={};s.world.portals=engine.portalDefinitions(s.area);s.world.coreCollected=s.cores.includes(s.zone);s.areas[s.area]=s.world;if(s.pending?.type==='upgrade')s.pending.choices=engine.upgradeChoices();engine.checkpoint();}
     else s.world=s.areas[s.area];engine.migrateExpedition();engine.migrateStory();if(!s.world)throw new Error('save-area');engine.reconcileArena();if(s.world.trial&&!s.world.trial.done){engine.restartChallenge();engine.notice('Tijdproef opnieuw gestart · herladen bewaart geen halve poging');}if(AREA_BY_ID[s.area].kind==='route'||AREA_BY_ID[s.area].safeExplore){const p=s.player,valid=(x,y)=>canStand(x,y,18,s.area)&&!engine.townGateBlocks(x,y,18)&&!engine.outdoorGateBlocks(x,y,18);if(!valid(p.x,p.y)){let found=null;for(let r=8;r<=360&&!found;r+=8)for(let i=0;i<24;i++){const x=p.x+Math.cos(i*Math.PI/12)*r,y=p.y+Math.sin(i*Math.PI/12)*r;if(valid(x,y)){found={x,y};break;}}const a=AREA_BY_ID[s.area];Object.assign(p,found||{x:a.spawn[0]*WORLD.width,y:a.spawn[1]*WORLD.height},{velocity:{x:0,y:0},moving:false,walkBlend:0});}}
     s.player.invincible=1;return engine;

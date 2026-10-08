@@ -1,4 +1,3 @@
-import {NEXT_ROOMS} from './world-interiors.js?v=901';
 // English presentation catalogue. Canonical world/save text remains Dutch.
 export const ENGLISH={
   "Spelbeelden voorbereiden ·": "Preparing game images ·",
@@ -2060,13 +2059,5 @@ export const ENGLISH={
   "EXTRA ROUTE · Ga naar de Sintelhoven voor de poort naar het Lantaarnwoud. M: kaart.": "EXTRA ROUTE · Visit the Cinder Courts for the gate to Lanternwood. M: map.",
   "Hoofdmissies hier · extra missies →": "Main quests here · extra quests →",
   "Assetbibliotheek": "Asset library",
-  "Extra missies · ← hoofdroute": "Extra quests · ← main story",
-  "Het Kadehuis": "The Quayside Home",
-  "Het Makershuis": "The Makers House",
-  "Het Kruidenhuis": "The Herbalist House",
-  "Open poort": "Open gate",
-  "Spreek": "Talk",
-  "Een rustig huis om te verkennen. De hoofdroute wacht buiten.": "A quiet home to explore. The main journey awaits outside.",
-  "Praat met de bewoner. Neem daarna de deur terug naar buiten.": "Talk to the resident. Then take the door back outside."
+  "Extra missies · ← hoofdroute": "Extra quests · ← main story"
 };
-for(const room of Object.values(NEXT_ROOMS)){ENGLISH[room.name]=room.english;ENGLISH[room.body]=room.en;}

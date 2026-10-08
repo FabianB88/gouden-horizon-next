@@ -1,8 +1,8 @@
 import {writeFileSync,mkdirSync} from 'node:fs';
 import {findPath} from '../src/engine.js';
-import {ENEMIES,AREAS} from '../src/data.js?v=901';
-import {WORLD_WALKWAYS} from '../src/world-walkways.js?v=901';
-import {OUTDOOR_REGIONS} from '../src/outdoor-content.js?v=901';
+import {ENEMIES,AREAS} from '../src/data.js?v=903';
+import {WORLD_WALKWAYS} from '../src/world-walkways.js?v=903';
+import {OUTDOOR_REGIONS} from '../src/outdoor-content.js?v=903';
 const records=[];
 for(const area of AREAS.map(a=>a.id)){
  const radii=new Set([18]);

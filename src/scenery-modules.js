@@ -1,6 +1,6 @@
 // Separate ground and prop sprites. Placement uses native painting units;
 // drawing and collision both project the same dimensions into world units.
-import {MODULE_ASSETS} from './scenery-catalog.js?v=901';
+import {MODULE_ASSETS} from './scenery-catalog.js?v=903';
 export {MODULE_ASSETS};
 const pavingHeight=120*MODULE_ASSETS.paving.size[1]/MODULE_ASSETS.paving.size[0];
 export const MODULE_LAYOUTS={forest:{scale:1.75,offset:1536,pieces:[

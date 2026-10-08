@@ -1,6 +1,5 @@
-import {AREA_BY_ID} from './data.js?v=901';
-import {STORY_ORDER} from './story.js?v=901';
-import {NEXT_ROOMS} from './world-interiors.js?v=901';
+import {AREA_BY_ID} from './data.js?v=903';
+import {STORY_ORDER} from './story.js?v=903';
 
 // Each scene connects an existing encounter to the journey; it never invents a new quest.
 export const JOURNEY_SCENES={
@@ -50,7 +49,6 @@ export const JOURNEY_SCENES={
  'trial-null':['De proef van de stilte','Waar het netwerk zwijgt, blijft alleen jouw magie over. Aurelia vormt hier haar zwaarste echo’s tot één arena. Je hebt de wereld verbonden; nu kun je laten zien hoe goed je haar hebt leren lezen.','Een herhaalbare eindspelproef voor je build en je tijdrecord.']
 };
 export const MEASUREMENT_AREAS=new Set(['ring','kilometer','saltwood']);
-for(const [id,r]of Object.entries(NEXT_ROOMS))JOURNEY_SCENES[id]=[r.name,r.body,'Een rustig huis om te verkennen. De hoofdroute wacht buiten.'];
 export function campaignAim(state){
  const count=[0,1,2].filter(id=>state.cores?.includes(id)).length;
  if(state.expansionCompleted)return 'Aurelia verbonden · nieuwe avonturen en tijdproeven';
@@ -62,7 +60,6 @@ export function journeyEntry(id,state){
  const w=state.world||{};
  let goal;
  if(MEASUREMENT_AREAS.has(id))goal='Ga naar meetstation A of B en start de kalibratie. Versla per station twee bewakingsgolven, maak beide stations online en versla daarna de kernbewaker. Berg de sleutel bij de terugdoorgang.';
- else if(area.interior)goal='Praat met de bewoner. Neem daarna de deur terug naar buiten.';
  else if(area.safeExplore)goal=id==='hidden-atelier'?'Praat met Linde aan haar werkbank. Kies een elementzegel of bekijk haar bijzondere recepten.':id==='rain-garden'?'Volg de tuinpaden, zoek het regenkompas en bekijk de andere vondsten. Lever het samen met de sleutel bij Milo in.':'Doorzoek de woningen en berg de ateliersleutel. Lever beide vondsten bij Milo in Vrijhaven in.';
  else if(area.bounty)goal='Versla de contractbaas, verzamel je beloning en keer terug naar de handelspost. Je kunt dit contract opnieuw doen; de beloning volgt je keuze bij Sera.';
  else if(area.adventure)goal='Bevrijd de drie gemarkeerde bergingspunten en pak bij ieder punt het onderdeel met interactie. Verzamel je beloning en neem de terugpoort.';
