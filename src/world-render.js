@@ -1,6 +1,6 @@
-import {NEXT_SCENES,GROUND_FILES} from './world-design.js?v=904';
-import {WORLD_ASSETS} from './world-assets.js?v=904';
-import {translate} from './localization.js?v=904';
+import {NEXT_SCENES,GROUND_FILES} from './world-design.js?v=905';
+import {WORLD_ASSETS} from './world-assets.js?v=905';
+import {translate} from './localization.js?v=905';
 
 export function nextAssetFiles(){const used=new Set(Object.values(NEXT_SCENES).flatMap(s=>s.props.map(p=>p.asset)));return {...Object.fromEntries(Object.entries(GROUND_FILES).map(([id,file])=>['ground-'+id,file])),...Object.fromEntries(Object.entries(WORLD_ASSETS).filter(([id])=>used.has(id)).map(([id,a])=>['world-'+id,a.file]))};}
 function material(renderer,id){renderer.nextPatterns||=new Map();if(!renderer.nextPatterns.has(id)){const image=renderer.assets['ground-'+id],pattern=renderer.ctx.createPattern(image,'repeat');pattern.setTransform(new DOMMatrix().scale(492/image.width));renderer.nextPatterns.set(id,pattern);}return renderer.nextPatterns.get(id);}

@@ -6,7 +6,7 @@
   "description": "Een geschilderde 2.5D mage RPG over een magische wereld na de Wereldbreuk.",
   "scripts": {
     "start": "node scripts/serve.mjs",
-    "test": "node qa/quay-enrichment-tests.mjs && node qa/restored-world-tests.mjs && node qa/section-transition-tests.mjs && node qa/respawn-tests.mjs && node qa/story-tests.mjs && node qa/language-tests.mjs && node qa/render-budget-tests.mjs",
+    "test": "node qa/quay-stairs-tests.mjs && node qa/quay-enrichment-tests.mjs && node qa/restored-world-tests.mjs && node qa/section-transition-tests.mjs && node qa/respawn-tests.mjs && node qa/story-tests.mjs && node qa/language-tests.mjs && node qa/render-budget-tests.mjs",
     "site:build": "node scripts/bake-navigation.mjs && node scripts/build-static.mjs",
     "lan": "node scripts/lan-server.mjs",
     "test:lan": "node qa/lan-tests.mjs && node qa/lan-client-tests.mjs",

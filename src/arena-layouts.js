@@ -1,5 +1,6 @@
-import {sceneryModules} from './scenery-modules.js?v=904';
-import {OUTDOOR_REGIONS,outdoorPoint} from './outdoor-content.js?v=904';
+import {sceneryModules} from './scenery-modules.js?v=905';
+import {QUAY_DOCK_PROPS,QUAY_STAIR_OBSTACLES} from './quay-stairs.js?v=905';
+import {OUTDOOR_REGIONS,outdoorPoint} from './outdoor-content.js?v=905';
 // Each footprint is the solid ground base of its painted prop, in world pixels.
 // Open courts stay open elsewhere; these three chapters have distinct lanes.
 export const ARENA_LAYOUTS={
@@ -56,3 +57,4 @@ ARENA_LAYOUTS.rooftops=[{id:'south-planter',paintedOnly:true,x:635,y:1170,rx:16,
 ARENA_LAYOUTS['metro-refuge']=[[382,758,12,9],[441,640,12,9],[433,745,21,13]].map(([x,y,rx,ry])=>({id:'metro-column',paintedOnly:true,x:x*1.25,y:y*1.25,rx:rx*1.25,ry:ry*1.25,height:110}));
 
 for(const id of ['forest'])for(const piece of sceneryModules(id))if(!piece.floor)(ARENA_LAYOUTS[id]||=[]).push(piece);
+ARENA_LAYOUTS.canal=[...QUAY_DOCK_PROPS.filter(p=>p.rx>0),...QUAY_STAIR_OBSTACLES];

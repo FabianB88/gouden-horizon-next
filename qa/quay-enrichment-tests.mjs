@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {Engine,canStand,inPolygon,findPath,distance} from '../src/engine.js?v=904';
-import {sceneryModules,moduleFloor} from '../src/scenery-modules.js?v=904';
-import {QUAY_DETAILS,QUAY_DETAIL_ASSETS} from '../src/quay-details.js?v=904';
+import {Engine,canStand,inPolygon,findPath,distance} from '../src/engine.js?v=905';
+import {sceneryModules,moduleFloor} from '../src/scenery-modules.js?v=905';
+import {QUAY_DETAILS,QUAY_DETAIL_ASSETS} from '../src/quay-details.js?v=905';
 const tiles=sceneryModules('canal'),surfaces=tiles.map(moduleFloor);
 assert.equal(tiles.length,6);assert(tiles.every(t=>t.floor));
 let samples=0;

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync,statSync} from 'node:fs';
-import {SCENERY_CATALOG,MODULE_ASSETS} from '../src/scenery-catalog.js?v=904';
-import {placeSceneryModule,sceneryModules} from '../src/scenery-modules.js?v=904';
+import {SCENERY_CATALOG,MODULE_ASSETS} from '../src/scenery-catalog.js?v=905';
+import {placeSceneryModule,sceneryModules} from '../src/scenery-modules.js?v=905';
 const source=JSON.parse(readFileSync(new URL('../assets/modules/catalog-v1.json',import.meta.url),'utf8'));
 assert.deepEqual(SCENERY_CATALOG,source,'generated catalogue must agree with authoritative database');
 assert.equal(source.assets.length,9);assert.equal(new Set(source.assets.map(a=>a.file)).size,9,'reuse assets without duplicate files');

@@ -1,7 +1,7 @@
-import {WORLD_ASSETS} from './world-assets.js?v=904';
-import {WORLD_ANCHORS} from './world-anchors.js?v=904';
-import {NEXT_ROOMS} from './world-interiors.js?v=904';
-import {SECTION_ENTRIES} from './section-content.js?v=904';
+import {WORLD_ASSETS} from './world-assets.js?v=905';
+import {WORLD_ANCHORS} from './world-anchors.js?v=905';
+import {NEXT_ROOMS} from './world-interiors.js?v=905';
+import {SECTION_ENTRIES} from './section-content.js?v=905';
 
 // This scene description owns both visible placement and physical ground bases.
 // No collision is inherited from an illustration that is no longer displayed.

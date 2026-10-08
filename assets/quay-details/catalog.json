@@ -2,9 +2,10 @@
   "schemaVersion": 1,
   "placementSources": [
     "src/scenery-modules.js",
-    "src/quay-details.js"
+    "src/quay-details.js",
+    "src/quay-stairs.js"
   ],
-  "note": "Existing local assets reused without changing the original paintings. Floor crop, edge blend and local lighting are prepared before Start. Navigation uses the same placed floor diamonds.",
+  "note": "Existing local assets reused without changing the original paintings. Floor crop, edge blend and local lighting are prepared before Start. Navigation uses the same placed floor diamonds. Dock props use visible ground contacts; the barrel and fish crates block only their bases, away from stair travel.",
   "assets": [
     {
       "id": "weathered-floor",
@@ -59,6 +60,48 @@
         "promptKey": "flower-patch",
         "sourceManifest": "qa/complete-flower-patch-20261007.json",
         "originalSha256": "75f315b9cf1b2fb1fb27b51ff84f2b95b1cf49fe90ae19843326fe089916637a",
+        "refined": false
+      }
+    },
+    {
+      "id": "storage-barrel",
+      "file": "assets/quay-details/barrel.webp",
+      "sourceFile": "assets/modules/storage-barrel-complete-world-20261007.webp",
+      "sha256": "1e5f043077718655f42f42c46ca210ec4fe633369bf09d5641e823c0e1d698e6",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-RESERVE-PROMPTS-20261007.json",
+        "promptKey": "storage-barrel",
+        "sourceManifest": "qa/complete-storage-barrel-20261007.json",
+        "originalSha256": "c98dadfa49d374c55a9f3aa9fffc0697f109ea9c82b0e4afeed1b9f895795098",
+        "refined": false
+      }
+    },
+    {
+      "id": "fish-crates",
+      "file": "assets/quay-details/fish.webp",
+      "sourceFile": "assets/modules/fish-crates-complete-world-20261007.webp",
+      "sha256": "f3b81ec2fbd4433afbc0937dd94290c67bb0978ae25382532fc2617ff3210378",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-RESERVE-PROMPTS-20261007.json",
+        "promptKey": "fish-crates",
+        "sourceManifest": "qa/complete-fish-crates-20261007.json",
+        "originalSha256": "243794c5e48be55feac2078c654a1bde3b1440bf56d367d9cde06a382cfa6000",
+        "refined": false
+      }
+    },
+    {
+      "id": "mooring-rope",
+      "file": "assets/quay-details/rope.webp",
+      "sourceFile": "assets/modules/mooring-rope-complete-world-20261007.webp",
+      "sha256": "673d63a8d0352430385121c3a1c7ab43107a967508abf821ab1c37ccdad10b1f",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-RESERVE-PROMPTS-20261007.json",
+        "promptKey": "mooring-rope",
+        "sourceManifest": "qa/complete-mooring-rope-20261007.json",
+        "originalSha256": "19e15b23d9352ba26107d6f236ac7c6a08ef57df42cd31d237297e3a25044cb2",
         "refined": false
       }
     }

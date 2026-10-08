@@ -1,0 +1,42 @@
+{
+  "areas": 44,
+  "canalFile": "canal-route-wandering-v86.webp",
+  "legacyMaps": true,
+  "worldProps": 0,
+  "preparedFloors": 6,
+  "detailImages": 6,
+  "navigation": 24,
+  "transitions": [
+    {
+      "id": "canal",
+      "section": 1,
+      "ready": true,
+      "width": 1536
+    },
+    {
+      "id": "metro-refuge",
+      "section": 0,
+      "ready": true,
+      "width": 1536
+    },
+    {
+      "id": "forest",
+      "section": 0,
+      "ready": true,
+      "width": 1536
+    },
+    {
+      "id": "forest",
+      "section": 1,
+      "ready": true,
+      "width": 1536
+    }
+  ],
+  "keys": [
+    "gouden-horizon-next-action-v1",
+    "gouden-horizon-next-settings-v1"
+  ],
+  "errors": [],
+  "failed": [],
+  "requestsAfterStart": []
+}
