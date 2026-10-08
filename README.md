@@ -4,6 +4,8 @@ Een aparte ontwikkelversie van Gouden Horizon. De bestaande `FabianB88/gouden-ho
 
 De oorspronkelijke geschilderde wereld en beginillustratie zijn hersteld. De vervangen wereld met generieke materiaalvloeren en losse objecten is op verzoek teruggetrokken: toekomstige verbeteringen moeten de bestaande sfeer, compositie, gebouwen en routes behouden en gericht verrijken.
 
+Getijdenkade heeft als eerste gerichte verrijking een korte herbestrate verbinding naar Inez en vijf kleine details aan de waterkant. Zes steenstukken leveren zowel het zichtbare pad als het loopvlak. De voegen zijn gecontroleerd met de volledige heldvoetafdruk en daadwerkelijke loopbeweging. Steenranden en lokale lichtkleur worden voor de start voorbereid; de oorspronkelijke schildering blijft intact.
+
 De 24 hoofdhoofdstukken, optionele wijken, Nederlands/Engels, RPG-systemen en terugkeer na sterven blijven beschikbaar. Next gebruikt eigen opslag onder `gouden-horizon-next-*`, zodat voortgang van de bestaande game gescheiden blijft. Voortgang uit de tijdelijke modulaire versie blijft bruikbaar; opgeslagen posities in de drie prototypehuizen keren terug naar het bijbehorende tussengebied.
 
 Alle kaarten worden voor de start gedownload. Op desktop worden alle kaarten vooraf gedecodeerd; mobiel bewaart de downloads en bereidt kaarten per gebied voor om geheugen te sparen. De snellere voorbereiding van karaktervarianten blijft behouden.

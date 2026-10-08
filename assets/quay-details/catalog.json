@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "placementSources": [
+    "src/scenery-modules.js",
+    "src/quay-details.js"
+  ],
+  "note": "Existing local assets reused without changing the original paintings. Floor crop, edge blend and local lighting are prepared before Start. Navigation uses the same placed floor diamonds.",
+  "assets": [
+    {
+      "id": "weathered-floor",
+      "file": "assets/quay-details/stone.webp",
+      "sourceFile": "assets/modules/weathered-floor-complete-world-20261007.webp",
+      "sha256": "558cbd6a2ab982ab683d76d3fdab843743d9cab7393f33a61d41ee50853a263a",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-PROMPTS-20261007.json",
+        "promptKey": "weathered-floor",
+        "sourceManifest": "qa/complete-weathered-floor-20261007.json",
+        "originalSha256": "69604f1246b0fe623b4f4452f18c9706af644a21a14b255829e4ed3d71515dd3",
+        "refined": false
+      }
+    },
+    {
+      "id": "water-lilies",
+      "file": "assets/quay-details/water-lilies.webp",
+      "sourceFile": "assets/modules/water-lilies-complete-world-20261007.webp",
+      "sha256": "b3b1972fbb1fdbef47c62bb0d171ee0fea9dc8e825422f298d9bfedee1b915b3",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-PROMPTS-20261007.json",
+        "promptKey": "water-lilies",
+        "sourceManifest": "qa/complete-water-lilies-20261007.json",
+        "originalSha256": "5e155df10ad3ed953681e17a92e12cc17647f4ce1001f2e5760a15e35132738a",
+        "refined": false
+      }
+    },
+    {
+      "id": "reed-clump",
+      "file": "assets/quay-details/reed-clump.webp",
+      "sourceFile": "assets/modules/reed-clump-world-kit-20261007.webp",
+      "sha256": "9071aab53cf9ef94b53a4bd6ade296a3cbf48df5aeddabc6d609ffdd913e2e40",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/WORLD-KIT-EXPANSION-PROMPTS-20261007.json",
+        "promptKey": "reed-clump",
+        "sourceManifest": "qa/generated-reed-clump-20261007.json",
+        "originalSha256": "2722f4a19b254be941830155b5f3c7bd0a414a14653d09032ea9684410332725",
+        "refined": false
+      }
+    },
+    {
+      "id": "flower-patch",
+      "file": "assets/quay-details/flower-patch.webp",
+      "sourceFile": "assets/modules/flower-patch-complete-world-20261007.webp",
+      "sha256": "4f499fcfb844c597692b9b828b353b5315a28b160e6875f775999791c5f682ba",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-PROMPTS-20261007.json",
+        "promptKey": "flower-patch",
+        "sourceManifest": "qa/complete-flower-patch-20261007.json",
+        "originalSha256": "75f315b9cf1b2fb1fb27b51ff84f2b95b1cf49fe90ae19843326fe089916637a",
+        "refined": false
+      }
+    }
+  ]
+}

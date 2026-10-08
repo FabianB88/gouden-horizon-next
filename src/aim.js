@@ -1,4 +1,4 @@
-import {SPELLS} from './data.js?v=903';
+import {SPELLS} from './data.js?v=904';
 export function assistedSkill(id){return Boolean(SPELLS[id]?.area||id==='ember');}
 export function assistedTarget(p,enemies){
  const distance=e=>Math.hypot(e.x-p.x,(e.y-p.y)*1.15);

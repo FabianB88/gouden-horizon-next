@@ -1,5 +1,5 @@
-import {equipmentAppearance} from './appearance.js?v=903';
-import {freezeSurface} from './render-cache.js?v=903';
+import {equipmentAppearance} from './appearance.js?v=904';
+import {freezeSurface} from './render-cache.js?v=904';
 // Painted bind poses retain the eight camera directions. Both legs are driven
 // by opposite foot contacts. Traced cloth masks remove the bind-pose legs,
 // while preserving the coat. Short, forward knee paths avoid lateral IK bends.

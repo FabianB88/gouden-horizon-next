@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
-import {Engine,canStand,findPath} from '../src/engine.js?v=903';
-import {AREAS,AREA_BY_ID} from '../src/data.js?v=903';
+import {Engine,canStand,findPath} from '../src/engine.js?v=904';
+import {AREAS,AREA_BY_ID} from '../src/data.js?v=904';
 const baseline='e72fe66863057c6d77b5cabf63df291052cebb78';
 const normalize=s=>s.replace(/\?v=\d+/g,'?v=CACHE').replace(/\r\n/g,'\n');
 for(const file of ['src/data.js','src/area-sections.js','src/arena-layouts.js','src/story.js','src/visuals.js','src/ui-artwork.js']){
