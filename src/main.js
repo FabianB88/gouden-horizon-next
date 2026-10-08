@@ -32,7 +32,7 @@ import {TRIALS,TRIAL_TIERS,trialTime,recordText} from './endgame.js?v=905';
 import {SAFE_HUBS} from './hubs.js?v=905';
 import {STORY_ORDER,STORY_BEATS} from './story.js?v=905';
 import {assistedSkill,hotbarTarget} from './aim.js?v=905';
-import {Renderer} from './render.js?v=906';
+import {Renderer} from './render.js?v=907';
 import {SPELLS,ZONES,AREAS,AREA_BY_ID,UPGRADES,DISCIPLINES,RARITIES,SLOT_NAMES} from './data.js?v=905';
 import {Soundscape} from './sound.js?v=905';
 

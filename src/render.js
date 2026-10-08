@@ -1,3 +1,4 @@
+import {sceneDetails,sceneDetailFiles,prepareSceneArt,drawSceneGround,drawSceneDetail,drawSceneAtmosphere,drawSceneVignette,CONTACT_SHADOW_FILLS,drawArtContact} from './scene-art.js?v=907';
 import {UI_ARTWORK} from './ui-artwork.js?v=905';
 import {quayDetailFiles,drawQuayDetails,drawQuayProp,prepareQuayDetails} from './quay-details.js?v=906';
 import {MODULE_ASSETS,sceneryModules,drawSceneryModule,prepareSceneryFloors} from './scenery-modules.js?v=905';
@@ -44,7 +45,7 @@ export class Renderer {
     files.companionsV82='assets/expedition/companions-v82.webp';files.creaturesV82='assets/expedition/creatures-v82.webp';files.ritualClosed='assets/expedition/ritual-closed-v82.webp';files.ritualOpen='assets/expedition/ritual-open-v82.webp';
     files.enemyWalkV7='assets/expedition/enemy-walk-v7.webp';files.enemyAOE='assets/expedition/enemy-aoe-v561.webp';files.arenaProps='assets/expedition/arena-obstacles-v561.webp';
     for(const [id,asset]of Object.entries(MODULE_ASSETS))files['module-'+id]=asset.file;
-    Object.assign(files,quayDetailFiles());
+    Object.assign(files,quayDetailFiles(),sceneDetailFiles());
     for(const [i,file]of UI_ARTWORK.entries())files['ui-'+i]=file;
     const decoded=new Map(),loadImage=file=>{if(!decoded.has(file))decoded.set(file,new Promise((resolve,reject)=>{const image=new Image();image.onload=async()=>{try{await image.decode();resolve(image);}catch(error){reject(error);}};image.onerror=()=>reject(new Error('Asset ontbreekt: '+file));image.src=file;}));return decoded.get(file);};
     const mapKeys=[...AREAS.map(a=>a.id),...Object.values(OUTDOOR_REGIONS).map(r=>r.asset),'regionCauseway','cityEast','cityJoin','quayGarden','quayJoin'];
@@ -56,7 +57,7 @@ export class Renderer {
     const spriteFiles=Object.entries(files).filter(([id])=>!mapKeys.includes(id));let spriteDone=0;
     const spriteQueue=[...spriteFiles],prepareSprite=async()=>{while(spriteQueue.length){const [id,file]=spriteQueue.shift();this.assets[id]=await loadImage(file);onProgress('Spelbeelden voorbereiden · '+(++spriteDone)+' / '+spriteFiles.length);}};
     await Promise.all([navigationReady,mobile?this.maps.ensure(AREA_BY_ID.canal):this.maps.preload((done,total)=>onProgress('Kaarten voorbereiden · '+done+' / '+total)),...Array.from({length:6},prepareSprite)]);
-    prepareSceneryFloors(this);prepareQuayDetails(this);
+    prepareSceneryFloors(this);prepareQuayDetails(this);prepareSceneArt(this);
     [this.enemyAOECrop,this.arenaPropsCrop]=await Promise.all(['enemy-aoe-v561','arena-obstacles-v561'].map(name=>fetch('assets/expedition/'+name+'.json').then(r=>r.json())));
     this.outdoorNPCCrop=await fetch('assets/expedition/npcs-v872.json').then(r=>r.json());
     this.natureCrop=await fetch('assets/expedition/nature-creatures-v83.json').then(r=>r.json());
@@ -75,7 +76,7 @@ export class Renderer {
   reset(player,area=this.renderArea){this.renderArea=area;this.renderPlayer=player;this.renderSection=sectionIndex(area,player);this.updateZoom();const bounds=sectionBounds(area,player);this.sceneDirty=true;this.camera.x=clamp(player.x-this.viewWidth/2,bounds.x,Math.max(bounds.x,bounds.x+bounds.width-this.viewWidth));this.camera.y=clamp(player.y-this.viewHeight*.57,0,Math.max(0,bounds.height-this.viewHeight));}
   screenToWorld(x,y){return {x:x/this.zoom+this.camera.x,y:y/this.zoom+this.camera.y};}
   kick(amount=5){this.shake=Math.max(this.shake,amount*(this.settings?.shake??.6));}
-  ellipse(x,y,rx,ry,color,stroke=null,width=1){const c=this.ctx;c.beginPath();c.ellipse(x,y,Math.max(0,rx),Math.max(0,ry),0,0,TAU);if(color){c.fillStyle=color;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=width;c.stroke();}}
+  ellipse(x,y,rx,ry,color,stroke=null,width=1){if(CONTACT_SHADOW_FILLS.has(color)&&drawArtContact(this,x,y,rx,ry)){if(!stroke)return;color=null;}const c=this.ctx;c.beginPath();c.ellipse(x,y,Math.max(0,rx),Math.max(0,ry),0,0,TAU);if(color){c.fillStyle=color;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=width;c.stroke();}}
   line(a,b,color,width=2){const c=this.ctx;c.beginPath();c.moveTo(a.x,a.y);c.lineTo(b.x,b.y);c.strokeStyle=color;c.lineWidth=width;c.lineCap='round';c.stroke();}
   text(text,x,y,color='#fff3d5',size=15,localize=true){const label=this.cache.label(localize?translate(text):text,color,size,Math.min(2,this.pixelRatio*this.zoom));this.ctx.drawImage(label.canvas,x-label.width/2,y-label.anchor,label.width,label.height);}
   inView(x,y,r=80,above=r,below=r){return x+r>this.camera.x-40&&x-r<this.camera.x+this.viewWidth+40&&y+below>this.camera.y-40&&y-above<this.camera.y+this.viewHeight+40;}
@@ -90,6 +91,7 @@ export class Renderer {
     drawQuayDetails(this,s);
     c.fillStyle='rgba(9,26,36,.035)';c.fillRect(bounds.x,bounds.y,bounds.width,bounds.height);
     this.visualLoad=s.effects.length+s.projectiles.length*.5+s.fields.length*3;
+    drawSceneGround(this,s);
     this.drawHazards(s);this.drawNewThreats(s);this.drawV6Ground(s);this.drawCreatureGround(s);for(const field of s.fields)this.drawAreaField(field);if(s.world.camp)this.drawCampFloor(s.world.camp,s);this.drawTelegraphs(s);this.drawEnemyLanding(s);
     for(const relay of s.world.relays)this.drawRelay(relay,s);
     engine.syncStoryPortals();this.drawGate(s);this.drawArchive(s);this.visiblePortals=engine.portalReady()?s.world.portals:[];
@@ -98,12 +100,13 @@ export class Renderer {
     for(const peer of s.coop?.players||[])if(peer.player){ordered.push({kind:'player',entity:peer.player});for(const u of peer.summons||[])ordered.push({kind:'companion',entity:u});}
     const outdoor=OUTDOOR_REGIONS[s.area];if(outdoor){const npc=engine.outdoorNPC();ordered.push({kind:'outdoorNPC',entity:npc});ordered.push({kind:'outdoorDoor',entity:outdoorPoint(s.area,outdoor.door[1])});for(const q of outdoor.points)ordered.push({kind:'outdoorPoint',entity:{...outdoorPoint(s.area,q.point),point:q}});}
     if(s.world.ritual)ordered.push({kind:'ritual',entity:s.world.ritual});
+    for(const detail of sceneDetails(s.area,bounds.index))ordered.push({kind:'sceneDetail',entity:detail});
     for(const obstacle of arenaObstacles(s.area))ordered.push({kind:'obstacle',entity:obstacle});
     for(const point of QUARTER_POINTS[s.area]||[])ordered.push({kind:'discovery',entity:point});
     for(const npc of engine.questNPCs())ordered.push({kind:'quest',entity:npc});ordered.sort((a,b)=>a.entity.y-b.entity.y);
     for(const entry of ordered){const e=entry.entity,height=entry.kind==='enemy'?ENEMIES[e.type].size+(e.jumpHeight||0)+80:entry.kind==='obstacle'?e.height+40:210;if(!this.inView(e.x,e.y,180,height,70))continue;
       switch(entry.kind){
-       case 'discovery':this.drawQuarterDiscovery(e,s);break;case 'ritual':this.drawRitualChest(e,s);break;case 'companion':this.drawCompanion(e,time);break;case 'obstacle':if(e.quayProp)drawQuayProp(this,e);else if(e.sceneModule)drawSceneryModule(this,e);else this.drawArenaObstacle(e,p);break;
+       case 'sceneDetail':drawSceneDetail(this,e);break;case 'discovery':this.drawQuarterDiscovery(e,s);break;case 'ritual':this.drawRitualChest(e,s);break;case 'companion':this.drawCompanion(e,time);break;case 'obstacle':if(e.quayProp)drawQuayProp(this,e);else if(e.sceneModule)drawSceneryModule(this,e);else this.drawArenaObstacle(e,p);break;
        case 'townGate':c.drawImage(this.assets[s.world.gardenOpen?'ritualOpen':'ritualClosed'],e.x-78,e.y-135,156,175);this.text(s.world.gardenOpen?'TUINWIJK':'MILO OPENT DE POORT',e.x,e.y+49,'#ead8a5',12);break;
        case 'player':this.drawPlayer(e,time);if(e.name){this.ellipse(e.x,e.y-139,Math.max(43,e.name.length*4.5),13,'#10292be0');this.text(e.name+(e.downed?' · '+translate('GEVALLEN'):''),e.x,e.y-136,e.downed?'#ffbb9b':e.preferredSpecialization==='builder'?'#c8e7a4':e.preferredSpecialization==='hunter'?'#ffd3a3':'#b5eaf3',13,false);}break;
        case 'outdoorNPC':this.drawOutdoorNPC(e,s);break;case 'outdoorDoor':this.drawOutdoorDoor(s);break;case 'outdoorPoint':this.drawOutdoorPoint(e.point,s);break;case 'quest':this.drawQuestNPC(e,s);break;case 'portal':this.drawTravel(e,s);break;case 'service':this.drawService(e,s);break;case 'merchant':this.drawMerchant(s.world.camp,s);break;case 'loot':this.drawLoot(e,time,s);break;default:this.drawEnemy(e,time);
@@ -112,7 +115,7 @@ export class Renderer {
     for(const bolt of s.projectiles)if(this.inView(bolt.x,bolt.y-(bolt.flightHeight||0),110))this.drawProjectile(bolt);
     for(const effect of s.effects){const r=(effect.radius||80)+100;if(this.inView(effect.x,effect.y,r,r+160,r)||effect.end&&this.inView((effect.x+effect.end.x)/2,(effect.y+effect.end.y)/2,Math.abs(effect.x-effect.end.x)/2+r,Math.abs(effect.y-effect.end.y)/2+r))this.drawEffect(effect);}
     for(const number of s.numbers){c.globalAlpha=Math.min(1,number.life*3);this.text(number.text,number.x,number.y,number.color,number.size);}c.globalAlpha=1;
-    this.drawWaypoint(engine);c.restore();this.drawAtmosphere(s,time);if(!this.settings?.touchUI)this.drawMinimap(s);this.sceneDirty=false;this.lastSceneMode=s.mode;
+    drawSceneAtmosphere(this,s,time);this.drawWaypoint(engine);c.restore();this.drawAtmosphere(s,time);if(!this.settings?.touchUI)this.drawMinimap(s);this.sceneDirty=false;this.lastSceneMode=s.mode;
   }
   sprite(image,source,x,y,height,flip=false,rotation=0,alpha=1){const c=this.ctx;if(!source)return;const [sx,sy,sw,sh]=source.bounds;const width=height*sw/sh;const anchorX=(source.anchor?.[0]??.5)*width;const anchorY=(source.anchor?.[1]??1)*height,cutout=this.cache.sprite(image,source,c.filter);c.save();c.translate(x,y);if(flip)c.scale(-1,1);c.rotate(rotation);c.globalAlpha*=alpha;if(cutout){c.filter='none';c.drawImage(cutout,-anchorX,-anchorY,width,height);}else c.drawImage(image,sx,sy,sw,sh,-anchorX,-anchorY,width,height);c.restore();}
   drawGroundScrap(pickup,player){
@@ -198,8 +201,8 @@ export class Renderer {
     const d=distance(p,target);if(d<100)return;const x=target.x-this.camera.x,y=target.y-this.camera.y;
     if(x>60&&x<this.viewWidth-60&&y>90&&y<this.viewHeight-160)return;
     const dir=Math.atan2(target.y-p.y,target.x-p.x),cx=clamp(x,70,this.viewWidth-70)+this.camera.x,cy=clamp(y,95,this.viewHeight-155)+this.camera.y,c=this.ctx;c.save();c.translate(cx,cy);c.rotate(dir);c.beginPath();c.moveTo(16,0);c.lineTo(-8,-9);c.lineTo(-8,9);c.closePath();c.fillStyle='#f9d98e';c.shadowColor='#132a30';c.shadowBlur=10;c.fill();c.restore();}
-  drawAtmosphere(s,time){const c=this.ctx;c.save();const danger=s.player.hp<30;if(this.cache.vignette?.danger!==danger){const scale=256/this.width,canvas=surface(256,this.height*scale),ctx=canvas.getContext('2d');ctx.scale(scale,scale);const gradient=ctx.createRadialGradient(this.width*.5,this.height*.45,this.height*.25,this.width*.5,this.height*.45,this.height*.85);gradient.addColorStop(0,'#06192700');gradient.addColorStop(1,danger?'#70140e88':'#071b294f');ctx.fillStyle=gradient;ctx.fillRect(0,0,this.width,this.height);this.cache.vignette?.canvas.close?.();this.cache.vignette={canvas:freezeSurface(canvas),danger};}c.drawImage(this.cache.vignette.canvas,0,0,this.width,this.height);
-    for(let i=0;i<22;i++){const x=(i*137.3+Math.sin(time*.1+i)*45)%this.width,y=(i*79.1-time*8)%this.height;c.globalAlpha=.12+(i%3)*.04;this.ellipse(x,y,1.8,2,s.zone===0?'#d3edf0':s.zone===1?'#ffd9a1':s.zone===2?'#d6efaf':'#f8e8bd');}c.restore();}
+  drawAtmosphere(s,time){drawSceneVignette(this,s);}
+
   drawMinimap(s){const c=this.mctx,w=this.minimap.width,h=this.minimap.height,bounds=sectionBounds(s.area,s.player),scaleX=w/bounds.width,scaleY=h/bounds.height;c.clearRect(0,0,w,h);const piece=s.area+':'+bounds.index;if(this.cache.mini?.area!==piece||this.cache.mini?.canvas.width!==w||this.cache.mini?.canvas.height!==h){const canvas=surface(w,h),ctx=canvas.getContext('2d');const area=AREA_BY_ID[s.area];if(area.tiles){const t=area.tiles[bounds.index];ctx.drawImage(t.asset?this.assets[t.asset]:bounds.index?this.assets.quayGarden:this.assets[s.area],0,0,w,h);}else ctx.drawImage(this.assets[s.area],0,0,w,h);ctx.fillStyle='#071b3077';ctx.fillRect(0,0,w,h);ctx.translate(-bounds.x*scaleX,-bounds.y*scaleY);for(const o of arenaObstacles(s.area)){ctx.beginPath();ctx.ellipse(o.x*scaleX,o.y*scaleY,o.rx*scaleX,o.ry*scaleY,0,0,TAU);ctx.fillStyle='#1c3028cc';ctx.fill();ctx.strokeStyle='#e4ca9580';ctx.lineWidth=.8;ctx.stroke();}this.cache.mini?.canvas.close?.();this.cache.mini={canvas:freezeSurface(canvas),area:piece};}c.drawImage(this.cache.mini.canvas,0,0);
     const marker=(point,color,r=3)=>{if(!sameSection(s.area,s.player,point))return;c.beginPath();c.arc((point.x-bounds.x)*scaleX,(point.y-bounds.y)*scaleY,r,0,TAU);c.fillStyle=color;c.fill();c.strokeStyle='#071b25';c.lineWidth=1;c.stroke();};
     for(const r of s.world.relays)marker(r,r.status==='online'?'#b9e8c2':'#e8c682',4);for(const e of s.world.enemies.filter(e=>!e.dead&&e.awake))marker(e,ENEMIES[e.type].boss?'#ffdb82':'#ed8a72',ENEMIES[e.type].boss?5:2);if(s.world.gate)marker(s.world.gate,s.world.gate.open?'#ffedba':'#8b9ca2',4);if(s.world.camp)marker(s.world.camp,'#9ddec6',5);for(const m of s.world.camp?.services||[])marker(m,'#eccc92',3);for(const portal of this.visiblePortals||[])marker(portal,'#f1d08c',4);for(const loot of s.world.loot)marker(loot,'#d8b2ef',3);if(s.area==='highway')marker(NORA,s.quests?.noodstroom?.status==='ready'?'#fff1ab':'#e7c783',4);for(const point of QUARTER_POINTS[s.area]||[])if(!s.quests?.quarters?.seen.includes(point.id))marker(point,point.required?'#fff0aa':'#b5e2c5',point.required?3:2);const outdoor=OUTDOOR_REGIONS[s.area];if(outdoor){marker(outdoorPoint(s.area,outdoor.npcPoint),'#d4f0ad',4);marker(outdoorPoint(s.area,outdoor.door[1]),s.world.outdoor?.open?'#9be5ca':'#d39964',3);if(s.world.outdoor?.open)for(const q of outdoor.points)if(!s.world.outdoor.done.includes(q.id))marker(outdoorPoint(s.area,q.point),outdoor.color,3);}marker(s.player,'#e4fbfa',4);for(const peer of s.coop?.players||[])if(peer.player)marker(peer.player,'#ffe098',4);

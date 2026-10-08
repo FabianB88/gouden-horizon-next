@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 1,
+  "note": "Reused local assets, unchanged source bytes. Scene anchors use original painting pixels; decorative contacts remain outside navigation.",
+  "assets": [
+    {
+      "id": "cable-reel",
+      "file": "assets/scene-details/cable-reel.webp",
+      "sourceFile": "assets/modules/cable-reel-complete-world-20261007.webp",
+      "sha256": "e97f1522c937f7404305eb82a81ed8e929b1872b9bb074fa7f198a356c28f8d7",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-RESERVE-PROMPTS-20261007.json",
+        "promptKey": "cable-reel",
+        "sourceManifest": "qa/complete-cable-reel-20261007.json",
+        "originalSha256": "16d4f9c97b26b3ce2993d6d26e0caeb82d05378674ea8b608b6c79530d85bbf0",
+        "refined": false
+      }
+    },
+    {
+      "id": "cooling-fan",
+      "file": "assets/scene-details/cooling-fan.webp",
+      "sourceFile": "assets/modules/cooling-fan-complete-world-20261007.webp",
+      "sha256": "e5028e9a6b385afb170666d8b44eff962105a082462d0fabe46bb49ba519b5be",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-PROMPTS-20261007.json",
+        "promptKey": "cooling-fan",
+        "sourceManifest": "qa/complete-cooling-fan-20261007.json",
+        "originalSha256": "e82ba28dc57bb75ce81e308f4bd0f6c575ff7b415d017e3d8807dc7ca23062d2",
+        "refined": false
+      }
+    },
+    {
+      "id": "crystal-cluster",
+      "file": "assets/scene-details/crystal-cluster.webp",
+      "sourceFile": "assets/modules/crystal-cluster-complete-world-20261007.webp",
+      "sha256": "31a709b327499d16b9770a1f3eeb65fa6c2ad1ffd650adb6299f994338e97f5f",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-PROMPTS-20261007.json",
+        "promptKey": "crystal-cluster",
+        "sourceManifest": "qa/complete-crystal-cluster-20261007.json",
+        "originalSha256": "64337601d6b5cf367ca890f3d18390307a9670b2b32e624eee6fa16dc127e71c",
+        "refined": false
+      }
+    },
+    {
+      "id": "fern",
+      "file": "assets/quay-details/fern.webp",
+      "sourceFile": "assets/modules/fern-complete-world-20261007.webp",
+      "sha256": "feca576ef646e04bbc4be4577e5df5ec769171352a6f023c61dbb71379a0c393",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-PROMPTS-20261007.json",
+        "promptKey": "fern",
+        "sourceManifest": "qa/complete-fern-20261007.json",
+        "originalSha256": "2ebf10bee99864c40161b7a1a3e7f8c5d4c0c364f6513226ba67e952007edc39",
+        "refined": false
+      }
+    },
+    {
+      "id": "flower-patch",
+      "file": "assets/quay-details/flower-patch.webp",
+      "sourceFile": "assets/modules/flower-patch-complete-world-20261007.webp",
+      "sha256": "4f499fcfb844c597692b9b828b353b5315a28b160e6875f775999791c5f682ba",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-PROMPTS-20261007.json",
+        "promptKey": "flower-patch",
+        "sourceManifest": "qa/complete-flower-patch-20261007.json",
+        "originalSha256": "75f315b9cf1b2fb1fb27b51ff84f2b95b1cf49fe90ae19843326fe089916637a",
+        "refined": false
+      }
+    },
+    {
+      "id": "generator",
+      "file": "assets/scene-details/generator.webp",
+      "sourceFile": "assets/modules/generator-complete-world-20261007.webp",
+      "sha256": "6833e5de84e6bf3b02cda9fd731303eb87b9a5dcd0d01104acef7c91c0d677cb",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-RESERVE-PROMPTS-20261007.json",
+        "promptKey": "generator",
+        "sourceManifest": "qa/complete-generator-20261007.json",
+        "originalSha256": "c7d68f69e0353cf76a3062faa9ea47651b084fdd56d22dcd0305da44c0328e6d",
+        "refined": false
+      }
+    },
+    {
+      "id": "glow-mushrooms",
+      "file": "assets/scene-details/glow-mushrooms.webp",
+      "sourceFile": "assets/modules/glow-mushrooms-complete-world-20261007.webp",
+      "sha256": "3efb8c002f34c67f388ff7abe404b117cdd24cdc290eb90f8ce4460e4afeb342",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-PROMPTS-20261007.json",
+        "promptKey": "glow-mushrooms",
+        "sourceManifest": "qa/complete-glow-mushrooms-20261007.json",
+        "originalSha256": "30b2c3b6df3acd6534bb6f5a7dd24b9c67ecfde842a64fbc98675f368003b68b",
+        "refined": false
+      }
+    },
+    {
+      "id": "grass-clump",
+      "file": "assets/scene-details/grass-clump.webp",
+      "sourceFile": "assets/modules/grass-clump-complete-world-20261007.webp",
+      "sha256": "ba62157e731803d0a6a17ba70409077819fa742b1ad1e0a7fb63cdce3588680c",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-PROMPTS-20261007.json",
+        "promptKey": "grass-clump",
+        "sourceManifest": "qa/complete-grass-clump-20261007.json",
+        "originalSha256": "8bcd966b2724364c174e0f9d400da049649852a4852f6a738a846ea5f22de337",
+        "refined": false
+      }
+    },
+    {
+      "id": "handcart",
+      "file": "assets/scene-details/handcart.webp",
+      "sourceFile": "assets/modules/handcart-complete-world-20261007.webp",
+      "sha256": "93737eac76670348e6542746e423fad4aeaf5cc92decabcab5e90047ee8e76a7",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-RESERVE-PROMPTS-20261007.json",
+        "promptKey": "handcart",
+        "sourceManifest": "qa/complete-handcart-20261007.json",
+        "originalSha256": "c8409333348c506e0671dd8c34a03706c43614af9ef904b00f4c361424dd45b6",
+        "refined": false
+      }
+    },
+    {
+      "id": "hanging-herbs",
+      "file": "assets/scene-details/hanging-herbs.webp",
+      "sourceFile": "assets/modules/hanging-herbs-complete-world-20261007.webp",
+      "sha256": "628cc206cdc6e03c93285f1627a4de2d1a5337ce1762ad01c198e04bc313204f",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-RESERVE-PROMPTS-20261007.json",
+        "promptKey": "hanging-herbs",
+        "sourceManifest": "qa/complete-hanging-herbs-20261007.json",
+        "originalSha256": "550e3f212b3e3d9dbef9cfdbd10cdde49ca2162271d5e742cf584eb48a9c195a",
+        "refined": false
+      }
+    },
+    {
+      "id": "potion-shelf",
+      "file": "assets/scene-details/potion-shelf.webp",
+      "sourceFile": "assets/modules/potion-shelf-complete-world-20261007.webp",
+      "sha256": "d2e65480f2b7c5ef15d64eb38432feba5a7273378e40ac689f72e369f0f7df02",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-PROMPTS-20261007.json",
+        "promptKey": "potion-shelf",
+        "sourceManifest": "qa/complete-potion-shelf-20261007.json",
+        "originalSha256": "ce712131fb9fcaf820e134b9819fc373405688950e87c8c7f379d303bdd0ea78",
+        "refined": false
+      }
+    },
+    {
+      "id": "pressure-valve",
+      "file": "assets/scene-details/pressure-valve.webp",
+      "sourceFile": "assets/modules/pressure-valve-complete-world-20261007.webp",
+      "sha256": "1a2b98c92830b75d963a7c0d5b2fce00910f09f1da5235868121faf68cedcbac",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-RESERVE-PROMPTS-20261007.json",
+        "promptKey": "pressure-valve",
+        "sourceManifest": "qa/complete-pressure-valve-20261007.json",
+        "originalSha256": "a68ffde8556d4c510c52cc463c3610ee5e3fa565aeb3d54be06016734ab816dc",
+        "refined": false
+      }
+    },
+    {
+      "id": "reed-clump",
+      "file": "assets/quay-details/reed-clump.webp",
+      "sourceFile": "assets/modules/reed-clump-world-kit-20261007.webp",
+      "sha256": "9071aab53cf9ef94b53a4bd6ade296a3cbf48df5aeddabc6d609ffdd913e2e40",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/WORLD-KIT-EXPANSION-PROMPTS-20261007.json",
+        "promptKey": "reed-clump",
+        "sourceManifest": "qa/generated-reed-clump-20261007.json",
+        "originalSha256": "2722f4a19b254be941830155b5f3c7bd0a414a14653d09032ea9684410332725",
+        "refined": false
+      }
+    },
+    {
+      "id": "rock-stack",
+      "file": "assets/scene-details/rock-stack.webp",
+      "sourceFile": "assets/modules/rock-stack-complete-world-20261007.webp",
+      "sha256": "67e2e63de2797d057983cb5afe82b7c934b205a393a87148343a627ad9a40759",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-PROMPTS-20261007.json",
+        "promptKey": "rock-stack",
+        "sourceManifest": "qa/complete-rock-stack-20261007.json",
+        "originalSha256": "c2dee0757696e73697121a95b91f9bbf25ab3532a526a6b8356602a8b2a7ada6",
+        "refined": false
+      }
+    },
+    {
+      "id": "sluice-control",
+      "file": "assets/scene-details/sluice-control.webp",
+      "sourceFile": "assets/modules/sluice-control-complete-world-20261007.webp",
+      "sha256": "91dfd969f2cfa5aa1905a3e27917f1aad34059a4ecd3387ac85c0b810facaed9",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-PROMPTS-20261007.json",
+        "promptKey": "sluice-control",
+        "sourceManifest": "qa/complete-sluice-control-20261007.json",
+        "originalSha256": "718c61df23e68bb1bd5d3c1872348147e81784cccc3e1b81775d28a414d368c4",
+        "refined": false
+      }
+    },
+    {
+      "id": "solar-beacon",
+      "file": "assets/scene-details/solar-beacon.webp",
+      "sourceFile": "assets/modules/solar-beacon-complete-world-20261007.webp",
+      "sha256": "3ae73dfb103e8103dc4d80ec76c37fffbafbd0eb8a81e67d1f3ca98a13bf6f2a",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-PROMPTS-20261007.json",
+        "promptKey": "solar-beacon",
+        "sourceManifest": "qa/complete-solar-beacon-20261007.json",
+        "originalSha256": "2bf849332c4d5ac28ef02896250025e11fe67ec15b0361cad0dae130b1cca114",
+        "refined": false
+      }
+    },
+    {
+      "id": "storage-barrel",
+      "file": "assets/quay-details/barrel.webp",
+      "sourceFile": "assets/modules/storage-barrel-complete-world-20261007.webp",
+      "sha256": "1e5f043077718655f42f42c46ca210ec4fe633369bf09d5641e823c0e1d698e6",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-RESERVE-PROMPTS-20261007.json",
+        "promptKey": "storage-barrel",
+        "sourceManifest": "qa/complete-storage-barrel-20261007.json",
+        "originalSha256": "c98dadfa49d374c55a9f3aa9fffc0697f109ea9c82b0e4afeed1b9f895795098",
+        "refined": false
+      }
+    },
+    {
+      "id": "tool-rack",
+      "file": "assets/scene-details/tool-rack.webp",
+      "sourceFile": "assets/modules/tool-rack-complete-world-20261007.webp",
+      "sha256": "22638eb55ed13947cda91e14e9e5fa0bd3ffdf757c001a9de7de2be6168ac0c0",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-PROMPTS-20261007.json",
+        "promptKey": "tool-rack",
+        "sourceManifest": "qa/complete-tool-rack-20261007.json",
+        "originalSha256": "49afb4052c380eef2fb66bb8b97059b2a3bdfd48a795b428cd1732a7ad12ebe7",
+        "refined": false
+      }
+    },
+    {
+      "id": "wall-lamp",
+      "file": "assets/scene-details/wall-lamp.webp",
+      "sourceFile": "assets/modules/wall-lamp-complete-world-20261007.webp",
+      "sha256": "f089829c458a5f57f979eaaea396cc1cfdd46abf6af2418727496cba71fbe5c3",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-PROMPTS-20261007.json",
+        "promptKey": "wall-lamp",
+        "sourceManifest": "qa/complete-wall-lamp-20261007.json",
+        "originalSha256": "cdd2f18cbc9cd501bcc23ac9838045a92cbacc08298cb44d981278e83a21bd67",
+        "refined": false
+      }
+    },
+    {
+      "id": "wall-map",
+      "file": "assets/scene-details/wall-map.webp",
+      "sourceFile": "assets/modules/wall-map-complete-world-20261007.webp",
+      "sha256": "a478649bb3fa654be5f3bb175f337300dee1e4f682c2ed61035675d0830ebe57",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-RESERVE-PROMPTS-20261007.json",
+        "promptKey": "wall-map",
+        "sourceManifest": "qa/complete-wall-map-20261007.json",
+        "originalSha256": "525a111e7862657d48049040b52643e01c89a309ae8198888a23dbbd5e3f6b6e",
+        "refined": false
+      }
+    }
+  ]
+}
