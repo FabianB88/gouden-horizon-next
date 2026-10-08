@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto';
 import {AREAS,AREA_BY_ID} from '../src/data.js?v=905';
 import {canStand,findPath} from '../src/engine.js?v=905';
 import {arenaObstacles} from '../src/arena-layouts.js?v=905';
-import {SCENE_ART,SCENE_DETAIL_ASSETS,ART_PALETTES,sceneDetails} from '../src/scene-art.js?v=907';
+import {SCENE_ART,SCENE_DETAIL_ASSETS,ART_PALETTES,sceneDetails} from '../src/scene-art.js?v=908';
 let contacts=0,placements=0;
 assert.equal(Object.keys(SCENE_ART).length,44);
 for(const area of AREAS){
@@ -17,6 +17,10 @@ for(const area of AREAS){
   for(let i=0;i<9;i++){
    const angle=i*Math.PI/4,rx=i<8?p.rx:0,ry=i<8?p.ry:0;
    assert(!canStand(p.x+Math.cos(angle)*rx,p.y+Math.sin(angle)*ry,0,area.id),p.id+' covers a visible walking route');contacts++;
+  }
+  if(a.maxSize)for(let ix=-8;ix<=8;ix++)for(let iy=-8;iy<=8;iy++){
+   const x=ix/8,y=iy/8;if(x*x+y*y>1)continue;
+   assert(!canStand(p.x+x*p.rx,p.y+y*p.ry,0,area.id),p.id+' overlaps a route inside its larger contact footprint');contacts++;
   }
  }
  for(const section of area.tiles?[0,1]:[0])assert.equal(sceneDetails(area.id,section),sceneDetails(area.id,section),'No scene arrays are rebuilt during a frame');

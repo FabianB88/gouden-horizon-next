@@ -1,9 +1,28 @@
 // Art direction in original painting pixels. No gameplay or collision geometry.
-export const SCENE_DETAIL_ASSETS={"cable-reel":{"file":"assets/scene-details/cable-reel.webp","size":[322,378],"crop":[109,57,322,378],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"cooling-fan":{"file":"assets/scene-details/cooling-fan.webp","size":[382,396],"crop":[71,34,382,396],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"crystal-cluster":{"file":"assets/scene-details/crystal-cluster.webp","size":[352,456],"crop":[76,30,352,456],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08,"glow":"cyan"},"fern":{"file":"assets/quay-details/fern.webp","size":[445,410],"crop":[11,48,445,410],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"flower-patch":{"file":"assets/quay-details/flower-patch.webp","size":[346,359],"crop":[69,87,346,359],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"generator":{"file":"assets/scene-details/generator.webp","size":[436,413],"crop":[42,14,436,413],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"glow-mushrooms":{"file":"assets/scene-details/glow-mushrooms.webp","size":[390,362],"crop":[74,35,390,362],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08,"glow":"cyan"},"grass-clump":{"file":"assets/scene-details/grass-clump.webp","size":[298,279],"crop":[97,31,298,279],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"handcart":{"file":"assets/scene-details/handcart.webp","size":[444,343],"crop":[45,23,444,343],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"hanging-herbs":{"file":"assets/scene-details/hanging-herbs.webp","size":[399,441],"crop":[57,31,399,441],"anchor":[0.5,0.5],"mount":"wall","rx":0.17,"ry":0.08},"potion-shelf":{"file":"assets/scene-details/potion-shelf.webp","size":[245,455],"crop":[52,36,245,455],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"pressure-valve":{"file":"assets/scene-details/pressure-valve.webp","size":[408,471],"crop":[63,12,408,471],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"reed-clump":{"file":"assets/quay-details/reed-clump.webp","size":[312,449],"crop":[90,18,312,449],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"rock-stack":{"file":"assets/scene-details/rock-stack.webp","size":[387,266],"crop":[66,34,387,266],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"sluice-control":{"file":"assets/scene-details/sluice-control.webp","size":[253,456],"crop":[135,25,253,456],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"solar-beacon":{"file":"assets/scene-details/solar-beacon.webp","size":[202,471],"crop":[136,21,202,471],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08,"glow":"gold"},"storage-barrel":{"file":"assets/quay-details/barrel.webp","size":[289,391],"crop":[111,56,289,391],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"tool-rack":{"file":"assets/scene-details/tool-rack.webp","size":[262,454],"crop":[103,28,262,454],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"wall-lamp":{"file":"assets/scene-details/wall-lamp.webp","size":[298,416],"crop":[128,47,298,416],"anchor":[0.5,0.5],"mount":"wall","rx":0.17,"ry":0.08,"glow":"gold"},"wall-map":{"file":"assets/scene-details/wall-map.webp","size":[358,360],"crop":[81,11,358,360],"anchor":[0.5,0.5],"mount":"wall","rx":0.17,"ry":0.08}};
+export const SCENE_DETAIL_ASSETS={"cable-reel":{"file":"assets/scene-details/cable-reel.webp","size":[322,378],"crop":[109,57,322,378],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"cooling-fan":{"file":"assets/scene-details/cooling-fan.webp","size":[382,396],"crop":[71,34,382,396],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"crystal-cluster":{"file":"assets/scene-details/crystal-cluster.webp","size":[352,456],"crop":[76,30,352,456],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08,"glow":"cyan"},"fern":{"file":"assets/quay-details/fern.webp","size":[445,410],"crop":[11,48,445,410],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"flower-patch":{"file":"assets/quay-details/flower-patch.webp","size":[346,359],"crop":[69,87,346,359],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"generator":{"file":"assets/scene-details/generator.webp","size":[436,413],"crop":[42,14,436,413],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"glow-mushrooms":{"file":"assets/scene-details/glow-mushrooms.webp","size":[390,362],"crop":[74,35,390,362],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08,"glow":"cyan"},"grass-clump":{"file":"assets/scene-details/grass-clump.webp","size":[298,279],"crop":[97,31,298,279],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"handcart":{"file":"assets/scene-details/handcart.webp","size":[444,343],"crop":[45,23,444,343],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"hanging-herbs":{"file":"assets/scene-details/hanging-herbs.webp","size":[399,441],"crop":[57,31,399,441],"anchor":[0.5,0.5],"mount":"wall","rx":0.17,"ry":0.08},"potion-shelf":{"file":"assets/scene-details/potion-shelf.webp","size":[245,455],"crop":[52,36,245,455],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"pressure-valve":{"file":"assets/scene-details/pressure-valve.webp","size":[408,471],"crop":[63,12,408,471],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"reed-clump":{"file":"assets/quay-details/reed-clump.webp","size":[312,449],"crop":[90,18,312,449],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"rock-stack":{"file":"assets/scene-details/rock-stack.webp","size":[387,266],"crop":[66,34,387,266],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"sluice-control":{"file":"assets/scene-details/sluice-control.webp","size":[253,456],"crop":[135,25,253,456],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"solar-beacon":{"file":"assets/scene-details/solar-beacon.webp","size":[202,471],"crop":[136,21,202,471],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08,"glow":"gold"},"storage-barrel":{"file":"assets/quay-details/barrel.webp","size":[289,391],"crop":[111,56,289,391],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"tool-rack":{"file":"assets/scene-details/tool-rack.webp","size":[262,454],"crop":[103,28,262,454],"anchor":[0.5,0.89],"mount":"ground","rx":0.17,"ry":0.08},"wall-lamp":{"file":"assets/scene-details/wall-lamp.webp","size":[298,416],"crop":[128,47,298,416],"anchor":[0.5,0.5],"mount":"wall","rx":0.17,"ry":0.08,"glow":"gold"},"wall-map":{"file":"assets/scene-details/wall-map.webp","size":[358,360],"crop":[81,11,358,360],"anchor":[0.5,0.5],"mount":"wall","rx":0.17,"ry":0.08},"conservatory-crown":{"file":"assets/scene-details/conservatory-crown.webp","size":[1498,934],"crop":[17,46,1498,934],"anchor":[0.5,0.5],"mount":"roof","rx":0.08,"ry":0.04,"maxSize":768,"mobileMaxSize":512,"light":[1.1,1.07,0.96],"castShadow":true},"cascading-parapet":{"file":"assets/scene-details/cascading-parapet.webp","size":[1503,1007],"crop":[21,3,1503,1007],"anchor":[0.5,0.35],"mount":"wall","rx":0.2,"ry":0.025,"maxSize":768,"mobileMaxSize":512,"light":[1.22,1.22,0.98],"castShadow":true},"fern-rock-spring":{"file":"assets/scene-details/fern-rock-spring.webp","size":[1317,1070],"crop":[50,25,1317,1070],"anchor":[0.5,0.9],"mount":"ground","rx":0.32,"ry":0.075,"maxSize":768,"mobileMaxSize":512,"light":[1.12,1.16,0.95],"groundFeather":0.1,"contactOpacity":0.55}};
 export const SCENE_ART={
  "canal": {
   "palette": "garden",
-  "pieces": [],
+  "pieces": [
+   {
+    "asset": "conservatory-crown",
+    "point": [
+     1490,
+     690
+    ],
+    "width": 190,
+    "flip": true
+   },
+   {
+    "asset": "cascading-parapet",
+    "point": [
+     553,
+     649
+    ],
+    "width": 120,
+    "flip": true
+   }
+  ],
   "extensions": [
    {
     "asset": "hanging-herbs",
@@ -127,6 +146,22 @@ export const SCENE_ART={
      261
     ],
     "width": 37
+   },
+   {
+    "asset": "fern-rock-spring",
+    "point": [
+     1320,
+     630
+    ],
+    "width": 190
+   },
+   {
+    "asset": "cascading-parapet",
+    "point": [
+     805,
+     834
+    ],
+    "width": 130
    }
   ],
   "extensions": [

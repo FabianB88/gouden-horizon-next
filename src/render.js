@@ -1,4 +1,4 @@
-import {sceneDetails,sceneDetailFiles,prepareSceneArt,drawSceneGround,drawSceneDetail,drawSceneAtmosphere,drawSceneVignette,CONTACT_SHADOW_FILLS,drawArtContact} from './scene-art.js?v=907';
+import {sceneDetails,sceneDetailFiles,prepareSceneArt,drawSceneGround,drawSceneDetail,drawSceneAtmosphere,drawSceneVignette,CONTACT_SHADOW_FILLS,drawArtContact} from './scene-art.js?v=908';
 import {UI_ARTWORK} from './ui-artwork.js?v=905';
 import {quayDetailFiles,drawQuayDetails,drawQuayProp,prepareQuayDetails} from './quay-details.js?v=906';
 import {MODULE_ASSETS,sceneryModules,drawSceneryModule,prepareSceneryFloors} from './scenery-modules.js?v=905';

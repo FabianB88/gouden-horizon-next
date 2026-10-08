@@ -281,6 +281,48 @@
         "originalSha256": "525a111e7862657d48049040b52643e01c89a309ae8198888a23dbbd5e3f6b6e",
         "refined": false
       }
+    },
+    {
+      "id": "conservatory-crown",
+      "file": "assets/scene-details/conservatory-crown.webp",
+      "sourceFile": "assets/modules/conservatory-crown-grand-20261008.webp",
+      "sha256": "04dd1b50d6d7f329c90ccdb5e5858950eedb6c26471e2bae866c770599fe105e",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/GRAND-DETAILS-PROMPTS-20261008.json",
+        "promptKey": "roof",
+        "sourceManifest": "qa/grand-conservatory-crown-20261008.json",
+        "originalSha256": "8eb2f5dea3fee8ae007d6f052fc03af6167e7e8f9571a4735055d1945419016a",
+        "refined": true
+      }
+    },
+    {
+      "id": "cascading-parapet",
+      "file": "assets/scene-details/cascading-parapet.webp",
+      "sourceFile": "assets/modules/cascading-parapet-grand-20261008.webp",
+      "sha256": "6ad9ef8b39be266419cc23857ff84588a2b68d5c76f0a25164885312b898c540",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/GRAND-DETAILS-PROMPTS-20261008.json",
+        "promptKey": "planter",
+        "sourceManifest": "qa/grand-cascading-parapet-20261008.json",
+        "originalSha256": "1b7c7720cd7042ab6334bba5c73b3b36ee8f7c8a06df787af1df182d564eb3d2",
+        "refined": false
+      }
+    },
+    {
+      "id": "fern-rock-spring",
+      "file": "assets/scene-details/fern-rock-spring.webp",
+      "sourceFile": "assets/modules/fern-rock-spring-grand-20261008.webp",
+      "sha256": "98b4e2ed3bddb7fd6eb560bfda6d306b43f4cc84fab74a1831b00b6e3ced5764",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/GRAND-DETAILS-PROMPTS-20261008.json",
+        "promptKey": "spring",
+        "sourceManifest": "qa/grand-fern-rock-spring-20261008.json",
+        "originalSha256": "949c285fdc749acda8978dfee0996c35d7b3869a1344bbc9a005d5f4e0c96dc9",
+        "refined": false
+      }
     }
   ]
 }

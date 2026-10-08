@@ -1,0 +1,109 @@
+{
+  "prepared": {
+    "cutouts": 37,
+    "bytes": 10835968,
+    "navigation": 24,
+    "newAssets": [
+      {
+        "id": "conservatory-crown",
+        "width": 512,
+        "height": 320
+      },
+      {
+        "id": "cascading-parapet",
+        "width": 512,
+        "height": 344
+      },
+      {
+        "id": "fern-rock-spring",
+        "width": 512,
+        "height": 416
+      }
+    ]
+  },
+  "results": [
+    {
+      "id": "canal",
+      "section": 0,
+      "ready": true,
+      "zoom": 0.4,
+      "camera": {
+        "x": 257.5,
+        "y": 408.5
+      }
+    },
+    {
+      "id": "forest",
+      "section": 0,
+      "ready": true,
+      "zoom": 0.4,
+      "camera": {
+        "x": 257.5,
+        "y": 408.5
+      }
+    },
+    {
+      "id": "canal",
+      "section": 0,
+      "ready": true,
+      "zoom": 1.25,
+      "camera": {
+        "x": 2012.8,
+        "y": 1016.5
+      }
+    },
+    {
+      "id": "canal",
+      "section": 0,
+      "ready": true,
+      "zoom": 1.25,
+      "camera": {
+        "x": 630.15,
+        "y": 979.75
+      }
+    },
+    {
+      "id": "forest",
+      "section": 0,
+      "ready": true,
+      "zoom": 1.25,
+      "camera": {
+        "x": 1972.4,
+        "y": 946.5
+      }
+    },
+    {
+      "id": "forest",
+      "section": 0,
+      "ready": true,
+      "zoom": 1.25,
+      "camera": {
+        "x": 1184.9,
+        "y": 1347.25
+      }
+    },
+    {
+      "id": "canal",
+      "section": 1,
+      "ready": true,
+      "zoom": 0.8,
+      "camera": {
+        "x": 3385.5,
+        "y": 631.25
+      }
+    },
+    {
+      "id": "forest",
+      "section": 1,
+      "ready": true,
+      "zoom": 0.8,
+      "camera": {
+        "x": 3385.5,
+        "y": 631.25
+      }
+    }
+  ],
+  "errors": [],
+  "failed": [],
+  "requestsAfterStart": []
+}

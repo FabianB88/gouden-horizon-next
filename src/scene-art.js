@@ -1,5 +1,5 @@
 import {AREA_BY_ID,worldBounds} from './data.js?v=905';
-import {SCENE_ART,SCENE_DETAIL_ASSETS} from './scene-art-data.js?v=907';
+import {SCENE_ART,SCENE_DETAIL_ASSETS} from './scene-art-data.js?v=908';
 
 export {SCENE_ART,SCENE_DETAIL_ASSETS};
 export const ART_PALETTES={
@@ -28,15 +28,19 @@ function glowTexture(color){
  g.addColorStop(0,color+'b0');g.addColorStop(.3,color+'55');g.addColorStop(1,color+'00');c.fillStyle=g;c.fillRect(0,0,128,128);return image;
 }
 export function prepareSceneArt(r){
- const mobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1),limit=mobile?256:384;
- r.sceneArtPrepared=new Map();r.sceneArtBytes=0;
+ const mobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+ r.sceneArtPrepared=new Map();r.sceneArtShadows=new Map();r.sceneArtBytes=0;
  for(const group of Object.values(pieces))for(const p of group){
   const key=p.asset+':'+p.palette;if(r.sceneArtPrepared.has(key))continue;
-  const a=SCENE_DETAIL_ASSETS[p.asset],scale=Math.min(1,limit/Math.max(...a.size)),w=Math.ceil(a.size[0]*scale),h=Math.ceil(a.size[1]*scale),image=canvas(w,h),c=image.getContext('2d',{willReadFrequently:true});
+  const a=SCENE_DETAIL_ASSETS[p.asset],limit=mobile?(a.mobileMaxSize||256):(a.maxSize||384),scale=Math.min(1,limit/Math.max(...a.size)),w=Math.min(limit,Math.ceil(a.size[0]*scale)),h=Math.min(limit,Math.ceil(a.size[1]*scale)),image=canvas(w,h),c=image.getContext('2d',{willReadFrequently:true});
   c.drawImage(r.assets['scene-detail-'+p.asset],...a.crop,0,0,w,h);
-  const pixels=c.getImageData(0,0,w,h),data=pixels.data,tint=ART_PALETTES[p.palette].light;
-  for(let i=0;i<data.length;i+=4){if(data[i+3]<12)data[i+3]=0;for(let channel=0;channel<3;channel++)data[i+channel]*=tint[channel];}
+  const pixels=c.getImageData(0,0,w,h),data=pixels.data,tint=a.light||ART_PALETTES[p.palette].light;
+  for(let i=0;i<data.length;i+=4){if(data[i+3]<12)data[i+3]=0;for(let channel=0;channel<3;channel++)data[i+channel]*=tint[channel];if(a.groundFeather){const edge=Math.min(1,(h-1-Math.floor(i/4/w))/(h*a.groundFeather));data[i+3]*=edge*edge*(3-2*edge);}}
   c.putImageData(pixels,0,0);r.sceneArtPrepared.set(key,image);r.sceneArtBytes+=w*h*4;
+  if(a.castShadow){
+   const shadow=canvas(w,h),sc=shadow.getContext('2d');sc.drawImage(image,0,0);sc.globalCompositeOperation='source-in';sc.fillStyle='#193124';sc.fillRect(0,0,w,h);
+   const softened=canvas(w,h),soft=softened.getContext('2d');soft.filter='blur(3px)';soft.drawImage(shadow,0,0);r.sceneArtShadows.set(key,softened);r.sceneArtBytes+=w*h*4;
+  }
  }
  // Keep only the cropped, sized variants after startup; decoded sources can go.
  for(const id of Object.keys(SCENE_DETAIL_ASSETS))delete r.assets['scene-detail-'+id];
@@ -89,8 +93,11 @@ export function drawSceneGround(r,s){
 }
 export function drawSceneDetail(r,p){
  const image=r.sceneArtPrepared?.get(p.asset+':'+p.palette);if(!image||!r.inView(p.x,p.y,p.width,p.height+20,30))return;
- const a=SCENE_DETAIL_ASSETS[p.asset];if((p.mount||a.mount)==='ground')drawArtContact(r,p.x,p.y,p.rx,p.ry,.3);
- r.ctx.drawImage(image,p.x-p.width*a.anchor[0],p.y-p.height*a.anchor[1],p.width,p.height);
+ const a=SCENE_DETAIL_ASSETS[p.asset];if((p.mount||a.mount)==='ground')drawArtContact(r,p.x,p.y,p.rx,p.ry,a.contactOpacity||.3);
+ const shadow=r.sceneArtShadows?.get(p.asset+':'+p.palette);
+ if(shadow){const c=r.ctx,scale=geometry(p.area,p.section).width/1536;c.save();c.globalAlpha*=.18;c.translate(p.x+scale*2,p.y+scale*3);if(p.flip)c.scale(-1,1);c.drawImage(shadow,-p.width*a.anchor[0],-p.height*a.anchor[1],p.width,p.height);c.restore();}
+ if(p.flip){r.ctx.save();r.ctx.translate(p.x,p.y);r.ctx.scale(-1,1);r.ctx.drawImage(image,-p.width*a.anchor[0],-p.height*a.anchor[1],p.width,p.height);r.ctx.restore();}
+ else r.ctx.drawImage(image,p.x-p.width*a.anchor[0],p.y-p.height*a.anchor[1],p.width,p.height);
 }
 export function drawSceneAtmosphere(r,s,time){
  const profile=SCENE_ART[s.area];if(!profile||!r.artMotes||r.artReducedMotion||r.settings?.quality==='low')return;
