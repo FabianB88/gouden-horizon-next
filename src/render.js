@@ -1,5 +1,5 @@
 import {UI_ARTWORK} from './ui-artwork.js?v=905';
-import {quayDetailFiles,drawQuayDetails,drawQuayProp} from './quay-details.js?v=905';
+import {quayDetailFiles,drawQuayDetails,drawQuayProp,prepareQuayDetails} from './quay-details.js?v=906';
 import {MODULE_ASSETS,sceneryModules,drawSceneryModule,prepareSceneryFloors} from './scenery-modules.js?v=905';
 import {translate} from './localization.js?v=905';
 import {sectionIndex,sectionBounds,sameSection} from './area-sections.js?v=905';
@@ -56,7 +56,7 @@ export class Renderer {
     const spriteFiles=Object.entries(files).filter(([id])=>!mapKeys.includes(id));let spriteDone=0;
     const spriteQueue=[...spriteFiles],prepareSprite=async()=>{while(spriteQueue.length){const [id,file]=spriteQueue.shift();this.assets[id]=await loadImage(file);onProgress('Spelbeelden voorbereiden · '+(++spriteDone)+' / '+spriteFiles.length);}};
     await Promise.all([navigationReady,mobile?this.maps.ensure(AREA_BY_ID.canal):this.maps.preload((done,total)=>onProgress('Kaarten voorbereiden · '+done+' / '+total)),...Array.from({length:6},prepareSprite)]);
-    prepareSceneryFloors(this);
+    prepareSceneryFloors(this);prepareQuayDetails(this);
     [this.enemyAOECrop,this.arenaPropsCrop]=await Promise.all(['enemy-aoe-v561','arena-obstacles-v561'].map(name=>fetch('assets/expedition/'+name+'.json').then(r=>r.json())));
     this.outdoorNPCCrop=await fetch('assets/expedition/npcs-v872.json').then(r=>r.json());
     this.natureCrop=await fetch('assets/expedition/nature-creatures-v83.json').then(r=>r.json());

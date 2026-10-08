@@ -104,6 +104,48 @@
         "originalSha256": "19e15b23d9352ba26107d6f236ac7c6a08ef57df42cd31d237297e3a25044cb2",
         "refined": false
       }
+    },
+    {
+      "id": "rowing-boat",
+      "file": "assets/quay-details/rowing-boat.webp",
+      "sourceFile": "assets/modules/rowing-boat-complete-world-20261007.webp",
+      "sha256": "773d2c71bd3ebf24a8cdb6d51f850611e363b743bb2bd9b51878f0f396224b60",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-RESERVE-PROMPTS-20261007.json",
+        "promptKey": "rowing-boat",
+        "sourceManifest": "qa/complete-rowing-boat-20261007.json",
+        "originalSha256": "bd4c457e7b302403a67918d0e298a80bb42e2b47b300eb212a2698bb20171158",
+        "refined": false
+      }
+    },
+    {
+      "id": "flowering-shrub",
+      "file": "assets/quay-details/flowering-shrub.webp",
+      "sourceFile": "assets/modules/flowering-shrub-world-kit-20261007.webp",
+      "sha256": "f914b6604b2505f4ab5d9e2c108f4c80b000c09c6d39af7692c30589c93accfd",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/WORLD-KIT-EXPANSION-PROMPTS-20261007.json",
+        "promptKey": "flowering-shrub",
+        "sourceManifest": "qa/generated-flowering-shrub-20261007.json",
+        "originalSha256": "b5bed432f0fd105b4cb89c633d5a612d5644e9dc97c9425d0ab8c87dceb5081f",
+        "refined": false
+      }
+    },
+    {
+      "id": "fern",
+      "file": "assets/quay-details/fern.webp",
+      "sourceFile": "assets/modules/fern-complete-world-20261007.webp",
+      "sha256": "feca576ef646e04bbc4be4577e5df5ec769171352a6f023c61dbb71379a0c393",
+      "provenance": {
+        "mode": "built-in imagegen",
+        "promptFile": "qa/COMPLETE-WORLD-PROMPTS-20261007.json",
+        "promptKey": "fern",
+        "sourceManifest": "qa/complete-fern-20261007.json",
+        "originalSha256": "2ebf10bee99864c40161b7a1a3e7f8c5d4c0c364f6513226ba67e952007edc39",
+        "refined": false
+      }
     }
   ]
 }
