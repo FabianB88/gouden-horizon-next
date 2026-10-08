@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
-import {AREAS,AREA_BY_ID} from '../src/data.js?v=905';
-import {canStand,findPath} from '../src/engine.js?v=905';
-import {arenaObstacles} from '../src/arena-layouts.js?v=905';
-import {SCENE_ART,SCENE_DETAIL_ASSETS,ART_PALETTES,sceneDetails} from '../src/scene-art.js?v=908';
+import {AREAS,AREA_BY_ID} from '../src/data.js?v=909';
+import {canStand,findPath} from '../src/engine.js?v=909';
+import {arenaObstacles} from '../src/arena-layouts.js?v=909';
+import {SCENE_ART,SCENE_DETAIL_ASSETS,ART_PALETTES,sceneDetails} from '../src/scene-art.js?v=909';
 let contacts=0,placements=0;
 assert.equal(Object.keys(SCENE_ART).length,44);
 for(const area of AREAS){
@@ -28,4 +28,4 @@ for(const area of AREAS){
 const catalog=JSON.parse(readFileSync('assets/scene-details/catalog.json','utf8'));
 for(const a of catalog.assets)assert.equal(createHash('sha256').update(readFileSync(a.file)).digest('hex'),a.sha256,'Preserve the original asset bytes');
 const baked=JSON.parse(readFileSync('assets/navigation/walkways-v8103.json','utf8'));assert.equal(findPath.install(baked),24,'Art must preserve every baked route fingerprint');
-console.log('PASS all44 area profiles, '+placements+' placements, '+contacts+' off-path ground-contact samples, original asset provenance and all24 unchanged navigation records.');
+console.log('PASS all44 area profiles, '+placements+' placements, '+contacts+' off-path ground-contact samples, original asset provenance and all24 matching navigation records.');

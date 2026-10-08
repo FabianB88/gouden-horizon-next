@@ -1,4 +1,4 @@
-import {OUTDOOR_REGIONS,outdoorPoint} from './outdoor-content.js?v=905';
+import {OUTDOOR_REGIONS,outdoorPoint} from './outdoor-content.js?v=909';
 const distance=(a,b)=>Math.hypot(a.x-b.x,(a.y-b.y)*1.15);
 export const OutdoorVisuals={
  drawOutdoorNPC(npc,s){const r=OUTDOOR_REGIONS[s.area];this.ellipse(npc.x,npc.y,23,10,'#152b3455');this.sprite(this.assets['npc-'+r.npc],this.outdoorNPCCrop[r.npc],npc.x,npc.y,137);if(distance(s.player,npc)<330){this.text(npc.name,npc.x,npc.y-151,'#f5e1ad',14);this.text(r.name,npc.x,npc.y+23,r.color,12);}},
@@ -14,6 +14,9 @@ export const OutdoorVisuals={
   if(r.mode==='harvest'){this.sprite(this.assets['item-seed-heart'],{bounds:[0,0,256,256],anchor:[.5,.85]},x,y,38,false,0,done?.45:1);
   }else if(r.mode==='vent'){this.ellipse(x,y-17,15,15,'#405e61','#d4ac65',3);for(let i=0;i<4;i++){const a=i*Math.PI/2;this.line({x:x+Math.cos(a)*4,y:y-17+Math.sin(a)*4},{x:x+Math.cos(a)*18,y:y-17+Math.sin(a)*18},'#ead1a0',3);}this.ellipse(x,y-17,4,4,done?'#9ee3b5':'#f69a59');
   }else{this.line({x,y},{x,y:y-41},'#a99053',7);c.save();c.translate(x,y-47);c.beginPath();c.moveTo(0,-18);c.lineTo(10,0);c.lineTo(0,14);c.lineTo(-10,0);c.closePath();c.fillStyle=done?'#adf4ea':'#92b7c9';c.fill();c.strokeStyle='#eed496';c.lineWidth=2;c.stroke();c.restore();if(o.channel?.id===q.id){const t=Math.min(1,o.channel.time/2);c.beginPath();c.ellipse(x,y,27,13,-Math.PI/2,0,Math.PI*2*t);c.strokeStyle='#baf7f0';c.lineWidth=3;c.stroke();}}
-  if(distance(s.player,point)<170)this.text(done?'✓ '+q.name:q.name,x,y+28,done?'#b5d5a4':'#f4e0b7',13);
+  const index=r.points.indexOf(q)+1;
+  if(!done){this.line({x,y:y-52},{x,y:y-82},r.color,2);this.ellipse(x,y-84,9,5,r.color);}
+  this.text(done?'✓ '+q.name:index+'/3 · '+q.name,x,y+28,done?'#b5d5a4':'#f4e0b7',13);
+  if(!done&&distance(s.player,point)<120)this.text((this.settings?.touchUI?'Tik':'F')+' · '+(r.mode==='harvest'?'Verzamelen':r.mode==='vent'?'Sluiten':'Afstemmen'),x,y+47,'#fff3cd',12);
  }
 };

@@ -26,7 +26,9 @@ export const OUTDOOR_REGIONS={
   // Only the opening between these posts crosses the painted wall.
   solids:[{x:440,y:417,rx:10,ry:12},{x:507,y:447,rx:12,ry:12},
    ...[[528,460],[549,473],[570,487],[591,500],[612,513],[633,526],[653,539]].map(([x,y])=>({x,y,rx:15,ry:12}))],
-  points:[{id:'moonseed',name:'Maanbloem',point:[675,375]},{id:'crystalseed',name:'Kristalvaren',point:[1020,235]},{id:'amberseed',name:'Amberkiem',point:[1180,756]}],
+  // All three markers stand ON a roomy painted landing, with clearance to
+  // approach from the actual stairs. The old amber marker sat in a planter.
+  points:[{id:'moonseed',name:'Maanbloem',point:[674,372]},{id:'crystalseed',name:'Kristalvaren',point:[1097,198]},{id:'amberseed',name:'Amberkiem',point:[1272,744]}],
   encounters:[['mossback',750,540],['sunnewt',978,611],['mistprowler',1185,400],['windowl',1100,216],['sporecaster',1230,895]],
  },
  skybridge:{file:'stormwatch-v872.webp',asset:'stormwatch',scale:1.25,name:'Stormwacht',npc:'orin',npcName:'Orin · Stormlezer',npcPoint:[455,360],color:'#a7e5ef',

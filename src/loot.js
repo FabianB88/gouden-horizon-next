@@ -1,10 +1,11 @@
-import {EQUIPMENT,START_EQUIPMENT,RARITIES,SPELLS} from './data.js?v=905';
-import {LEGENDARY_EFFECTS,effectText,effectForSlot} from './legendary.js?v=905';
+import {EQUIPMENT,START_EQUIPMENT,RARITIES,SPELLS} from './data.js?v=909';
+import {LEGENDARY_EFFECTS,effectText,effectForSlot} from './legendary.js?v=909';
 
-import {UNIQUE_ITEMS,uniqueForSlot} from './unique-items.js?v=905';
-import {normalizeVariants} from './spell-variants.js?v=905';
-import {V8_ITEMS} from './v8-content.js?v=905';
-import {emptyHead,emptyRelic} from './equipment-slots.js?v=905';
+import {UNIQUE_ITEMS,uniqueForSlot} from './unique-items.js?v=909';
+import {upgradeMasterwork} from './masterworks.js?v=909';
+import {normalizeVariants} from './spell-variants.js?v=909';
+import {V8_ITEMS} from './v8-content.js?v=909';
+import {emptyHead,emptyRelic} from './equipment-slots.js?v=909';
 export const EXTRA_EQUIPMENT=[
  {id:'tidal-fork',slot:'weapon',name:'Getijdenstemvork',stats:{power:.07,tide:.10}},
  {id:'amber-prism',slot:'weapon',name:'Amberprisma',stats:{power:.08,ember:.11}},
@@ -107,6 +108,7 @@ const labels={poisonResist:'gifweerstand',fireResist:'vuurweerstand',stormResist
 const percentages=new Set(['poisonResist','fireResist','stormResist','waterResist','power','speed','dash','crit','armor','tide','storm','ember','comboCharge','heatGuard','burnTime']);
 export function statsText(item){const stats=Object.entries(item.stats||{}).map(([key,value])=>key==='waterproof'?'Waterbestendig':(percentages.has(key)?'+'+Math.round(value*100)+'%': '+'+Number(value.toFixed(1)))+' '+(labels[key]||key)).join(' · ')||'Basisuitrusting';return stats+(effectText(item)?' ◆ '+effectText(item):'');}
 export function normalizeItem(item){
+ upgradeMasterwork(item);
  if(!item)return item;item.mark=['favorite','junk'].includes(item.mark)?item.mark:'';item.art=item.art||item.id;item.rarity=item.rarity==='field'?'common':item.rarity||'common';item.level=item.level||1;item.requiredLevel=item.requiredLevel||1;item.enhance=item.enhance||0;item.affixes=item.affixes||[];item.stats=item.stats||{};if(item.rarity==='legendary'&&!LEGENDARY_EFFECTS[item.effect])item.effect=effectForSlot(item.slot);return item;
 }
 export function normalizePlayer(p,nextId){

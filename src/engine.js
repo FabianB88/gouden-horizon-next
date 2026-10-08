@@ -1,48 +1,48 @@
-import {createNavigator,navigationFingerprint} from './navigation.js?v=905';
-import {SECTION_ENTRIES,sectionIndex,sectionArrival,insideSection,sameSection} from './area-sections.js?v=905';
-import {OutdoorRules} from './outdoors.js?v=905';
-import {TestModeRules} from './test-mode.js?v=905';
-import {registerHit} from './combat-feedback.js?v=905';
-import {QuarterRules} from './safe-exploration.js?v=905';
-import {NatureRules,tuneNatureEnemy} from './nature-region.js?v=905';
-import {CompanionUpgradeRules} from './companion-upgrades.js?v=905';
-import {summonAvailable,summonUnlockLevel} from './summon-progression.js?v=905';
-import {CreatureRules} from './creatures.js?v=905';
-import {V8ExpeditionRules,tuneV8Enemy} from './v8-expedition.js?v=905';
-import {tacticalMovement,smoothEnemyVelocity,engagementGoal,EnemyCrowd,separationVector} from './enemy-ai.js?v=905';
-import {BiomeRules,tuneBiomeEnemy} from './biomes.js?v=905';
-import {rollChaseItem,chaseRandom} from './chase-loot.js?v=905';
-import {AdventureRules} from './adventures.js?v=905';
-import {itemFitsSlot} from './equipment-slots.js?v=905';
-import {BossTerrainRules} from './boss-terrain.js?v=905';
-import {SpecializationRules,specializationStats} from './specializations.js?v=905';
-import {PremiumSpellRules} from './premium-spells.js?v=905';
-import {damageResistance} from './resistances.js?v=905';
-import {ItemMarkRules,protectedItem} from './item-marks.js?v=905';
-import {VariantRules,spellProfile,variantChoices} from './spell-variants.js?v=905';
-import {SummonRules} from './summons.js?v=905';
-import {UniqueRules} from './unique-items.js?v=905';
-import {V6EnemyRules} from './v6-enemies.js?v=905';
-import {CityRules} from './city.js?v=905';
-import {BountyRules} from './bounties.js?v=905';
-import { worldBounds, QUAY_GATE, WORLD, SPELLS, ZONES, ENEMIES, EQUIPMENT, START_EQUIPMENT, UPGRADES, DISCIPLINES, POSITIONS, AREAS, AREA_BY_ID, HUB_IDS } from './data.js?v=905';
-import {StoryRules} from './story.js?v=905';
-import {planNewAttack,executeNewAttack,updateNewThreats} from './enemy-variety.js?v=905';
-import {scaleEnemy,tuneChapterEnemy} from './balance.js?v=905';
-import {ExpeditionRules,REGION_CAMPS} from './expedition.js?v=905';
-import {makeItem,normalizePlayer,DROP_TABLES,dropProfile,salvageValue} from './loot.js?v=905';
-import {HubRules,SAFE_HUBS} from './hubs.js?v=905';
-import {REGIONAL_BOSSES,updateBossPhase,updateEncounterState} from './encounters.js?v=905';
-import {legendaryCast,legendaryDash,legendaryHit,legendaryKill,triggerLegendary,updateLegendary} from './legendary.js?v=905';
-import {updateHeroMotion,heroDirection,heroFrame} from './hero-motion.js?v=905';
-import {SurvivalRules,HEAL_COOLDOWN} from './survival.js?v=905';
-import {updateEnemyMotion} from './enemy-motion.js?v=905';
-import {GambleRules} from './gamble.js?v=905';
-import {presentEnemyAttack,launchEnemyLob,updateEnemyLob} from './enemy-combat.js?v=905';
-import {EndgameRules} from './endgame.js?v=905';
-import {MarketRules} from './markets.js?v=905';
-import {QuestRules} from './quests.js?v=905';
-import {arenaObstacles,blockedByObstacle,coverHit} from './arena-layouts.js?v=905';
+import {createNavigator,navigationFingerprint} from './navigation.js?v=909';
+import {SECTION_ENTRIES,sectionIndex,sectionArrival,insideSection,sameSection} from './area-sections.js?v=909';
+import {OutdoorRules} from './outdoors.js?v=909';
+import {TestModeRules} from './test-mode.js?v=909';
+import {registerHit} from './combat-feedback.js?v=909';
+import {QuarterRules} from './safe-exploration.js?v=909';
+import {NatureRules,tuneNatureEnemy} from './nature-region.js?v=909';
+import {CompanionUpgradeRules} from './companion-upgrades.js?v=909';
+import {summonAvailable,summonUnlockLevel} from './summon-progression.js?v=909';
+import {CreatureRules} from './creatures.js?v=909';
+import {V8ExpeditionRules,tuneV8Enemy} from './v8-expedition.js?v=909';
+import {tacticalMovement,smoothEnemyVelocity,engagementGoal,EnemyCrowd,separationVector} from './enemy-ai.js?v=909';
+import {BiomeRules,tuneBiomeEnemy} from './biomes.js?v=909';
+import {rollChaseItem,chaseRandom} from './chase-loot.js?v=909';
+import {AdventureRules} from './adventures.js?v=909';
+import {itemFitsSlot} from './equipment-slots.js?v=909';
+import {BossTerrainRules} from './boss-terrain.js?v=909';
+import {SpecializationRules,specializationStats} from './specializations.js?v=909';
+import {PremiumSpellRules} from './premium-spells.js?v=909';
+import {damageResistance} from './resistances.js?v=909';
+import {ItemMarkRules,protectedItem} from './item-marks.js?v=909';
+import {VariantRules,spellProfile,variantChoices} from './spell-variants.js?v=909';
+import {SummonRules} from './summons.js?v=909';
+import {UniqueRules} from './unique-items.js?v=909';
+import {V6EnemyRules} from './v6-enemies.js?v=909';
+import {CityRules} from './city.js?v=909';
+import {BountyRules} from './bounties.js?v=909';
+import { worldBounds, QUAY_GATE, WORLD, SPELLS, ZONES, ENEMIES, EQUIPMENT, START_EQUIPMENT, UPGRADES, DISCIPLINES, POSITIONS, AREAS, AREA_BY_ID, HUB_IDS } from './data.js?v=909';
+import {StoryRules} from './story.js?v=909';
+import {planNewAttack,executeNewAttack,updateNewThreats} from './enemy-variety.js?v=909';
+import {scaleEnemy,tuneChapterEnemy} from './balance.js?v=909';
+import {ExpeditionRules,REGION_CAMPS} from './expedition.js?v=909';
+import {makeItem,normalizePlayer,DROP_TABLES,dropProfile,salvageValue} from './loot.js?v=909';
+import {HubRules,SAFE_HUBS} from './hubs.js?v=909';
+import {REGIONAL_BOSSES,updateBossPhase,updateEncounterState} from './encounters.js?v=909';
+import {legendaryCast,legendaryDash,legendaryHit,legendaryKill,triggerLegendary,updateLegendary} from './legendary.js?v=909';
+import {updateHeroMotion,heroDirection,heroFrame} from './hero-motion.js?v=909';
+import {SurvivalRules,HEAL_COOLDOWN} from './survival.js?v=909';
+import {updateEnemyMotion} from './enemy-motion.js?v=909';
+import {GambleRules} from './gamble.js?v=909';
+import {presentEnemyAttack,launchEnemyLob,updateEnemyLob} from './enemy-combat.js?v=909';
+import {EndgameRules} from './endgame.js?v=909';
+import {MarketRules} from './markets.js?v=909';
+import {QuestRules} from './quests.js?v=909';
+import {arenaObstacles,blockedByObstacle,coverHit} from './arena-layouts.js?v=909';
 export const clamp = (n,a,b) => Math.max(a,Math.min(b,n));
 export const distance = (a,b) => Math.hypot(a.x-b.x,(a.y-b.y)*1.15);
 export const normal = (x,y) => { const d=Math.hypot(x,y)||1;return {x:x/d,y:y/d}; };
@@ -158,15 +158,15 @@ export class Engine {
     if(id==='summon'&&!summonAvailable(p))return false;
     if(!spell||s.mode!=='playing'||this.inCamp()||!p.skills.includes(id)||(p.spellCd[id]||0)>0||p.mana<spell.cost||p.dashTimer>0)return false;
     if(target)this.aimAt(target.x,target.y);p.lastAbility=id;p.spellCd[id]=spell.interval;p.attackCd=spell.interval;p.mana-=spell.cost;p.cast=.18;
-    if(this.castPremium(id,spell))return true;
+    if(this.castPremium(id,spell)){legendaryCast(this,id,spell.damage*(1+this.stats().power+(this.stats()[spell.element]||0)),Boolean(spell.area));return true;}
     if(id==='summon'){this.summonCompanions();this.emit('cast',{spell:id});return true;}
-    if(spell.area){this.castArea(id,target);this.emit('cast',{spell:id});return true;}
+    if(spell.area){this.castArea(id,target);legendaryCast(this,id,spell.damage*(1+this.stats().power+(this.stats()[spell.element]||0)),true);this.emit('cast',{spell:id});return true;}
     const dir=p.aim,stats=this.stats(),damage=spell.damage*(1+stats.power+(stats[id]||0)),origin={x:p.x,y:p.y-18},group=++this.idCounter;
     const bolt=(type,dx,dy)=>({id:++this.idCounter,group,team:'player',type,x:p.x+dx*32,y:p.y+dy*24-18,origin,dir:{x:dx,y:dy},vx:dx*spell.speed,vy:dy*spell.speed/1.15,damage,radius:spell.radius,life:1.45,trail:[],age:0,hitIds:[],variant:v.id,returnAt:v.returnAt,pullRadius:v.pullRadius,pullSpeed:v.pullSpeed,blastRadius:v.blastRadius,noFire:v.noFire,fireRadius:v.fireRadius,fireDamage:14*(v.damage||1)});
     const fan=(count,spread,run)=>{const a=Math.atan2(dir.y,dir.x);for(let i=0;i<count;i++){const t=a+(i-(count-1)/2)*spread;run(Math.cos(t),Math.sin(t));}};
     if(id==='storm'){
       const struck=new Set();fan(v.fan||1,v.spread||0,(dx,dy)=>{const end={x:origin.x+dx*(v.beamRange||650),y:origin.y+dy*(v.beamRange||650)/1.15},hits=s.world.enemies.filter(e=>!e.dead&&segmentDistance(origin,end,{x:e.x,y:e.y-22})<e.radius+(v.beamWidth||16)).sort((a,b)=>distance(p,a)-distance(p,b)).slice(0,v.beamHits||1),last=hits.at(-1);this.effect('chain',origin.x,origin.y,{end:last?{x:last.x,y:last.y-22}:end,color:spell.color,life:.28});for(const hit of hits)if(!struck.has(hit.id)){struck.add(hit.id);this.hitEnemy(hit,damage,'storm');}});
-    }else if(id==='prism')s.projectiles.push({...bolt(id,dir.x,dir.y),bounces:v.bounces??3,bounceFalloff:v.bounceFalloff??.88,projectileSpeed:spell.speed,life:v.boltLife||1.4});
+    }else if(id==='prism')s.projectiles.push({...bolt(id,dir.x,dir.y),bounces:v.bounces??4,bounceFalloff:v.bounceFalloff??.92,projectileSpeed:spell.speed,life:v.boltLife||1.4});
     else if(id==='tide'){fan(v.fan||3,v.spread??.19,(dx,dy)=>s.projectiles.push({...bolt(id,dx,dy),pierce:v.pierce||2}));p.heat=Math.max(0,p.heat-.55);}
     else if(id==='ember'){fan(v.fan||1,v.spread||0,(dx,dy)=>{const length=clamp(p.aimRange||350,90,590),end={x:p.x+dx*length,y:p.y+dy*length/1.15-18};s.projectiles.push({...bolt(id,dx,dy),origin,end,duration:(.48+length/1600)*(v.flight||1),life:1.2,flightHeight:0,meteor:v.id==='meteor'});});}
     else fan(v.fan||1,v.spread||0,(dx,dy)=>{const shot={...bolt(id,dx,dy),pierce:v.pierce,onePerGroup:!!v.fan,life:v.boltLife||(id==='gravity'?1.65:id==='gale'?1.6:1.1)};if(v.stationary){const length=clamp(p.aimRange||300,80,440);Object.assign(shot,{x:p.x+dx*length,y:p.y+dy*length/1.15-18,vx:0,vy:0});}s.projectiles.push(shot);});
@@ -553,7 +553,8 @@ export class Engine {
       if(bolt.team==='player'){
         for(const hit of s.world.enemies.filter(e=>!e.dead&&!bolt.hitIds.includes(e.id)&&segmentDistance(old,bolt,{x:e.x,y:e.y-22})<e.radius+bolt.radius)){
           bolt.hitIds.push(hit.id);if(bolt.type==='tide'&&hit.tideGroup===bolt.group||bolt.onePerGroup&&hit.castGroup===bolt.group)continue;if(bolt.type==='tide')hit.tideGroup=bolt.group;if(bolt.onePerGroup)hit.castGroup=bolt.group;this.hitEnemy(hit,bolt.damage,bolt.element||bolt.type,Boolean(bolt.companion||bolt.uniqueSecondary));
-          if(bolt.type==='prism'){const next=s.world.enemies.filter(e=>!e.dead&&!bolt.hitIds.includes(e.id)&&distance(e,hit)<360).sort((a,b)=>distance(a,hit)-distance(b,hit))[0];if(bolt.bounces>0&&next){bolt.bounces--;bolt.damage*=bolt.bounceFalloff??.75;bolt.x=hit.x;bolt.y=hit.y-22;const dir=normal(next.x-bolt.x,(next.y-22-bolt.y)*1.15);bolt.vx=dir.x*(bolt.projectileSpeed||960);bolt.vy=dir.y*(bolt.projectileSpeed||960)/1.15;bolt.life=.65;this.effect('element-impact',hit.x,hit.y-22,{element:'solar',radius:45,life:.35});}else bolt.life=0;break;}
+          if(bolt.type==='volt'&&!hit.dead)hit.wet=Math.max(hit.wet||0,3);
+          if(bolt.type==='prism'){const next=s.world.enemies.filter(e=>!e.dead&&!bolt.hitIds.includes(e.id)&&distance(e,hit)<420).sort((a,b)=>distance(a,hit)-distance(b,hit))[0];if(bolt.bounces>0&&next){bolt.bounces--;bolt.damage*=bolt.bounceFalloff??.92;bolt.x=hit.x;bolt.y=hit.y-22;const dir=normal(next.x-bolt.x,(next.y-22-bolt.y)*1.15);bolt.vx=dir.x*(bolt.projectileSpeed||960);bolt.vy=dir.y*(bolt.projectileSpeed||960)/1.15;bolt.life=.7;this.effect('element-impact',hit.x,hit.y-22,{element:'solar',radius:45,life:.35});}else{this.effect('nova',hit.x,hit.y,{element:'solar',radius:110,color:'#ffe49a',life:.4});for(const e of s.world.enemies.filter(e=>!e.dead&&distance(e,hit)<110))this.hitEnemy(e,bolt.damage*.5,'solar',true);bolt.life=0;}break;}
           if(bolt.type==='tide'||bolt.pierce){bolt.pierce--;if(bolt.pierce<=0){bolt.life=0;break;}}else if(!['frost','gale'].includes(bolt.type)){bolt.life=0;break;}
         }
       }else if(this.interceptCompanion(bolt,old)){continue;}else if(segmentDistance(old,bolt,{x:p.x,y:p.y-20})<22+bolt.radius){const canHit=!this.inCamp()&&p.invincible<=0;this.hurtPlayer(bolt.damage,bolt.damageType||(bolt.venom?'venomHit':'electric'));if(canHit){if(bolt.gust){const n=normal(bolt.vx,bolt.vy);this.moveEntity(p,n.x*38,n.y*30);}if(bolt.chill)p.rootSlow=Math.max(p.rootSlow||0,.8);if(bolt.element==='water')p.wet=Math.max(p.wet,1.1);if(bolt.element==='fire')p.heat=Math.min(5,p.heat+.6);}bolt.life=0;this.effect(bolt.element?'element-impact':'impact',p.x,p.y-20,{element:bolt.element,color:bolt.color||'#ffb38d',radius:40,life:.4});}

@@ -1,5 +1,5 @@
-import {spellProfile} from './spell-variants.js?v=905';
-import {resistance,RESISTANCES} from './resistances.js?v=905';
+import {spellProfile} from './spell-variants.js?v=909';
+import {resistance,RESISTANCES} from './resistances.js?v=909';
 
 // Replace one slot, rather than treating a relic as the sum of both slots.
 export function projectedStats(stats,item,current){
@@ -10,7 +10,7 @@ export function projectedStats(stats,item,current){
  return out;
 }
 export function spellDamage(p,stats,id){const s=spellProfile(p,id);if(!s||id==='summon')return null;const element=s.area||id==='volt'||id==='cryo'?s.element:id;return s.damage*(1+(stats.power||0)+(stats[element]||0));}
-const roles={tide:'Snelle waaier · maakt doelen nat',storm:'Directe straal · sterker op natte doelen',ember:'Worp · explosie en brandveld',frost:'Doorborende rij · vertraagt en bevriest',gale:'Boemerang · heen- en terugtreffer',gravity:'Trekt een groep samen · eindexplosie',glacier:'Smalle barrière · schade per puls',cyclone:'Bewegende wervel · trekt vijanden mee',tempest:'Gerichte salvo’s · maximaal drie doelen',orbital:'Drie aangekondigde kraters',prism:'Groepsaanval · drie sprongen, 88% per sprong',volt:'Zware lans · door drie doelen',cryo:'Bevriezende explosie · twee naschokken',summon:'Dierengenoten · eigen leven en aanvallen'};
+const roles={tide:'Snelle waaier · maakt doelen nat',storm:'Directe straal · sterker op natte doelen',ember:'Worp · explosie en brandveld',frost:'Doorborende rij · vertraagt en bevriest',gale:'Boemerang · heen- en terugtreffer',gravity:'Trekt een groep samen · eindexplosie',glacier:'Smalle barrière · schade per puls',cyclone:'Bewegende wervel · trekt vijanden mee',tempest:'Gerichte salvo’s · maximaal drie doelen',orbital:'Drie aangekondigde kraters',prism:'Groepsaanval · vier sprongen, 92% per sprong en eindexplosie',volt:'Zware lans · door vier doelen en 3s geleiding',cryo:'Bevriezende explosie · drie naschokken',summon:'Dierengenoten · eigen leven en aanvallen'};
 export function spellInsight(p,stats,id){const s=spellProfile(p,id);if(!s)return '';const damage=spellDamage(p,stats,id),v=s.variant||{};let role=roles[id]||s.description;
  if(v.id){const choices={surf:'Brede waaier · vijf waterbogen',lance:'Smalle lans · door vier doelen',fork:'Drie zwakkere bliksemstralen',needle:'Smalle bliksemstraal · door twee doelen',flash:'Snelle explosie · zonder brandveld',cluster:'Drie kleine explosies',shards:'Drie ijssplinters · één doel per splinter',longshot:'Smalle ijsnaald · groter bereik',recurve:'Korte boemerang · snel terug',wide:'Brede boemerang · later terug',anchor:'Stilstaande kern · trekt en implodeert',vortex:'Trage kern · groter trekgebied',corridor:'Lange smalle ijsstrook',gate:'Korte brede ijsstrook',runner:'Snelle smalle wervel',line:'Drie kraters langs je richtlijn'};role=choices[v.id]||role;}
  if(id==='prism'&&v.id==='relay')role='Groepsaanval · vijf sprongen, 85% per sprong';

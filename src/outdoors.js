@@ -1,7 +1,8 @@
-import {OUTDOOR_REGIONS,outdoorPoint,inOutdoorWild} from './outdoor-content.js?v=905';
-import {ENEMIES} from './data.js?v=905';
-import {tuneChapterEnemy} from './balance.js?v=905';
-import {makeItem} from './loot.js?v=905';
+import {OUTDOOR_REGIONS,outdoorPoint,inOutdoorWild} from './outdoor-content.js?v=909';
+import {ENEMIES} from './data.js?v=909';
+import {tuneChapterEnemy} from './balance.js?v=909';
+import {makeItem} from './loot.js?v=909';
+import {sectionIndex} from './area-sections.js?v=909';
 const distance=(a,b)=>Math.hypot(a.x-b.x,(a.y-b.y)*1.15);
 const midpoint=r=>outdoorPoint(r.id,r.door[0].map((v,i)=>(v+r.door[1][i])/2));
 export const OutdoorRules={
@@ -10,11 +11,11 @@ export const OutdoorRules={
    if(id==='forest'){const a=outdoorPoint(id,r.door[0]),b=outdoorPoint(id,r.door[1]),dx=b.x-a.x,dy=b.y-a.y,t=Math.max(0,Math.min(1,((x-a.x)*dx+(y-a.y)*dy)/(dx*dx+dy*dy)));if(Math.hypot(x-a.x-t*dx,y-a.y-t*dy)<radius+5)return true;}
    return [[0,0],[radius,0],[-radius,0],[0,radius],[0,-radius]].some(([dx,dy])=>inOutdoorWild(id,{x:x+dx,y:y+dy}));},
  outdoorNPC(){const r=OUTDOOR_REGIONS[this.state.area];return r?{id:r.npc,...outdoorPoint(this.state.area,r.npcPoint),name:r.npcName,title:r.name}:null;},
- outdoorInteraction(){const id=this.state.area,r=OUTDOOR_REGIONS[id],p=this.state.player,o=this.state.world.outdoor;if(!r||!o)return null;
+ outdoorInteraction(){const id=this.state.area,r=OUTDOOR_REGIONS[id],p=this.state.player,o=this.state.world.outdoor;if(!r||!o||sectionIndex(id,p)!==1)return null;
   const npc=this.outdoorNPC();if(distance(p,npc)<105)return {type:'outdoorNPC',entity:npc,label:r.npcName+' · '+r.goal,key:'F'};
   const door=midpoint({...r,id});if(!o.open&&distance(p,door)<145)return {type:'outdoorDoor',entity:door,label:'Open '+r.doorName+' · optioneel gevaarlijk zijgebied',key:'F'};
   if(!o.open)return null;
-  const point=r.points.find(q=>!o.done.includes(q.id)&&distance(p,outdoorPoint(id,q.point))<100);
+  const point=r.points.find(q=>!o.done.includes(q.id)&&distance(p,outdoorPoint(id,q.point))<120);
   if(point){const guarded=r.mode==='harvest'&&this.state.world.enemies.some(e=>e.outdoor&&!e.dead&&distance(e,outdoorPoint(id,point.point))<220);return {type:guarded?'outdoorGuard':'outdoorPoint',entity:point,label:guarded?'Versla de bewakers bij '+point.name:r.mode==='channel'?'Stem '+point.name+' af · 2s stilstaan':r.mode==='vent'?'Sluit '+point.name+' · doof het hitteveld':'Berg '+point.name,key:'F'};}return null;
  },
  talkOutdoorNPC(){const r=OUTDOOR_REGIONS[this.state.area],npc=this.outdoorNPC();if(!r||distance(npc,this.state.player)>=105)return false;const o=this.state.world.outdoor;this.state.mode='modal';this.state.pending={type:'archive',title:r.npcName,body:r.intro+'\n\n'+(o.rewarded?'Dank je. De route blijft open om verder rond te lopen.':r.goal+' · '+o.done.length+'/3. Advies: niveau '+r.level+' met passende uitrusting. Beloning: '+r.rewardText+'. Eén keer per expeditie.')};return true;},
@@ -27,10 +28,10 @@ export const OutdoorRules={
   }
   if(r.mode==='vent')for(const q of r.points){const point=outdoorPoint(id,q.point);w.hazards.push({id:'outdoor-heat-'+q.id,...point,r:90,type:'heat',damage:18,outdoor:true,vent:q.id,cleared:false});}return true;
  },
- inspectOutdoorPoint(id){const r=OUTDOOR_REGIONS[this.state.area],o=this.state.world.outdoor,q=r?.points.find(q=>q.id===id),p=this.state.player;if(!q||!o.open||o.done.includes(id)||this.state.mode!=='playing'||distance(p,outdoorPoint(this.state.area,q.point))>=100)return false;
+ inspectOutdoorPoint(id){const r=OUTDOOR_REGIONS[this.state.area],o=this.state.world.outdoor,q=r?.points.find(q=>q.id===id),p=this.state.player;if(!q||!o.open||o.done.includes(id)||this.state.mode!=='playing'||sectionIndex(this.state.area,p)!==1||distance(p,outdoorPoint(this.state.area,q.point))>=120)return false;
   if(r.mode==='harvest'&&this.state.world.enemies.some(e=>e.outdoor&&!e.dead&&distance(e,outdoorPoint(this.state.area,q.point))<220))return false;
   if(r.mode==='channel'){if(o.channel)return false;o.channel={id,owner:p.heroId||'solo',start:{x:p.x,y:p.y},lastHurt:p.lastHurt,time:0};this.notice('Afstemmen · blijf 2s staan en houd je spreuken stil',r.color);return true;}
-  o.done.push(id);if(r.mode==='vent')for(const h of this.state.world.hazards)if(h.vent===id)h.cleared=true;this.effect('relay',...Object.values(outdoorPoint(this.state.area,q.point)),{color:r.color,radius:65,life:.65});this.notice(q.name+(r.mode==='vent'?' gesloten · hitteveld gedoofd':' geborgen')+' · '+o.done.length+'/3',r.color);this.emit('relaydone');return true;
+  o.done.push(id);if(r.mode==='vent')for(const h of this.state.world.hazards)if(h.vent===id)h.cleared=true;this.effect('relay',...Object.values(outdoorPoint(this.state.area,q.point)),{color:r.color,radius:65,life:.65});this.notice(q.name+(r.mode==='vent'?' gesloten · hitteveld gedoofd':' geborgen')+' · '+o.done.length+'/3',r.color);this.emit('relaydone');this.checkpoint();return true;
  },
  updateOutdoorActor(dt){const o=this.state.world.outdoor,c=o?.channel,p=this.state.player;if(!c||c.owner!==(p.heroId||'solo'))return;
   if(distance(p,c.start)>9||p.lastHurt>c.lastHurt||p.cast>0||p.dashTimer>0||p.hp<=0){o.channel=null;this.notice('Afstemming onderbroken · probeer opnieuw','#edd4a1');return;}
@@ -38,5 +39,15 @@ export const OutdoorRules={
  },
  updateOutdoorProgress(){const r=OUTDOOR_REGIONS[this.state.area],w=this.state.world,o=w.outdoor;if(!r||!o||o.rewarded||o.done.length<3||w.enemies.some(e=>e.outdoor&&!e.dead))return;
   o.rewarded=true;this.state.player.scrap+=r.reward;const npc=this.outdoorNPC(),item=makeItem({rng:this.rng,level:r.level,profile:'expedition',uid:++this.idCounter});w.loot.push({id:++this.idCounter,x:npc.x+65,y:npc.y+28,type:'loot',item,outdoorReward:true});this.notice(r.name+' verkend · +'+r.reward+' schroot · vondst bij '+r.npcName.split(' · ')[0],r.color);this.emit('discovery',{item,found:true});this.checkpoint();
+ },
+ outdoorWaypoint(){
+  const id=this.state.area,r=OUTDOOR_REGIONS[id],o=this.state.world.outdoor,p=this.state.player;if(!r||!o||sectionIndex(id,p)!==1)return null;
+  let target=!o.open?midpoint({...r,id}):r.points.find(q=>!o.done.includes(q.id));
+  target=target?.point?outdoorPoint(id,target.point):target;
+  if(!target)target=this.state.world.enemies.filter(e=>e.outdoor&&!e.dead).sort((a,b)=>distance(p,a)-distance(p,b))[0]||this.outdoorNPC();
+  // Guide around the painted wall/stairs instead of pointing through them.
+  const key=id+':'+o.open+':'+o.done.join(',')+':'+(target.id||target.x+','+target.y),cached=this.outdoorGuide;
+  if(!cached||cached.key!==key||this.state.time-cached.time>.4||distance(p,cached.from)>80)this.outdoorGuide={key,time:this.state.time,from:{x:p.x,y:p.y},path:this.findWalkingPath(p,target,18)};
+  return this.outdoorGuide.path.find(q=>distance(p,q)>55)||target;
  }
 };

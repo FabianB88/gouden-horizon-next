@@ -1,8 +1,9 @@
-import {OUTDOOR_REGIONS,inOutdoorWild} from './outdoor-content.js?v=905';
-import {AREAS,AREA_BY_ID,WORLD} from './data.js?v=905';
-import {regionalService} from './markets.js?v=905';
-import {HUB_LAYOUTS} from './hub-layouts.js?v=905';
-import {wanderingScrap} from './hub-wandering-content.js?v=905';
+import {OUTDOOR_REGIONS,inOutdoorWild} from './outdoor-content.js?v=909';
+import {AREAS,AREA_BY_ID,WORLD} from './data.js?v=909';
+import {regionalService} from './markets.js?v=909';
+import {HUB_LAYOUTS} from './hub-layouts.js?v=909';
+import {wanderingScrap} from './hub-wandering-content.js?v=909';
+import {normalizeItem} from './loot.js?v=909';
 export const SAFE_HUBS=['canal','highway','forest','skybridge','metro-refuge','cooling-refuge','groenkloof','lanternwood'];
 export const SERVICE_INFO={
  smith:{name:'Mara · Focusmaker',title:'Focusmaker',slots:['weapon','relic','gloves'],text:'Precisie of elementkracht? Kies een focus die bij je spreuken past.',file:'smith'},
@@ -24,7 +25,14 @@ export const QUAY_SUPPLY=HUB_LAYOUTS.canal.supply.map((v,i)=>v/(i?WORLD.height:W
 export function hubMerchants(id){return Object.entries(HUB_LAYOUTS[id].services).map(([service,[x,y]])=>({id:service,service,x,y,...SERVICE_INFO[service],...regionalService(id,SERVICE_INFO[service])}));}
 export function fixedHubPortals(g,id){
  const layout=HUB_LAYOUTS[id];if(!layout)return null;
- return Object.entries(layout.portals).map(([to,[x,y]])=>{const a=AREA_BY_ID[to],category=a.safeExplore?'explore':a.optional?'bonus':a.side?'arena':a.kind==='hub'?'generator':'route';return {id:'gate-'+to,to,x,y,category,story:true,locked:!g.canSelectDestination(to),reason:to==='hidden-atelier'?'Breng het regenkompas en de bergingssleutel naar Milo in Vrijhaven':'Voltooi eerst '+AREA_BY_ID[a.unlockArena||a.unlockChapter||g.recommendedArea()].name};});
+ const portals={...layout.portals};
+ // Once Aurelia is restored, its new station remains a visible destination
+ // in the two preceding camps, including old saves that returned early.
+ if(g.chapterComplete('aurelia')||g.state.visited.includes('metro-refuge')){
+  if(id==='forest')portals['metro-refuge']=[1000*1.75,294*1.75];
+  if(id==='skybridge')portals['metro-refuge']=[1010,825];
+ }
+ return Object.entries(portals).map(([to,[x,y]])=>{const a=AREA_BY_ID[to],category=a.safeExplore?'explore':a.optional?'bonus':a.side?'arena':a.kind==='hub'?'generator':'route';return {id:'gate-'+to,to,x,y,category,story:true,locked:!g.canSelectDestination(to),reason:to==='hidden-atelier'?'Breng het regenkompas en de bergingssleutel naar Milo in Vrijhaven':'Voltooi eerst '+AREA_BY_ID[a.unlockArena||a.unlockChapter||g.recommendedArea()].name};});
 }
 export const hubPortals=fixedHubPortals;
 export const HubRules={
@@ -32,6 +40,7 @@ export const HubRules={
   if(area.id==='rooftops'&&!w.roofExplorationVersion){w.roofExplorationVersion=1;if(!w.loot.some(i=>i.exploration))w.loot.push({id:++this.idCounter,x:425,y:250,type:'loot',exploration:true,profile:'cache'});}
   if(w.shop&&w.shop.marketVersion!==2){w.shop.stock=this.makeStock(area.zone,area.id).filter(i=>!w.shop.purchasedSpecials?.includes(i.investment));w.shop.marketVersion=2;}
   if(w.shop&&w.shop.antidoteStock===undefined)w.shop.antidoteStock=2;
+  for(const item of w.shop?.stock||[])normalizeItem(item);
   if(!SAFE_HUBS.includes(area.id))return;
   w.safeHub=true;this.prepareOutdoors(w,area);w.enemies=w.enemies.filter(e=>e.dead||e.outdoor);w.hazards=w.hazards.filter(h=>h.outdoor);w.threats=w.threats.filter(t=>w.enemies.some(e=>e.outdoor&&e.id===t.source));w.camp.services=hubMerchants(area.id);
   if(!w.wanderingVersion){w.wanderingVersion=1;w.pickups||=[];w.pickups.push(...wanderingScrap(this.state.seed,area));}

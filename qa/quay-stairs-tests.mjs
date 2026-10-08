@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {Engine,canStand,distance,clearLine,findPath} from '../src/engine.js?v=905';
+import {Engine,canStand,distance,clearLine,findPath} from '../src/engine.js?v=909';
 // Independent traces of the painted treads, not a pathfinder's chosen detour.
 const routes={
  'eastern court':[[880,530],[878,511],[875,498],[872,483],[868,469],[864,453],[864,433],[890,418]],

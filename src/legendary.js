@@ -1,6 +1,7 @@
 // Effects have separate cooldowns, use the original cast's damage, and never
 // trigger themselves. A legendary changes a build without an unlimited chain.
-import {UNIQUE_ITEMS} from './unique-items.js?v=905';
+import {UNIQUE_ITEMS} from './unique-items.js?v=909';
+import {MASTERWORK_EFFECTS,triggerMasterwork} from './masterworks.js?v=909';
 export const LEGENDARY_EFFECTS={
  resolve:{name:'Veldvast',slot:'head',title:'Kroon van de Drukgrens',text:'Na een treffer krijg je 12 schild voor 2 seconden. Herlaadt in 12 seconden.'},
  echo:{name:'Prismatische echo',slot:'weapon',title:'Echo van de Waterlijn',text:'Elke vierde directe spreuk vuurt een extra doorborende ijsstraal af voor 35% spreukschade.'},
@@ -11,19 +12,21 @@ export const LEGENDARY_EFFECTS={
  reserve:{name:'Noodcondensator',slot:'belt',title:'Gordel van de Laatste Reserve',text:'Wanneer je schade ontvangt krijg je 12 mana terug. Herlaadt in 8 seconden.'}
 };
 Object.assign(LEGENDARY_EFFECTS,Object.fromEntries(Object.entries(UNIQUE_ITEMS).map(([id,u])=>[id,{name:u.name,slot:u.slot,title:u.name,text:u.text}])));
+Object.assign(LEGENDARY_EFFECTS,MASTERWORK_EFFECTS);
 export const effectForSlot=slot=>Object.keys(LEGENDARY_EFFECTS).find(id=>LEGENDARY_EFFECTS[id].slot===slot);
-export function legendaryText(item){return item?.effect?LEGENDARY_EFFECTS[item.effect]?.text||'':'';}
+export function legendaryText(item){return item?.effect?[LEGENDARY_EFFECTS[item.effect]?.text,LEGENDARY_EFFECTS[item.masterEffect]?.text].filter(Boolean).join(' '):'';}
 export const effectText=legendaryText;
-export const legendaryCast=(g,id,damage)=>triggerLegendary(g,'cast',{damage});
+export const legendaryCast=(g,id,damage,area=false)=>triggerLegendary(g,'cast',{damage,area});
 export const legendaryDash=g=>triggerLegendary(g,'dash');
 export const legendaryHit=(g,enemy,damage,element,secondary)=>triggerLegendary(g,'hit',{enemy,damage,element,secondary});
 export const legendaryKill=(g,enemy)=>triggerLegendary(g,'kill',{enemy});
 const distance=(a,b)=>Math.hypot(a.x-b.x,(a.y-b.y)*1.15);
 export function triggerLegendary(g,trigger,data={}){
- const s=g.state,p=s.player,cool=p.effectCooldowns||(p.effectCooldowns={});
+ const s=g.state,p=s.player,cool=p.effectCooldowns||(p.effectCooldowns={}),seen=new Set();
  for(const item of Object.values(p.equipment)){
-  const id=item.effect;if(!id||(cool[id]||0)>0)continue;
-  let fired=false;
+  for(const id of [item.effect,item.masterEffect]){
+  if(!id||seen.has(id))continue;seen.add(id);if((cool[id]||0)>0)continue;
+  let fired=triggerMasterwork(g,id,trigger,data,cool);
   if(id==='echo'&&trigger==='cast'&&!data.area){p.echoCount=(p.echoCount||0)+1;if(p.echoCount%4===0){const dir=p.aim;s.projectiles.push({id:++g.idCounter,group:++g.idCounter,team:'player',type:'frost',x:p.x+dir.x*32,y:p.y-18+dir.y*24,vx:dir.x*900,vy:dir.y*900/1.15,damage:data.damage*.35,radius:8,life:.8,age:0,trail:[],hitIds:[],legendary:true});cool[id]=1;fired=true;}}
   if(id==='resolve'&&trigger==='hurt'){p.ward=Math.max(p.ward||0,12);p.wardTime=2;cool[id]=12;fired=true;}
   if(id==='ward'&&trigger==='dash'){p.ward=16;p.wardTime=2;cool[id]=9;fired=true;}
@@ -32,6 +35,7 @@ export function triggerLegendary(g,trigger,data={}){
   if(id==='conductor'&&trigger==='hit'&&data.element==='storm'&&!data.secondary){const near=s.world.enemies.filter(e=>!e.dead&&e!==data.enemy&&distance(e,data.enemy)<245).sort((a,b)=>distance(a,data.enemy)-distance(b,data.enemy))[0];if(near){cool[id]=3;g.effect('chain',data.enemy.x,data.enemy.y-20,{end:{x:near.x,y:near.y-20},color:'#ffe2a0',life:.4});g.hitEnemy(near,data.damage*.3,'storm',true);fired=true;}}
   if(id==='cinder'&&trigger==='kill'&&data.enemy.burn>0){cool[id]=3;const point=data.enemy;g.effect('eruption',point.x,point.y,{radius:115,color:'#ffd089',life:.65});for(const e of s.world.enemies.filter(e=>!e.dead&&distance(e,point)<115))g.hitEnemy(e,22,'ember',true);fired=true;}
   if(fired)g.emit('legendaryproc',{effect:id});
+  }
  }
 }
 export function updateLegendary(p,dt){for(const id of Object.keys(p.effectCooldowns||{}))p.effectCooldowns[id]=Math.max(0,p.effectCooldowns[id]-dt);p.wardTime=Math.max(0,(p.wardTime||0)-dt);if(!p.wardTime)p.ward=0;}

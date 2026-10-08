@@ -1,6 +1,6 @@
 // Separate ground and prop sprites. Placement uses native painting units;
 // drawing and collision both project the same dimensions into world units.
-import {MODULE_ASSETS as SHARED_ASSETS} from './scenery-catalog.js?v=905';
+import {MODULE_ASSETS as SHARED_ASSETS} from './scenery-catalog.js?v=909';
 export const MODULE_ASSETS={...SHARED_ASSETS,'quay-paving':{
  id:'quay-paving',file:'assets/quay-details/stone.webp',size:[474,300],crop:[27,108,474,300],anchor:[.5,.5],category:'floor',footprint:{shape:'diamond'},edgeFeather:.16,matchPainting:'canal',
 }};

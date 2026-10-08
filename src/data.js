@@ -1,26 +1,26 @@
-import {installModuleFloors} from './scenery-modules.js?v=905';
-import {installQuayStairs} from './quay-stairs.js?v=905';
-import {installPaintedArenaFloors} from './painted-arena-floors.js?v=905';
-import {addWorldWalkways} from './world-walkways.js?v=905';
-import {installForestNavigation} from './forest-navigation.js?v=905';
-import {OUTDOOR_REGIONS} from './outdoor-content.js?v=905';
-import {WANDERING_FLOORS,WANDERING_EXTENSIONS} from './hub-wandering-content.js?v=905';
-import {CITY_EXTENSION_FLOORS} from './city-extension.js?v=905';
-import {TOWN_FLOORS,TOWN_EXTRA_FLOORS} from './town-floors.js?v=905';
-import {HUB_SCALES} from './hub-space.js?v=905';
-import {QUARTER_AREAS,QUARTER_GATES} from './safe-exploration-content.js?v=905';
-import {NATURE_AREAS,NATURE_ENEMIES} from './nature-content.js?v=905';
-import {CREATURE_ENEMIES} from './creature-content.js?v=905';
-import {BIOME_AREAS,BIOME_ENEMIES,BIOME_HUB_LAYOUTS} from './biome-content.js?v=905';
-import {V8_HUB_LAYOUTS} from './v8-layouts.js?v=905';
-import {V8_AREAS,V8_ZONES,V8_ENEMIES} from './v8-content.js?v=905';
-import {HUB_LAYOUTS} from './hub-layouts.js?v=905';
+import {installModuleFloors} from './scenery-modules.js?v=909';
+import {installQuayStairs} from './quay-stairs.js?v=909';
+import {installPaintedArenaFloors} from './painted-arena-floors.js?v=909';
+import {addWorldWalkways} from './world-walkways.js?v=909';
+import {installForestNavigation} from './forest-navigation.js?v=909';
+import {OUTDOOR_REGIONS} from './outdoor-content.js?v=909';
+import {WANDERING_FLOORS,WANDERING_EXTENSIONS} from './hub-wandering-content.js?v=909';
+import {CITY_EXTENSION_FLOORS} from './city-extension.js?v=909';
+import {TOWN_FLOORS,TOWN_EXTRA_FLOORS} from './town-floors.js?v=909';
+import {HUB_SCALES} from './hub-space.js?v=909';
+import {QUARTER_AREAS,QUARTER_GATES} from './safe-exploration-content.js?v=909';
+import {NATURE_AREAS,NATURE_ENEMIES} from './nature-content.js?v=909';
+import {CREATURE_ENEMIES} from './creature-content.js?v=909';
+import {BIOME_AREAS,BIOME_ENEMIES,BIOME_HUB_LAYOUTS} from './biome-content.js?v=909';
+import {V8_HUB_LAYOUTS} from './v8-layouts.js?v=909';
+import {V8_AREAS,V8_ZONES,V8_ENEMIES} from './v8-content.js?v=909';
+import {HUB_LAYOUTS} from './hub-layouts.js?v=909';
 export const WORLD = { width: 1920, height: 1280 };
 export const SPELLS = {
   tide: { name: 'Getijdenwaaier', short: 'GETIJ', color: '#73e2e5', dark: '#126c8b', key: '1', damage: 13, cost: 4, interval: .22, speed: 780, radius: 11, status: 'wet', description: 'Drie waterbogen waaieren uit en maken doelen NAT. Wissel naar storm voor kettingbliksem.' },
   storm: { name: 'Boogbliksem', short: 'STORM', color: '#ceb2ff', dark: '#7958ca', key: '2', damage: 20, cost: 8, interval: .4, speed: 1000, radius: 9, status: 'shock', description: 'Natte doelen geven +70% schade en leiden bliksem door naar twee vijanden.' },
   ember: { name: 'Zonnebom', short: 'ZON', color: '#ffbc66', dark: '#b74c27', key: '3', damage: 30, cost: 12, interval: .7, speed: 620, radius: 15, status: 'burn', description: 'Een gebogen vuurbom ontploft op de grond en laat brandschade achter. NAT + ZON veroorzaakt een stoomgolf.' },
-  prism:{name:'Prismaboog',short:'PRISMA',color:'#ffe49a',dark:'#c18340',damage:70,cost:18,interval:1.2,speed:960,radius:12,unlockLevel:5,shopOnly:true,description:'Een gerichte prismalans springt na een treffer naar drie andere doelen. Sprongen behouden 88% schade. 70 beginschade, 18 mana, 1,2s. Bij de focusmaker vanaf Vrijhaven · 650 schroot.'},
+  prism:{name:'Prismaboog',short:'PRISMA',color:'#ffe49a',dark:'#c18340',damage:100,cost:18,interval:1,speed:1050,radius:12,unlockLevel:5,shopOnly:true,description:'Een prismalans springt naar vier andere doelen; sprongen behouden 92% schade. De laatste treffer ontploft voor 50% extra schade binnen 110, ook tegen één baas. 100 beginschade, 18 mana, 1s. Bij de focusmaker vanaf Vrijhaven · 650 schroot.'},
   frost: {name:'IJslans',short:'IJS',color:'#a9edff',dark:'#468ca7',damage:28,cost:11,interval:.55,speed:1080,radius:10,unlockLevel:2,status:'slow',description:'Een scherpe lans doorboort de hele rij. Vertraagt; natte doelen bevriezen kort.'},
   gale: {name:'Windboemerang',short:'WIND',color:'#b7f1bd',dark:'#428c75',damage:19,cost:9,interval:.65,speed:590,radius:24,unlockLevel:3,status:'push',description:'Een draaiende windschijf raakt op de heen- én terugweg en duwt vijanden weg.'},
   gravity: {name:'Zwaartekern',short:'KERN',color:'#e3a7ff',dark:'#8652a0',damage:42,cost:20,interval:1.3,speed:240,radius:22,unlockLevel:4,status:'pull',description:'Een trage kern trekt vijanden samen en implodeert. Volg op met een zonnebom.'}
@@ -983,8 +983,8 @@ const cityPixels=[
 ];
 const cityArea=AREA_BY_ID.highway;cityArea.name='Vrijhaven · Het Transportnet';cityArea.file='city-v6.webp';cityArea.nav=cityPixels.map(poly=>poly.map(([x,y])=>[x/1536,y/1024]));cityArea.spawn=[.46,.64];cityArea.exit=[.77,.79];
 
-SPELLS.volt={name:'Donderlans',short:'LANS',color:'#d5c4ff',dark:'#7860bb',damage:90,cost:24,interval:1.65,speed:1250,radius:12,element:'storm',shopOnly:true,unlockLevel:8,description:'Een snelle, gerichte bliksemlans door drie doelen. 90 schade; natte doelen krijgen de stormcombinatie. 24 mana, 1,65s. Bij de focusmaker vanaf de Groene Corridor · 1200 schroot.'};
-SPELLS.cryo={name:'Winterkroon',short:'KROON',color:'#c1f1ff',dark:'#498eac',damage:95,cost:30,interval:5.5,radius:155,area:true,duration:1.8,element:'frost',shopOnly:true,unlockLevel:11,description:'Plaats een vorstexplosie: 95 schade plus twee nasplinterpulsen van 16. Vertraagt en bevriest natte doelen kort. 30 mana, 5,5s. Bij de focusmaker in Horizonpost · 1800 schroot.'};
+SPELLS.volt={name:'Donderlans',short:'LANS',color:'#d5c4ff',dark:'#7860bb',damage:140,cost:22,interval:1.35,speed:1350,radius:15,element:'storm',shopOnly:true,unlockLevel:8,description:'Een bliksemlans door vier doelen voor 140 schade. Laat geraakte doelen 3 seconden geleiden: de volgende stormtreffer activeert de natte stormcombinatie. 22 mana, 1,35s. Bij de focusmaker vanaf de Groene Corridor · 1200 schroot.'};
+SPELLS.cryo={name:'Winterkroon',short:'KROON',color:'#c1f1ff',dark:'#498eac',damage:180,cost:30,interval:4.5,radius:190,area:true,duration:2.6,element:'frost',shopOnly:true,unlockLevel:11,description:'Een vorstexplosie voor 180 schade bevriest ook droge gewone vijanden 0,9 seconde; bazen slechts kort. Daarna drie pulsen van 45 schade. 30 mana, 4,5s, bereik 190. Bij de focusmaker in Horizonpost · 1800 schroot.'};
 
 // Short, repeatable adventures leave the sixteen main arenas untouched.
 const adventureAreas=[
