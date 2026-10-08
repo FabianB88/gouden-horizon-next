@@ -11,6 +11,6 @@ try{
   const output=[];for(const a of AREAS){const b=a.tiles?.[0]||{x:0,y:0,...(a.bounds||{width:1920,height:1280})},scale=Math.min(1920/b.width,1280/b.height);ctx.resetTransform();ctx.fillStyle='#182e33';ctx.fillRect(0,0,1920,1280);ctx.save();ctx.scale(scale,scale);drawNextGround(r,{area:a.id},b);for(const p of [...NEXT_SCENES[a.id].props].sort((a,b)=>a.y-b.y))drawNextProp(r,p,{x:-1000,y:-1000});ctx.restore();const thumb=document.createElement('canvas');thumb.width=600;thumb.height=400;thumb.getContext('2d').drawImage(canvas,0,0,600,400);output.push({id:a.id,full:canvas.toDataURL('image/webp',.9).split(',')[1],thumb:thumb.toDataURL('image/webp',.84).split(',')[1]});}return output;
  });
  mkdirSync(resolve(root,'assets/painted/previews'),{recursive:true});for(const o of outputs){writeFileSync(resolve(root,'assets/painted/next-'+o.id+'.webp'),Buffer.from(o.full,'base64'));writeFileSync(resolve(root,'assets/painted/previews/next-'+o.id+'.webp'),Buffer.from(o.thumb,'base64'));}
- writeFileSync(resolve(root,'assets/world-next/cover.webp'),Buffer.from(outputs.find(o=>o.id==='canal').full,'base64'));
+ // World previews are for area menus; the title screen keeps its original key art.
  console.log('Rendered '+outputs.length+' previews from actual placed world assets.');
 }finally{await browser.close();}
